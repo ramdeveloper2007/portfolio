@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tramprasad.netlify.app/sitemap.xml
+Sitemap: https://ramprasad-tech.netlify.app/sitemap.xml
