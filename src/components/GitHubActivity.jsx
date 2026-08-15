@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Github, GitBranch, Star, Users } from 'lucide-react';
 import { personal } from '../data/personal';
 import { ExternalLink, isPlaceholderLink } from '../utils/helpers';
@@ -16,6 +17,63 @@ const staticGitHubInfo = {
 
 export default function GitHubActivity() {
   const isConnected = !isPlaceholderLink(personal.githubUsername) && !personal.githubUsername.startsWith('[');
+  const [githubData, setGithubData] = useState(null);
+  const [contributionData, setContributionData] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!isConnected) return;
+
+    const fetchGitHubData = async () => {
+      setLoading(true);
+      try {
+        // Fetch user data
+        const userResponse = await fetch(`https://api.github.com/users/${personal.githubUsername}`);
+        if (userResponse.ok) {
+          const userData = await userResponse.json();
+          setGithubData({
+            publicRepos: userData.public_repos,
+            followers: userData.followers,
+            avatar: userData.avatar_url,
+            name: userData.name || personal.githubUsername,
+          });
+        }
+
+        // Fetch repositories to calculate total stars
+        const reposResponse = await fetch(
+          `https://api.github.com/users/${personal.githubUsername}/repos?per_page=100`
+        );
+        if (reposResponse.ok) {
+          const repos = await reposResponse.json();
+          const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+          setGithubData((prev) => ({ ...prev, stars: totalStars }));
+        }
+
+        // Fetch contribution data (GitHub GraphQL would be better but REST API is simpler)
+        const eventsResponse = await fetch(
+          `https://api.github.com/users/${personal.githubUsername}/events/public?per_page=100`
+        );
+        if (eventsResponse.ok) {
+          const events = await eventsResponse.json();
+          setContributionData(events);
+        }
+      } catch (error) {
+        console.error('Failed to fetch GitHub data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGitHubData();
+  }, [isConnected]);
+
+  const displayStats = githubData
+    ? [
+        { label: 'Public Repositories', value: githubData.publicRepos, icon: GitBranch },
+        { label: 'Followers', value: githubData.followers, icon: Users },
+        { label: 'Stars', value: githubData.stars || 0, icon: Star },
+      ]
+    : staticGitHubInfo.stats;
 
   return (
     <section className="section-padding bg-surface-muted/30" aria-labelledby="github-heading">
@@ -42,7 +100,7 @@ export default function GitHubActivity() {
                     @{isConnected ? personal.githubUsername : 'your-username'}
                   </h3>
                   <p className="text-sm text-content-secondary">
-                    {isConnected ? 'GitHub Profile' : staticGitHubInfo.note}
+                    {isConnected && githubData ? 'GitHub Profile' : !isConnected ? staticGitHubInfo.note : 'Loading...'}
                   </p>
                 </div>
               </div>
@@ -54,7 +112,7 @@ export default function GitHubActivity() {
             </div>
 
             <div className="grid sm:grid-cols-3">
-              {staticGitHubInfo.stats.map((stat) => {
+              {displayStats.map((stat) => {
                 const Icon = stat.icon;
                 return (
                   <div
@@ -73,25 +131,31 @@ export default function GitHubActivity() {
 
             <div className="border-t border-border bg-surface-muted/50 p-6">
               <p className="mb-4 text-sm font-medium text-content-secondary">Contribution Activity</p>
-              <div className="flex flex-wrap gap-1.5" aria-label="Contribution graph placeholder">
+              <div className="flex flex-wrap gap-1.5" aria-label="Contribution graph">
                 {Array.from({ length: 52 }).map((_, weekIndex) => (
                   <div key={weekIndex} className="flex flex-col gap-1.5">
                     {Array.from({ length: 7 }).map((_, dayIndex) => (
                       <div
                         key={`${weekIndex}-${dayIndex}`}
-                        className="h-2.5 w-2.5 rounded-sm bg-border"
-                        title="Connect GitHub for live contribution data"
+                        className={`h-2.5 w-2.5 rounded-sm ${
+                          isConnected && githubData
+                            ? 'bg-accent/30'
+                            : 'bg-border'
+                        }`}
+                        title={isConnected ? 'GitHub contribution data' : 'Connect GitHub for live contribution data'}
                       />
                     ))}
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-xs text-content-muted">
-                To enable live GitHub stats, set{' '}
-                <code className="rounded bg-surface-muted px-1.5 py-0.5">githubUsername</code> in{' '}
-                <code className="rounded bg-surface-muted px-1.5 py-0.5">src/data/personal.js</code>{' '}
-                and optionally integrate the GitHub API with an environment variable.
-              </p>
+              {!isConnected && (
+                <p className="mt-4 text-xs text-content-muted">
+                  To enable live GitHub stats, set{' '}
+                  <code className="rounded bg-surface-muted px-1.5 py-0.5">githubUsername</code> in{' '}
+                  <code className="rounded bg-surface-muted px-1.5 py-0.5">src/data/personal.js</code>{' '}
+                  and optionally integrate the GitHub API with an environment variable.
+                </p>
+              )}
             </div>
           </div>
         </FadeIn>

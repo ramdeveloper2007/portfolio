@@ -9,10 +9,10 @@ export const personal = {
   email: 'ramgokul644@gmail.com',
   resumePath: '/resume/Ramprasad_Resume.pdf',
   social: {
-    github: 'https://github.com/[YOUR_GITHUB_USERNAME]',
+    github: 'https://github.com/ramdeveloper2007',
     linkedin: 'https://www.linkedin.com/in/ram-prasad-2230b3314?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   },
-  githubUsername: '[YOUR_GITHUB_USERNAME]',
+  githubUsername: 'ramdeveloper2007',
 };
 
 export const navLinks = [
