@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Ramprasad - Software Developer and Computer Engineering Student">
+    <meta name="keywords" content="Portfolio, Software Developer, Web Developer, Python, React, HTML, CSS">
+    <meta name="author" content="Ramprasad">
+    <title>Ramprasad - Software Developer</title>
+    <link rel="icon" href="data:image/x-icon;,">
+    <link rel="shortcut icon" href="data:image/x-icon;,">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Ramprasad</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content container">
+            <div class="hero-text">
+                <h1 class="hero-greeting">Hello, I'm</h1>
+                <h2 class="hero-name">Ramprasad</h2>
+                <div class="typing-container">
+                    <p class="typing-text">
+                        <span class="typing"></span>
+                        <span class="cursor">|</span>
+                    </p>
+                </div>
+                <p class="hero-description">
+                    Passionate Software Developer focused on creating efficient web applications, automation solutions, and innovative software projects.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                        Contact Me
+                    </button>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="social-link reveal-email" data-user="ramgokul644" data-domain="gmail.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-image-container">
+                    <img src="https://via.placeholder.com/300" alt="Ramprasad" class="profile-image">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-description">
+                        I'm a passionate Software Developer and Computer Engineering student with a strong foundation in programming and web technologies. I enjoy solving complex problems and creating efficient solutions that make a difference.
+                    </p>
+                    <div class="education-box">
+                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <div class="education-item">
+                            <h4>Diploma in Computer Engineering</h4>
+                            <p>Sri Krishna Polytechnic College</p>
+                            <span class="year">2023 (Completed)</span>
+                        </div>
+                    </div>
+                    <p class="career-goal">
+                        <strong>Career Goal:</strong> Aspiring Software Engineer seeking opportunities to build impactful software solutions and continuously improve technical skills.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="15">0</div>
+                        <p class="stat-label">Projects Completed</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="12">0</div>
+                        <p class="stat-label">Technologies Learned</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="3">0</div>
+                        <p class="stat-label">Certifications</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid cards">
+                <div class="skill-card">
+                    <h3 class="skill-title">HTML</h3>
+                    <p class="skill-desc">Markup language for structuring web pages</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3 class="skill-title">CSS</h3>
+                    <p class="skill-desc">Styling language for beautiful web designs</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3 class="skill-title">JavaScript</h3>
+                    <p class="skill-desc">Programming language for interactive websites</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3 class="skill-title">Python Flask</h3>
+                    <p class="skill-desc">Framework for building lightweight web applications</p>
+                </div>
+
+                <div class="skill-card large">
+                    <h3 class="skill-title">Other Technologies</h3>
+                    <p class="skill-desc">Git, GitHub, VS Code, Bootstrap, SQLite, MySQL and more</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1: Attendance Tracking App -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x250" alt="Attendance Tracking App">
+                        <div class="project-overlay">
+                            <a href="#" class="project-btn">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <a href="#" class="project-btn">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Attendance Tracking App</h3>
+                        <p class="project-description">
+                            A comprehensive attendance management system with real-time tracking, automated reporting, and dashboards for students and faculty.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Emocare - Therapy Assistant -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x250" alt="Emocare - Therapy Assistant">
+                        <div class="project-overlay">
+                            <a href="#" class="project-btn">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <a href="#" class="project-btn">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Emocare - Therapy Assistant</h3>
+                        <p class="project-description">
+                            An empathetic therapy assistant to monitor mood, journal emotions, and provide supportive insights and reminders to improve wellbeing.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Time Table Generator -->
+                <div class="project-card" data-category="backend">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x250" alt="Time Table Generator">
+                        <div class="project-overlay">
+                            <a href="#" class="project-btn">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <a href="#" class="project-btn">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Time Table Generator</h3>
+                        <p class="project-description">
+                            An intelligent scheduler that auto-generates optimized timetables, handles teacher allocation, and prevents conflicts.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Algorithm Design</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: AI-Collaborative Study Buddy -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x250" alt="AI-Collaborative Study Buddy">
+                        <div class="project-overlay">
+                            <a href="#" class="project-btn">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <a href="#" class="project-btn">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI-Collaborative Study Buddy</h3>
+                        <p class="project-description">
+                            An AI-powered study assistant that helps plan study sessions, generate practice questions, and provide explanations to boost learning.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience section removed as requested -->
+
+    <!-- Certifications removed for privacy -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                                <h4>Email</h4>
+                                <p><a href="#" class="reveal-email" data-user="ramgokul644" data-domain="gmail.com">ramgo***@gmail.com</a></p>
+                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p><a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Coimbatore, Tamil Nadu, India</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Me</h4>
+                    <div class="footer-socials">
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ramprasad. All rights reserved.</p>
+                <p>Designed and Developed by <span class="highlight">Ramprasad</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Floating Social Sidebar -->
+    <div class="floating-social">
+        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="reveal-email" data-user="ramgokul644" data-domain="gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

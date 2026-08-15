@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tramprasad.netlify.app/sitemap.xml
