@@ -37,6 +37,7 @@
 
   html {
     scroll-behavior: smooth;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -60,6 +61,18 @@
   ::selection {
     background-color: rgb(var(--color-accent-rgb) / 0.2);
     color: var(--color-content);
+  }
+
+  /* Optimize image loading */
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  /* Optimize form elements */
+  input,
+  textarea,
+  select {
+    @apply font-inherit;
   }
 }
 
@@ -94,5 +107,19 @@
       linear-gradient(var(--grid-color) 1px, transparent 1px),
       linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
     background-size: 48px 48px;
+  }
+
+  /* Smooth focus-visible for accessibility */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    @apply outline-none;
+  }
+
+  /* Lazy loading images */
+  img[loading='lazy'] {
+    @apply bg-surface-muted;
   }
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Github, Linkedin, Mail, MapPin, Copy, Check, Send } from 'lucide-react';
 import { personal } from '../data/personal';
-import { copyToClipboard, ExternalLink } from '../utils/helpers';
+import { copyToClipboard, ExternalLink, maskEmail } from '../utils/helpers';
 import { FadeIn } from './ui/FadeIn';
 import { SectionHeader } from './ui/SectionHeader';
 
@@ -96,8 +96,9 @@ export default function Contact() {
                   <a
                     href={`mailto:${personal.email}`}
                     className="mt-1 block truncate text-sm text-accent hover:underline"
+                    title={personal.email}
                   >
-                    {personal.email}
+                    {maskEmail(personal.email)}
                   </a>
                   <button
                     type="button"

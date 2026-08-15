@@ -2,6 +2,21 @@ export function isPlaceholderLink(url) {
   return !url || url.startsWith('[') || url === '#';
 }
 
+export function maskEmail(email) {
+  if (!email) return '';
+  const [localPart, domain] = email.split('@');
+  if (!localPart || !domain) return email;
+  
+  // Show first 4 and last 2 characters of local part, mask the rest with xxxx
+  if (localPart.length <= 6) {
+    return `${localPart.substring(0, 2)}xxxx${localPart.substring(localPart.length - 2)}@${domain}`;
+  }
+  
+  const start = localPart.substring(0, 4);
+  const end = localPart.substring(localPart.length - 2);
+  return `${start}xxxx${end}@${domain}`;
+}
+
 export function ExternalLink({ href, children, className = '', showIcon = true }) {
   const placeholder = isPlaceholderLink(href);
 
