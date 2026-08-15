@@ -72,7 +72,7 @@
   input,
   textarea,
   select {
-    @apply font-inherit;
+    font-family: inherit;
   }
 }
 
