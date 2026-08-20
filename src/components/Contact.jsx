@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Github, Linkedin, Mail, MapPin, Copy, Check, Send } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Copy, Check, Send, ArrowUpRight, MessageSquare, Terminal } from 'lucide-react';
 import { personal } from '../data/personal';
 import { copyToClipboard, ExternalLink, maskEmail } from '../utils/helpers';
 import { FadeIn } from './ui/FadeIn';
@@ -76,199 +76,228 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-padding bg-surface-muted/30" aria-labelledby="contact-heading">
+    <section id="contact" className="section-padding relative bg-studio-950" aria-labelledby="contact-heading">
       <div className="section-container">
         <SectionHeader
-          label="Contact"
-          title="Let's Build Something Together"
-          description="I'm always interested in learning, building meaningful projects and connecting with people in technology."
+          label="Direct Communication"
+          title="Let's Build Something Together."
+          description="Have an open internship, software project, or opportunity? Feel free to reach out directly."
         />
 
-        <div className="grid gap-10 lg:grid-cols-5 lg:gap-16">
-          <FadeIn className="lg:col-span-2">
-            <div className="space-y-4">
-              <div className="glass-card flex items-start gap-4 p-5">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                  <Mail className="h-5 w-5" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium text-content">Email</p>
-                  <a
-                    href={`mailto:${personal.email}`}
-                    className="mt-1 block truncate text-sm text-accent hover:underline"
-                    title={personal.email}
-                  >
-                    {maskEmail(personal.email)}
-                  </a>
-                  <button
-                    type="button"
-                    onClick={handleCopyEmail}
-                    className="mt-2 inline-flex items-center gap-1.5 text-xs text-content-muted transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  >
-                    {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-                    {copied ? 'Copied!' : 'Copy email'}
-                  </button>
-                </div>
-              </div>
-
-              <div className="glass-card flex items-start gap-4 p-5">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                  <MapPin className="h-5 w-5" />
-                </div>
+        {/* Single Premium Selective Liquid Glass Contact Card */}
+        <FadeIn>
+          <div className="liquid-glass rounded-3xl overflow-hidden p-6 md:p-10 lg:p-12 shadow-2xl border border-white/10">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+              {/* Left Column: Direct Info */}
+              <div className="lg:col-span-5 space-y-6">
                 <div>
-                  <p className="text-sm font-medium text-content">Location</p>
-                  <p className="mt-1 text-sm text-content-secondary">{personal.location}</p>
+                  <span className="font-mono text-xs uppercase tracking-widest text-cyan-400 font-semibold">
+                    GET IN TOUCH
+                  </span>
+                  <h3 className="font-display text-2xl font-bold text-content mt-1">
+                    Connect &amp; Collaborate
+                  </h3>
+                  <p className="mt-3 text-xs sm:text-sm leading-relaxed text-content-secondary">
+                    Open for software development roles, full-stack internships, and technical collaborations. I typically respond within 24 hours.
+                  </p>
+                </div>
+
+                <div className="space-y-4 pt-2">
+                  {/* Email Box */}
+                  <div className="rounded-2xl border border-white/10 bg-studio-950/60 p-4 transition-all hover:border-cyan-500/30">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400">
+                        <Mail className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-mono font-medium text-content-muted">DIRECT EMAIL</p>
+                        <a
+                          href={`mailto:${personal.email}`}
+                          className="text-xs sm:text-sm font-medium text-cyan-300 hover:underline"
+                        >
+                          {personal.email}
+                        </a>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={handleCopyEmail}
+                      className="mt-2 inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-muted px-2.5 py-1 text-[11px] font-mono text-content-secondary hover:text-cyan-300 hover:border-cyan-500/30 transition-all"
+                    >
+                      {copied ? <Check className="h-3 w-3 text-emerald-400" /> : <Copy className="h-3 w-3" />}
+                      <span>{copied ? 'Copied to Clipboard!' : 'Copy Email Address'}</span>
+                    </button>
+                  </div>
+
+                  {/* Location Box */}
+                  <div className="rounded-2xl border border-white/10 bg-studio-950/60 p-4">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400">
+                        <MapPin className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-mono font-medium text-content-muted">LOCATION</p>
+                        <p className="text-xs sm:text-sm font-medium text-content">{personal.location}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Social Icons */}
+                <div className="pt-2">
+                  <p className="font-mono text-xs text-content-muted mb-3">SOCIAL PROFILES</p>
+                  <div className="flex gap-2.5">
+                    <ExternalLink
+                      href={personal.social.github}
+                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-studio-950/60 text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-105"
+                      showIcon={false}
+                    >
+                      <Github className="h-4 w-4" />
+                      <span className="sr-only">GitHub</span>
+                    </ExternalLink>
+                    <ExternalLink
+                      href={personal.social.linkedin}
+                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-studio-950/60 text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-105"
+                      showIcon={false}
+                    >
+                      <Linkedin className="h-4 w-4" />
+                      <span className="sr-only">LinkedIn</span>
+                    </ExternalLink>
+                    <a
+                      href={`mailto:${personal.email}`}
+                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-studio-950/60 text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-105"
+                      aria-label="Send direct email"
+                    >
+                      <Mail className="h-4 w-4" />
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex gap-3 pt-2">
-                <ExternalLink
-                  href={personal.social.github}
-                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary hover:border-accent/30 hover:text-accent"
-                  showIcon={false}
-                >
-                  <Github className="h-5 w-5" />
-                  <span className="sr-only">GitHub</span>
-                </ExternalLink>
-                <ExternalLink
-                  href={personal.social.linkedin}
-                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary hover:border-accent/30 hover:text-accent"
-                  showIcon={false}
-                >
-                  <Linkedin className="h-5 w-5" />
-                  <span className="sr-only">LinkedIn</span>
-                </ExternalLink>
-                <a
-                  href={`mailto:${personal.email}`}
-                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary transition-colors hover:border-accent/30 hover:text-accent"
-                  aria-label="Email"
-                >
-                  <Mail className="h-5 w-5" />
-                </a>
+              {/* Right Column: Contact Message Form */}
+              <div className="lg:col-span-7">
+                <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="name" className="mb-1.5 block text-xs font-mono font-medium text-content-secondary">
+                        YOUR NAME *
+                      </label>
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="John Doe"
+                        value={form.name}
+                        onChange={handleChange}
+                        className="w-full rounded-xl border border-white/10 bg-studio-950/70 px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                        aria-invalid={!!errors.name}
+                        aria-describedby={errors.name ? 'name-error' : undefined}
+                      />
+                      {errors.name && (
+                        <p id="name-error" className="mt-1 text-xs text-rose-400 font-mono" role="alert">
+                          {errors.name}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label htmlFor="email" className="mb-1.5 block text-xs font-mono font-medium text-content-secondary">
+                        EMAIL ADDRESS *
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        value={form.email}
+                        onChange={handleChange}
+                        className="w-full rounded-xl border border-white/10 bg-studio-950/70 px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                        aria-invalid={!!errors.email}
+                        aria-describedby={errors.email ? 'email-error' : undefined}
+                      />
+                      {errors.email && (
+                        <p id="email-error" className="mt-1 text-xs text-rose-400 font-mono" role="alert">
+                          {errors.email}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="subject" className="mb-1.5 block text-xs font-mono font-medium text-content-secondary">
+                      SUBJECT *
+                    </label>
+                    <input
+                      id="subject"
+                      name="subject"
+                      type="text"
+                      placeholder="Project discussion / Opportunity"
+                      value={form.subject}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border border-white/10 bg-studio-950/70 px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                      aria-invalid={!!errors.subject}
+                      aria-describedby={errors.subject ? 'subject-error' : undefined}
+                    />
+                    {errors.subject && (
+                      <p id="subject-error" className="mt-1 text-xs text-rose-400 font-mono" role="alert">
+                        {errors.subject}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="mb-1.5 block text-xs font-mono font-medium text-content-secondary">
+                      MESSAGE *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      placeholder="Describe your project, role, or proposal..."
+                      value={form.message}
+                      onChange={handleChange}
+                      className="w-full resize-y rounded-xl border border-white/10 bg-studio-950/70 px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                      aria-invalid={!!errors.message}
+                      aria-describedby={errors.message ? 'message-error' : undefined}
+                    />
+                    {errors.message && (
+                      <p id="message-error" className="mt-1 text-xs text-rose-400 font-mono" role="alert">
+                        {errors.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="btn-primary w-full sm:w-auto"
+                    disabled={status === 'sending'}
+                  >
+                    <Send className="h-4 w-4" />
+                    <span>{status === 'sending' ? 'Transmitting Message...' : 'Send Message'}</span>
+                  </button>
+
+                  {status === 'success' && (
+                    <p className="text-xs font-mono text-emerald-400" role="status">
+                      ✓ Message transmitted successfully. I will get back to you promptly.
+                    </p>
+                  )}
+                  {status === 'error' && (
+                    <p className="text-xs font-mono text-rose-400" role="alert">
+                      ✕ Transmission failed. Please try emailing directly at {personal.email}.
+                    </p>
+                  )}
+                  {status === 'mailto' && (
+                    <p className="text-xs font-mono text-cyan-300" role="status">
+                      → Opening email client with prefilled details.
+                    </p>
+                  )}
+                </form>
               </div>
             </div>
-          </FadeIn>
-
-          <FadeIn delay={0.1} className="lg:col-span-3">
-            <form onSubmit={handleSubmit} className="glass-card space-y-5 p-6 md:p-8" noValidate>
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="name" className="mb-2 block text-sm font-medium text-content">
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    value={form.name}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-border bg-surface-muted px-4 py-3 text-sm text-content transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                    aria-invalid={!!errors.name}
-                    aria-describedby={errors.name ? 'name-error' : undefined}
-                  />
-                  {errors.name && (
-                    <p id="name-error" className="mt-1 text-xs text-red-500" role="alert">
-                      {errors.name}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="mb-2 block text-sm font-medium text-content">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-border bg-surface-muted px-4 py-3 text-sm text-content transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                    aria-invalid={!!errors.email}
-                    aria-describedby={errors.email ? 'email-error' : undefined}
-                  />
-                  {errors.email && (
-                    <p id="email-error" className="mt-1 text-xs text-red-500" role="alert">
-                      {errors.email}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="subject" className="mb-2 block text-sm font-medium text-content">
-                  Subject
-                </label>
-                <input
-                  id="subject"
-                  name="subject"
-                  type="text"
-                  value={form.subject}
-                  onChange={handleChange}
-                  className="w-full rounded-xl border border-border bg-surface-muted px-4 py-3 text-sm text-content transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                  aria-invalid={!!errors.subject}
-                  aria-describedby={errors.subject ? 'subject-error' : undefined}
-                />
-                {errors.subject && (
-                  <p id="subject-error" className="mt-1 text-xs text-red-500" role="alert">
-                    {errors.subject}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="message" className="mb-2 block text-sm font-medium text-content">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  value={form.message}
-                  onChange={handleChange}
-                  className="w-full resize-y rounded-xl border border-border bg-surface-muted px-4 py-3 text-sm text-content transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
-                  aria-invalid={!!errors.message}
-                  aria-describedby={errors.message ? 'message-error' : undefined}
-                />
-                {errors.message && (
-                  <p id="message-error" className="mt-1 text-xs text-red-500" role="alert">
-                    {errors.message}
-                  </p>
-                )}
-              </div>
-
-              <button type="submit" className="btn-primary w-full sm:w-auto" disabled={status === 'sending'}>
-                <Send className="h-4 w-4" />
-                {status === 'sending' ? 'Sending...' : 'Send Message'}
-              </button>
-
-              {status === 'success' && (
-                <p className="text-sm text-emerald-600 dark:text-emerald-400" role="status">
-                  Message sent successfully. I'll get back to you soon.
-                </p>
-              )}
-              {status === 'error' && (
-                <p className="text-sm text-red-500" role="alert">
-                  Something went wrong. Please try again or email me directly.
-                </p>
-              )}
-              {status === 'mailto' && (
-                <p className="text-sm text-content-secondary" role="status">
-                  Opening your email client. To enable direct form submission, add your Formspree ID to{' '}
-                  <code className="rounded bg-surface-muted px-1.5 py-0.5">VITE_FORMSPREE_ID</code>.
-                </p>
-              )}
-              {!FORMSPREE_ENDPOINT && status === 'idle' && (
-                <p className="text-xs text-content-muted">
-                  Form uses mailto fallback. Set{' '}
-                  <code className="rounded bg-surface-muted px-1.5 py-0.5">VITE_FORMSPREE_ID</code> in{' '}
-                  <code className="rounded bg-surface-muted px-1.5 py-0.5">.env</code> for Formspree integration.
-                </p>
-              )}
-            </form>
-          </FadeIn>
-        </div>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
 }
+

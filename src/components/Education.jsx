@@ -1,4 +1,4 @@
-import { BookOpen, Briefcase, Code, Folder, Globe, GraduationCap, Rocket, Binary } from 'lucide-react';
+import { BookOpen, Briefcase, Code, Folder, Globe, GraduationCap, Rocket, Binary, CheckCircle2, Calendar, MapPin } from 'lucide-react';
 import { educationTimeline, journeySteps } from '../data/education';
 import { FadeIn } from './ui/FadeIn';
 import { SectionHeader } from './ui/SectionHeader';
@@ -16,44 +16,68 @@ const iconMap = {
 
 export function Education() {
   return (
-    <section id="education" className="section-padding bg-surface-muted/30" aria-labelledby="education-heading">
+    <section id="education" className="section-padding relative bg-studio-950" aria-labelledby="education-heading">
       <div className="section-container">
         <SectionHeader
-          label="Education"
-          title="Academic Background"
-          description="My educational path from diploma to degree, building depth in computer science and software development."
+          label="Academic Foundation"
+          title="Education &amp; Credentials"
+          description="My educational path from diploma in computer engineering to BTech IT degree, mastering computer science fundamentals and software architecture."
         />
 
-        <div className="relative mx-auto max-w-2xl">
-          <div className="absolute bottom-0 left-6 top-0 w-px bg-border md:left-1/2 md:-translate-x-px" />
+        <div className="relative mx-auto max-w-3xl">
+          {/* Vertical Timeline Track */}
+          <div className="absolute left-6 top-3 bottom-3 w-px bg-gradient-to-b from-cyan-500 via-indigo-500/50 to-transparent md:left-1/2 md:-translate-x-px" />
 
-          {educationTimeline.map((item, index) => (
-            <FadeIn key={item.id} delay={index * 0.1}>
-              <div className="relative mb-10 pl-16 md:pl-0 md:even:text-right">
-                <div className="absolute left-4 top-1 z-10 flex h-5 w-5 items-center justify-center rounded-full border-2 border-accent bg-surface md:left-1/2 md:-translate-x-1/2">
-                  <div className="h-2 w-2 rounded-full bg-accent" />
-                </div>
+          <div className="space-y-12">
+            {educationTimeline.map((item, index) => {
+              const isCurrent = item.status === 'Current';
+              return (
+                <FadeIn key={item.id} delay={index * 0.15}>
+                  <div className="relative pl-14 md:pl-0">
+                    {/* Timeline Node Point */}
+                    <div className="absolute left-3.5 top-1 z-10 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border-2 border-cyan-400 bg-studio-950 shadow-md shadow-cyan-500/30 md:left-1/2">
+                      <div className={`h-2.5 w-2.5 rounded-full ${isCurrent ? 'bg-cyan-400 animate-ping' : 'bg-cyan-400'}`} />
+                    </div>
 
-                <div className="glass-card p-6 md:mx-auto md:max-w-md md:even:ml-auto md:even:mr-0 md:odd:mr-auto">
-                  <div className="mb-2 flex flex-wrap items-center gap-2 md:even:justify-end">
-                    <span
-                      className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                        item.status === 'Current'
-                          ? 'bg-accent/10 text-accent'
-                          : 'bg-surface-muted text-content-muted'
+                    {/* Timeline Content Card */}
+                    <div
+                      className={`solid-card rounded-2xl p-6 md:w-[calc(50%-2rem)] ${
+                        index % 2 === 0
+                          ? 'md:mr-auto md:text-left'
+                          : 'md:ml-auto md:text-left'
                       }`}
                     >
-                      {item.status}
-                    </span>
-                    <span className="text-xs text-content-muted">{item.duration}</span>
+                      <div className="flex flex-wrap items-center gap-2 mb-3">
+                        <span
+                          className={`rounded-full px-3 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-wider ${
+                            isCurrent
+                              ? 'border border-cyan-500/40 bg-cyan-500/15 text-cyan-300'
+                              : 'border border-border bg-surface-muted text-content-muted'
+                          }`}
+                        >
+                          {item.status}
+                        </span>
+                        <span className="flex items-center gap-1 text-xs font-mono text-content-muted">
+                          <Calendar className="h-3 w-3 text-cyan-400" />
+                          {item.duration}
+                        </span>
+                      </div>
+
+                      <h3 className="font-display text-lg font-bold text-content">
+                        {item.degree}
+                      </h3>
+                      <p className="mt-1 text-xs font-medium text-cyan-400">
+                        {item.institution}
+                      </p>
+                      <p className="mt-3 text-xs sm:text-sm leading-relaxed text-content-secondary">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="font-display text-lg font-bold text-content">{item.degree}</h3>
-                  <p className="mt-1 text-sm font-medium text-accent">{item.institution}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-content-secondary">{item.description}</p>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
+                </FadeIn>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
@@ -62,46 +86,42 @@ export function Education() {
 
 export function Journey() {
   return (
-    <section id="journey" className="section-padding" aria-labelledby="journey-heading">
+    <section id="journey" className="section-padding relative bg-studio-950/70 border-t border-border/80" aria-labelledby="journey-heading">
       <div className="section-container">
         <SectionHeader
-          label="Journey"
-          title="My Development Journey"
-          description="The path I'm taking from foundational education to becoming a professional software developer."
+          label="Progressive Roadmap"
+          title="Developer Evolution Journey"
+          description="The progression path from engineering fundamentals to full-stack application development and professional software creation."
         />
 
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-4xl grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {journeySteps.map((step, index) => {
             const Icon = iconMap[step.icon] || Code;
-            const isLast = index === journeySteps.length - 1;
 
             return (
               <FadeIn key={step.id} delay={index * 0.05}>
-                <div className="flex flex-col items-center">
-                  <div
-                    className={`glass-card flex w-full max-w-md items-center gap-4 p-5 transition-all duration-300 hover:border-accent/25 ${
-                      step.placeholder ? 'border-dashed opacity-70' : ''
-                    }`}
-                  >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                <div
+                  className={`solid-card rounded-2xl p-5 h-full flex flex-col justify-between group ${
+                    step.placeholder ? 'border-dashed opacity-75' : ''
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 group-hover:border-cyan-500/40 group-hover:scale-105 transition-all">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <div>
-                      <p className="font-display font-semibold text-content">{step.title}</p>
-                      {step.placeholder && (
-                        <p className="mt-0.5 text-xs text-content-muted">Upcoming milestone</p>
-                      )}
-                    </div>
+                    <span className="font-mono text-xs text-content-muted">
+                      0{step.id}
+                    </span>
                   </div>
 
-                  {!isLast && (
-                    <div className="my-2 flex flex-col items-center py-1 text-content-muted" aria-hidden="true">
-                      <div className="h-6 w-px bg-border" />
-                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                      </svg>
-                    </div>
-                  )}
+                  <div>
+                    <h3 className="font-display text-sm font-bold text-content group-hover:text-cyan-300 transition-colors">
+                      {step.title}
+                    </h3>
+                    <p className="mt-1 text-[11px] font-mono text-content-muted">
+                      {step.placeholder ? 'Upcoming Target' : 'Achieved & Applied'}
+                    </p>
+                  </div>
                 </div>
               </FadeIn>
             );
@@ -113,3 +133,4 @@ export function Journey() {
 }
 
 export default Education;
+

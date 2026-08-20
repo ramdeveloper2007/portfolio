@@ -14,12 +14,12 @@ const categoryIcons = {
 
 export default function Achievements() {
   return (
-    <section className="section-padding" aria-labelledby="achievements-heading">
+    <section className="section-padding relative bg-studio-950/70 border-t border-border/60" aria-labelledby="achievements-heading">
       <div className="section-container">
         <SectionHeader
-          label="Achievements"
-          title="Milestones & Achievements"
-          description="A growing collection of academic work, projects, and accomplishments. Placeholders are marked for easy updates."
+          label="Milestones"
+          title="Key Accomplishments &amp; Benchmarks"
+          description="A curated catalog of verified achievements, academic milestones, and engineering project highlights."
         />
 
         <StaggerContainer className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -29,35 +29,36 @@ export default function Achievements() {
 
             return (
               <StaggerItem key={item.id}>
-                <FadeIn>
-                  <article
-                    className={`glass-card h-full p-6 transition-all duration-300 hover:border-accent/20 ${
-                      isPlaceholder ? 'border-dashed' : ''
-                    }`}
-                  >
+                <article
+                  className={`solid-card rounded-2xl h-full p-6 flex flex-col justify-between group ${
+                    isPlaceholder ? 'border-dashed opacity-65' : ''
+                  }`}
+                >
+                  <div>
                     <div className="mb-4 flex items-center justify-between">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 group-hover:border-cyan-500/40 group-hover:scale-105 transition-all">
                         <Icon className="h-5 w-5" />
                       </div>
-                      <span className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-content-muted">
+                      <span className="rounded-full border border-border bg-surface-muted px-2.5 py-0.5 font-mono text-[10px] text-content-muted">
                         {item.category}
                       </span>
                     </div>
                     <h3
-                      className={`font-display font-semibold ${
-                        isPlaceholder ? 'text-content-muted italic' : 'text-content'
+                      className={`font-display text-sm sm:text-base font-bold ${
+                        isPlaceholder ? 'text-content-muted italic' : 'text-content group-hover:text-cyan-300 transition-colors'
                       }`}
                     >
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-content-secondary">
+                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-content-secondary">
                       {item.description}
                     </p>
-                    {item.date && (
-                      <p className="mt-3 text-xs text-content-muted">{item.date}</p>
-                    )}
-                  </article>
-                </FadeIn>
+                  </div>
+
+                  {item.date && (
+                    <p className="mt-4 pt-3 border-t border-border/80 font-mono text-[11px] text-content-muted">{item.date}</p>
+                  )}
+                </article>
               </StaggerItem>
             );
           })}
@@ -66,3 +67,4 @@ export default function Achievements() {
     </section>
   );
 }
+

@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUp, Terminal, Heart } from 'lucide-react';
 import { personal, footerLinks } from '../data/personal';
 import { scrollToSection } from '../hooks/useScrollSpy';
 import { ExternalLink } from '../utils/helpers';
@@ -11,34 +11,44 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-border/50 bg-gradient-to-b from-surface via-surface to-surface-muted" aria-label="Site footer">
+    <footer className="border-t border-border bg-studio-950 text-content" aria-label="Site footer">
       {/* Main Footer Content */}
-      <div className="section-container py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-4">
+      <div className="section-container py-14 md:py-16">
+        <div className="grid gap-10 md:grid-cols-12">
           {/* Branding */}
-          <div className="md:col-span-1">
-            <div>
-              <p className="font-display text-2xl font-bold tracking-tight text-content">
-                {personal.name}
-                <span className="text-accent">.</span>
-              </p>
-              <p className="mt-2 text-sm text-content-secondary">{personal.role}</p>
-              <p className="mt-3 max-w-xs text-xs text-content-muted leading-relaxed">
-                Building practical software solutions with code, creativity, and consistency.
-              </p>
+          <div className="md:col-span-5 space-y-4">
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-600 font-display font-bold text-white shadow-md shadow-cyan-500/20">
+                R
+              </div>
+              <div>
+                <p className="font-display text-lg font-bold tracking-tight text-content">
+                  {personal.name}
+                </p>
+                <p className="text-xs font-mono text-cyan-400">Full-Stack &amp; Software Developer</p>
+              </div>
+            </div>
+            <p className="max-w-sm text-xs leading-relaxed text-content-secondary font-sans">
+              BTech Information Technology student building modern web applications, scalable backend services, and practical computing systems.
+            </p>
+            <div className="flex items-center gap-2 font-mono text-[11px] text-content-muted">
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+              <span>Available for Full-Stack Roles &amp; Internships</span>
             </div>
           </div>
 
-          {/* Navigation Links */}
-          <div>
-            <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-content-muted">Navigation</p>
-            <ul className="space-y-2.5">
-              {footerLinks.slice(0, 4).map((link) => (
+          {/* Quick Navigation Links */}
+          <div className="md:col-span-3">
+            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-cyan-400 font-semibold">
+              Navigation
+            </p>
+            <ul className="space-y-2 text-xs">
+              {footerLinks.map((link) => (
                 <li key={link.id}>
                   <button
                     type="button"
                     onClick={() => scrollToSection(link.id)}
-                    className="text-sm text-content-secondary transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    className="text-content-secondary transition-colors duration-200 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                   >
                     {link.label}
                   </button>
@@ -47,40 +57,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* More Links */}
-          <div>
-            <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-content-muted">Resources</p>
-            <ul className="space-y-2.5">
-              {footerLinks.slice(4).map((link) => (
-                <li key={link.id}>
-                  <button
-                    type="button"
-                    onClick={() => scrollToSection(link.id)}
-                    className="text-sm text-content-secondary transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-              <li>
-                <a
-                  href={personal.resumePath}
-                  download
-                  className="text-sm text-content-secondary transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                >
-                  Resume
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Social Links */}
-          <div>
-            <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-content-muted">Connect</p>
-            <div className="flex gap-3">
+          {/* Social Profiles & Back to Top */}
+          <div className="md:col-span-4 space-y-4">
+            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-cyan-400 font-semibold">
+              Connect Directly
+            </p>
+            <div className="flex gap-2.5">
               <ExternalLink
                 href={personal.social.github}
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface-elevated text-content-secondary transition-all duration-200 hover:border-accent/50 hover:bg-accent-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary transition-all duration-200 hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105"
                 showIcon={false}
                 aria-label="GitHub profile"
               >
@@ -89,7 +74,7 @@ export default function Footer() {
               </ExternalLink>
               <ExternalLink
                 href={personal.social.linkedin}
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface-elevated text-content-secondary transition-all duration-200 hover:border-accent/50 hover:bg-accent-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary transition-all duration-200 hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105"
                 showIcon={false}
                 aria-label="LinkedIn profile"
               >
@@ -98,39 +83,32 @@ export default function Footer() {
               </ExternalLink>
               <a
                 href={`mailto:${personal.email}`}
-                className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface-elevated text-content-secondary transition-all duration-200 hover:border-accent/50 hover:bg-accent-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                aria-label="Send email"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary transition-all duration-200 hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105"
+                aria-label="Send direct email"
               >
                 <Mail className="h-4 w-4" />
               </a>
             </div>
+
             <button
               type="button"
               onClick={handleScrollToTop}
-              className="mt-5 flex items-center gap-2 text-xs font-medium text-content-secondary transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              aria-label="Scroll to top"
+              className="mt-2 inline-flex items-center gap-1.5 font-mono text-xs text-content-muted hover:text-cyan-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
-              <span>Back to Top</span>
-              <ArrowUp className="h-3 w-3" />
+              <span>Back to Top of Portfolio</span>
+              <ArrowUp className="h-3.5 w-3.5" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-border/30 bg-surface-muted/30 backdrop-blur-sm">
-        <div className="section-container py-6">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-center text-xs text-content-muted md:text-left">
-              © {year} {personal.name}. All rights reserved.
-            </p>
-            <p className="text-center text-xs text-content-muted">
-              Built with{' '}
-              <span className="text-accent">React</span>
-              {' '}+{' '}
-              <span className="text-accent">Tailwind CSS</span>
-              {' '}• Deployed on{' '}
-              <span className="text-accent">Netlify</span>
+      {/* Bottom Legal / Tech Bar */}
+      <div className="border-t border-border/60 bg-studio-950/90 py-5">
+        <div className="section-container">
+          <div className="flex flex-col items-center justify-between gap-3 sm:flex-row text-xs font-mono text-content-muted">
+            <p>© {year} {personal.name}. All rights reserved.</p>
+            <p className="flex items-center gap-1">
+              <span>Full-Stack Portfolio // Built with React &amp; Tailwind</span>
             </p>
           </div>
         </div>
@@ -138,3 +116,4 @@ export default function Footer() {
     </footer>
   );
 }
+

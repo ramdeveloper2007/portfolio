@@ -1,4 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#0891b2"/>
-  <text x="16" y="22" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="16" font-weight="700">R</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="rGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824" />
+      <stop offset="100%" stop-color="#090a0f" />
+    </linearGradient>
+  </defs>
+  <!-- Background squircle -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bgGrad)" stroke="url(#rGrad)" stroke-width="2" stroke-opacity="0.8"/>
+  
+  <!-- Subtle inner grid -->
+  <path d="M2 32h60M32 2v60" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+  
+  <!-- Modern Geometric R -->
+  <path d="M22 18h13c6.075 0 11 4.477 11 10 0 4.142-2.761 7.716-6.857 9.172L47 46H39l-6.5-7.5H28V46h-6V18zm6 5.5v9.5h7c3.038 0 5.5-2.127 5.5-4.75S38.038 23.5 35 23.5h-7z" fill="#f8fafc"/>
+  
+  <!-- Tech Accent Dot -->
+  <circle cx="45" cy="20" r="3" fill="#06b6d4"/>
 </svg>
+

@@ -1,79 +1,127 @@
-import { Code2, GraduationCap, Target } from 'lucide-react';
-import { aboutContent } from '../data/personal';
-import { FadeIn } from './ui/FadeIn';
+import { Code2, GraduationCap, Target, Cpu, Sparkles, Terminal, BookOpen, CheckCircle2 } from 'lucide-react';
+import { aboutContent, personal } from '../data/personal';
+import { FadeIn, StaggerContainer, StaggerItem } from './ui/FadeIn';
 import { SectionHeader } from './ui/SectionHeader';
 
+const infoCards = [
+  {
+    id: 'btech-it',
+    title: 'BTech IT Student',
+    subtitle: 'KPR Institute of Engineering and Technology',
+    detail: 'Lateral entry after Computer Engineering Diploma. Deepening computer science & software fundamentals.',
+    icon: GraduationCap,
+    tag: 'Academic',
+  },
+  {
+    id: 'fullstack-dev',
+    title: 'Full-Stack Developer',
+    subtitle: 'Python, Flask, JavaScript & React',
+    detail: 'Building responsive web apps, structured REST APIs, and database-driven solutions with clean UX.',
+    icon: Code2,
+    tag: 'Primary Role',
+  },
+  {
+    id: 'software-dev',
+    title: 'Software Developer',
+    subtitle: 'C, C++, Data Structures & DSA',
+    detail: 'Focusing on algorithmic thinking, memory management, and practical software design patterns.',
+    icon: Cpu,
+    tag: 'Core Focus',
+  },
+  {
+    id: 'problem-solver',
+    title: 'Problem Solver',
+    subtitle: 'Practical Real-World Systems',
+    detail: 'Passionate about engineering automated tools like the Academic Timetable Generator.',
+    icon: Target,
+    tag: 'Mindset',
+  },
+];
+
 export default function About() {
-  const { paragraphs, developerCard } = aboutContent;
+  const { paragraphs } = aboutContent;
 
   return (
-    <section id="about" className="section-padding" aria-labelledby="about-heading">
+    <section id="about" className="section-padding relative bg-studio-950/60" aria-labelledby="about-heading">
       <div className="section-container">
         <SectionHeader
-          label="About"
-          title="Who I Am"
-          description="A developer in progress with a foundation in computer engineering and a focus on building real software."
+          label="Profile & Philosophy"
+          title="Engineering Mindset & Background"
+          description="A dedicated Full-Stack & Software Developer with a strong technical foundation from diploma through BTech degree."
         />
 
-        <div className="grid gap-10 lg:grid-cols-5 lg:gap-16">
-          <FadeIn className="lg:col-span-3">
-            <div className="space-y-5">
-              {paragraphs.map((paragraph) => (
-                <p key={paragraph.slice(0, 40)} className="text-base leading-relaxed text-content-secondary md:text-lg">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-14 items-start">
+          {/* Left Column: Editorial Narrative (Clean Solid Presentation) */}
+          <FadeIn className="lg:col-span-6 space-y-6">
+            <div className="rounded-2xl border border-border bg-surface-card p-6 md:p-8 space-y-5">
+              <div className="flex items-center gap-2 font-mono text-xs text-cyan-400">
+                <Terminal className="h-4 w-4" />
+                <span>ABOUT_RAMPRASAD.md</span>
+              </div>
+
+              {paragraphs.map((paragraph, idx) => (
+                <p
+                  key={idx}
+                  className="text-base leading-relaxed text-content-secondary font-sans"
+                >
                   {paragraph}
                 </p>
               ))}
-            </div>
-          </FadeIn>
 
-          <FadeIn delay={0.15} className="lg:col-span-2">
-            <div className="glass-card overflow-hidden">
-              <div className="border-b border-border bg-accent-muted px-6 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20 text-accent">
-                    <Code2 className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="font-display font-semibold text-content">Developer Profile</p>
-                    <p className="text-xs text-content-muted">Ramprasad</p>
-                  </div>
+              <div className="pt-4 border-t border-border/80 flex flex-wrap gap-4 text-xs font-mono text-content-muted">
+                <div className="flex items-center gap-1.5 text-cyan-300">
+                  <CheckCircle2 className="h-4 w-4 text-cyan-400" />
+                  <span>Clean Architecture</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-cyan-300">
+                  <CheckCircle2 className="h-4 w-4 text-cyan-400" />
+                  <span>Full-Stack Lifecycle</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-cyan-300">
+                  <CheckCircle2 className="h-4 w-4 text-cyan-400" />
+                  <span>Continuous Learning</span>
                 </div>
               </div>
-
-              <dl className="space-y-5 p-6">
-                <div>
-                  <dt className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-content-muted">
-                    <GraduationCap className="h-3.5 w-3.5" />
-                    Education
-                  </dt>
-                  <dd className="text-sm font-medium text-content">{developerCard.education}</dd>
-                </div>
-                <div>
-                  <dt className="mb-1 text-xs font-semibold uppercase tracking-wider text-content-muted">
-                    Current Education
-                  </dt>
-                  <dd className="text-sm font-medium text-content">{developerCard.currentEducation}</dd>
-                </div>
-                <div>
-                  <dt className="mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-content-muted">
-                    <Target className="h-3.5 w-3.5" />
-                    Focus
-                  </dt>
-                  <dd className="text-sm font-medium text-content">{developerCard.focus}</dd>
-                </div>
-                <div>
-                  <dt className="mb-1 text-xs font-semibold uppercase tracking-wider text-content-muted">
-                    Currently Learning
-                  </dt>
-                  <dd className="text-sm leading-relaxed text-content-secondary">
-                    {developerCard.currentlyLearning}
-                  </dd>
-                </div>
-              </dl>
             </div>
           </FadeIn>
+
+          {/* Right Column: 4 Modern Information Cards */}
+          <div className="lg:col-span-6">
+            <StaggerContainer className="grid gap-4 sm:grid-cols-2">
+              {infoCards.map((card) => {
+                const Icon = card.icon;
+                return (
+                  <StaggerItem key={card.id}>
+                    <div className="solid-card rounded-2xl p-5 h-full flex flex-col justify-between group">
+                      <div>
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 group-hover:border-cyan-500/40 group-hover:bg-cyan-500/15 transition-all">
+                            <Icon className="h-5 w-5" />
+                          </div>
+                          <span className="text-[10px] font-mono font-medium uppercase tracking-wider text-content-muted px-2 py-0.5 rounded-full border border-border bg-surface-muted">
+                            {card.tag}
+                          </span>
+                        </div>
+
+                        <h3 className="font-display text-base font-bold text-content group-hover:text-cyan-300 transition-colors">
+                          {card.title}
+                        </h3>
+                        <p className="text-xs font-medium text-cyan-400/90 mt-1">
+                          {card.subtitle}
+                        </p>
+                        <p className="text-xs leading-relaxed text-content-secondary mt-2.5">
+                          {card.detail}
+                        </p>
+                      </div>
+                    </div>
+                  </StaggerItem>
+                );
+              })}
+            </StaggerContainer>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
