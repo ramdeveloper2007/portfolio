@@ -1,5 +1,17 @@
 export const skillCategories = [
   {
+    title: 'Frontend Development',
+    skills: [
+      { name: 'HTML', level: 'Intermediate' },
+      { name: 'CSS', level: 'Intermediate' },
+      { name: 'JavaScript', level: 'Intermediate' },
+    ],
+  },
+  {
+    title: 'Backend Development',
+    skills: [{ name: 'Python Flask', level: 'Intermediate' }],
+  },
+  {
     title: 'Programming Languages',
     skills: [
       { name: 'C', level: 'Intermediate' },
@@ -9,18 +21,6 @@ export const skillCategories = [
     ],
   },
   {
-    title: 'Web Technologies',
-    skills: [
-      { name: 'HTML', level: 'Intermediate' },
-      { name: 'CSS', level: 'Intermediate' },
-      { name: 'JavaScript', level: 'Intermediate' },
-    ],
-  },
-  {
-    title: 'Backend',
-    skills: [{ name: 'Python Flask', level: 'Intermediate' }],
-  },
-  {
     title: 'Database',
     skills: [
       { name: 'SQLite', level: 'Intermediate' },
@@ -28,7 +28,7 @@ export const skillCategories = [
     ],
   },
   {
-    title: 'Tools',
+    title: 'Tools & Technologies',
     skills: [
       { name: 'Git', level: 'Intermediate' },
       { name: 'GitHub', level: 'Intermediate' },

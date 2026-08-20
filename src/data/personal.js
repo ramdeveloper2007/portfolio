@@ -1,10 +1,10 @@
 export const personal = {
   name: 'Ramprasad',
-  role: 'BTech IT Student | Software Developer',
-  headline: 'Building Practical Software Solutions with Code, Creativity & Consistency.',
-  tagline: 'Full-Stack Developer in Progress',
+  role: 'Full-Stack Developer & Software Developer',
+  headline: 'BTech Information Technology Student',
+  tagline: 'Building practical software solutions with code, problem solving, and continuous learning.',
   intro:
-    "I'm Ramprasad, a Computer Engineering graduate and BTech IT student passionate about software development, problem solving, and building practical web applications.",
+    'BTech Information Technology student passionate about building modern web applications, practical software solutions, and user-focused digital experiences.',
   location: 'Coimbatore, Tamil Nadu, India',
   email: 'ramgokul644@gmail.com',
   resumePath: '/resume/Ramprasad_Resume.pdf',
@@ -38,15 +38,15 @@ export const footerLinks = [
 
 export const aboutContent = {
   paragraphs: [
-    'I completed my Diploma in Computer Engineering and am currently pursuing BTech Information Technology through lateral entry. That path gave me a solid foundation in programming fundamentals before diving deeper into software engineering.',
-    'What drives me is turning ideas into working software — web applications that solve real problems, clean code that others can understand, and continuous learning across data structures, algorithms, and full-stack development.',
-    'My goal is to grow into a strong software developer and contribute to meaningful products at a top technology company. I approach every project as an opportunity to learn, iterate, and deliver something practical.',
+    'I am Ramprasad, a BTech Information Technology student developing my career as a Full-Stack Developer and Software Developer. My diploma in Computer Engineering gave me a foundation in programming and practical computing, and my degree is helping me build on it.',
+    'I am interested in full-stack web development, software development, programming, and problem solving. I enjoy turning ideas into real-world applications that are useful, understandable, and focused on the people who use them.',
+    'I approach each project as a chance to learn, improve, and apply what I study. Continuous learning in programming, web development, and computer science fundamentals is an important part of my growth as a developer.',
   ],
   developerCard: {
     education: 'Diploma in Computer Engineering',
     currentEducation: 'BTech Information Technology',
-    focus: 'Software Development',
-    currentlyLearning: 'Programming, DSA, Web Development and Computer Science fundamentals',
+    focus: 'Full-Stack Web Development and Software Development',
+    currentlyLearning: 'Programming, problem solving, web development, DSA, and computer science fundamentals',
   },
 };
 

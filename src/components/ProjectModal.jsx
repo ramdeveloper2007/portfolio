@@ -108,30 +108,22 @@ export default function ProjectModal({ project, onClose }) {
             <DetailBlock title="Challenges" content={details.challenges} />
             <DetailBlock title="Results" content={details.results} />
 
-            <div className="flex flex-wrap gap-3 border-t border-border pt-6">
-              {isPlaceholderLink(project.github) ? (
-                <span className="btn-secondary cursor-not-allowed opacity-50">
-                  <Github className="h-4 w-4" />
-                  GitHub — Add URL
-                </span>
-              ) : (
-                <ExtLink href={project.github} className="btn-secondary">
-                  <Github className="h-4 w-4" />
-                  View on GitHub
-                </ExtLink>
-              )}
-              {isPlaceholderLink(project.liveDemo) ? (
-                <span className="btn-primary cursor-not-allowed opacity-50">
-                  <ExternalLink className="h-4 w-4" />
-                  Live Demo — Add URL
-                </span>
-              ) : (
-                <ExtLink href={project.liveDemo} className="btn-primary">
-                  <ExternalLink className="h-4 w-4" />
-                  Live Demo
-                </ExtLink>
-              )}
-            </div>
+            {(project.github || project.liveDemo) && (
+              <div className="flex flex-wrap gap-3 border-t border-border pt-6">
+                {!isPlaceholderLink(project.github) && (
+                  <ExtLink href={project.github} className="btn-secondary">
+                    <Github className="h-4 w-4" />
+                    View on GitHub
+                  </ExtLink>
+                )}
+                {!isPlaceholderLink(project.liveDemo) && (
+                  <ExtLink href={project.liveDemo} className="btn-primary">
+                    <ExternalLink className="h-4 w-4" />
+                    Live Demo
+                  </ExtLink>
+                )}
+              </div>
+            )}
           </div>
         </motion.div>
       </motion.div>

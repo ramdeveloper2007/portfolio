@@ -9,7 +9,7 @@ const terminalLines = [
   '$ whoami',
   '> Ramprasad',
   '$ role --current',
-  '> Software Developer | BTech IT',
+  '> Full-Stack Developer | Software Developer',
   '$ stack --learning',
   '> Python · JavaScript · Flask',
 ];
@@ -93,7 +93,7 @@ export default function Hero() {
 
             <FadeIn delay={0.15}>
               <h1 className="font-display text-4xl font-bold tracking-tight text-content sm:text-5xl md:text-6xl">
-                {personal.name}
+                {personal.role}
               </h1>
             </FadeIn>
 

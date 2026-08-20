@@ -14,7 +14,7 @@ export const projects = [
     featured: true,
     categories: ['web', 'python', 'academic'],
     description:
-      'A web-based timetable management system designed to automatically generate academic timetables while considering teacher availability, subject requirements, workload distribution and scheduling constraints.',
+      'A Flask and SQLite web application for managing academic scheduling data and generating timetables from defined subject, teacher, availability, and workload requirements.',
     technologies: ['HTML', 'CSS', 'JavaScript', 'Python', 'Flask', 'SQLite'],
     features: [
       'Admin dashboard',
@@ -29,21 +29,21 @@ export const projects = [
     ],
     image: null,
     imageAlt: 'Automatic Timetable Generator project preview',
-    github: '[ADD_GITHUB_REPO_URL]',
-    liveDemo: '[ADD_LIVE_DEMO_URL]',
+    github: null,
+    liveDemo: null,
     details: {
       overview:
-        'A full-stack web application that automates academic timetable creation for institutions, replacing manual scheduling with an intelligent constraint-based system.',
+        'A full-stack web application that supports academic timetable creation through a structured management workflow.',
       problem:
         'Creating academic timetables manually is time-consuming and prone to conflicts — overlapping classes, unavailable teachers, and uneven workload distribution.',
       solution:
-        'Built a Flask-backed web application with role-based dashboards that collects scheduling constraints and generates optimized timetables automatically, with manual override capabilities.',
+        'Built a Flask-backed application with admin, teacher/staff, and student views. It collects scheduling information, generates timetables, helps prevent conflicts, and supports manual timetable editing.',
       contribution:
         'Designed and developed the full application — backend logic, database schema, admin/teacher/student interfaces, and timetable generation algorithm.',
       challenges:
-        'Balancing multiple scheduling constraints (teacher availability, subject hours, room allocation) while preventing conflicts and keeping the UI intuitive for non-technical staff.',
+        'Handling teacher availability, subject requirements, and workload distribution while preventing conflicts and keeping the interface usable for academic staff.',
       results:
-        'Delivered a working system that reduces manual scheduling effort and provides structured management of academic timetables. [Add measurable results when available]',
+        'Delivered a working academic project that brings timetable management and generation into one structured web application.',
     },
   },
   {
@@ -52,18 +52,18 @@ export const projects = [
     featured: false,
     categories: ['web', 'python', 'academic'],
     description:
-      'A comprehensive attendance management system with real-time tracking, automated reporting, and dashboards for students and faculty.',
+      'A Flask-based web application for recording attendance and presenting student and faculty views with reporting support.',
     technologies: ['Python', 'Flask', 'HTML', 'CSS', 'JavaScript'],
     features: [
-      'Real-time attendance tracking',
-      'Automated reporting',
+      'Attendance recording',
+      'Attendance reporting',
       'Student dashboard',
       'Faculty dashboard',
     ],
     image: null,
     imageAlt: 'Attendance Tracking App project preview',
-    github: '[ADD_GITHUB_REPO_URL]',
-    liveDemo: '[ADD_LIVE_DEMO_URL]',
+    github: null,
+    liveDemo: null,
     details: {
       overview: 'A web-based attendance management system for academic institutions.',
       problem: 'Manual attendance tracking is inefficient and difficult to report on.',
@@ -84,8 +84,8 @@ export const projects = [
     features: ['Mood monitoring', 'Emotion journaling', 'Supportive insights', 'Reminder system'],
     image: null,
     imageAlt: 'Emocare Therapy Assistant project preview',
-    github: '[ADD_GITHUB_REPO_URL]',
-    liveDemo: '[ADD_LIVE_DEMO_URL]',
+    github: null,
+    liveDemo: null,
     details: {
       overview: 'A personal wellness application focused on mood tracking and emotional journaling.',
       problem: 'People often lack structured tools to track and reflect on their emotional wellbeing.',
@@ -106,8 +106,8 @@ export const projects = [
     features: ['Study session planning', 'Practice question generation', 'Learning explanations'],
     image: null,
     imageAlt: 'AI Study Buddy project preview',
-    github: '[ADD_GITHUB_REPO_URL]',
-    liveDemo: '[ADD_LIVE_DEMO_URL]',
+    github: null,
+    liveDemo: null,
     details: {
       overview: 'A study assistant tool to help organize learning sessions and practice.',
       problem: 'Students need structured ways to plan study sessions and test their understanding.',
