@@ -113,9 +113,10 @@ export default function Contact() {
                         <p className="text-xs font-mono font-medium text-content-muted">DIRECT EMAIL</p>
                         <a
                           href={`mailto:${personal.email}`}
-                          className="text-xs sm:text-sm font-medium text-cyan-300 hover:underline"
+                          className="text-xs sm:text-sm font-mono font-medium text-cyan-300 hover:underline"
+                          title="Click to send email"
                         >
-                          {personal.email}
+                          {maskEmail(personal.email)}
                         </a>
                       </div>
                     </div>
@@ -283,7 +284,7 @@ export default function Contact() {
                   )}
                   {status === 'error' && (
                     <p className="text-xs font-mono text-rose-400" role="alert">
-                      ✕ Transmission failed. Please try emailing directly at {personal.email}.
+                      ✕ Transmission failed. Please try emailing directly at {maskEmail(personal.email)}.
                     </p>
                   )}
                   {status === 'mailto' && (

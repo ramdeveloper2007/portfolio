@@ -7,14 +7,17 @@ export function maskEmail(email) {
   const [localPart, domain] = email.split('@');
   if (!localPart || !domain) return email;
   
-  // Show first 4 and last 2 characters of local part, mask the rest with xxxx
   if (localPart.length <= 6) {
-    return `${localPart.substring(0, 2)}xxxx${localPart.substring(localPart.length - 2)}@${domain}`;
+    const start = localPart.substring(0, 2);
+    const end = localPart.substring(localPart.length - 2);
+    const maskedLength = Math.max(1, localPart.length - 4);
+    return `${start}${'x'.repeat(maskedLength)}${end}@${domain}`;
   }
   
   const start = localPart.substring(0, 4);
   const end = localPart.substring(localPart.length - 2);
-  return `${start}xxxx${end}@${domain}`;
+  const maskedLength = Math.max(1, localPart.length - 6);
+  return `${start}${'x'.repeat(maskedLength)}${end}@${domain}`;
 }
 
 export function ExternalLink({ href, children, className = '', showIcon = true }) {
