@@ -1,9 +1,12 @@
-/** @type {import('tailwindcss').Config} */
+﻿/** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        xs: '480px',
+      },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         display: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],

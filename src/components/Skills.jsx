@@ -78,7 +78,7 @@ export default function Skills() {
             </div>
 
             {/* Quick Skill Search */}
-            <div className="relative min-w-[200px] md:w-64">
+            <div className="relative w-full min-w-0 sm:w-64">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-content-muted" />
               <input
                 type="text"

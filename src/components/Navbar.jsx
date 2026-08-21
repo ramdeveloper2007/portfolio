@@ -45,10 +45,10 @@ export default function Navbar() {
       >
         <div className="section-container">
           <nav
-            className={`flex items-center justify-between transition-all duration-300 ${
+            className={`flex min-w-0 items-center justify-between gap-2 transition-all duration-300 ${
               isScrolled
-                ? 'liquid-glass rounded-2xl px-4 py-2.5 shadow-2xl shadow-black/40'
-                : 'rounded-2xl border border-transparent bg-transparent px-2 py-1'
+                ? 'liquid-glass rounded-2xl px-2.5 py-2.5 shadow-2xl shadow-black/40 sm:px-4'
+                : 'rounded-2xl border border-transparent bg-transparent px-1 py-1 sm:px-2'
             }`}
             aria-label="Main navigation"
           >
@@ -56,13 +56,13 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => handleNavClick('home')}
-              className="group flex items-center gap-2.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-xl"
+              className="group flex min-w-0 shrink items-center gap-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-xl sm:gap-2.5"
             >
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-600 font-display font-bold text-white shadow-md shadow-cyan-500/20 transition-transform duration-200 group-hover:scale-105">
                 R
               </div>
               <div className="flex flex-col">
-                <span className="font-display text-sm font-bold tracking-tight text-content group-hover:text-cyan-400 transition-colors">
+                <span className="truncate font-display text-sm font-bold tracking-tight text-content group-hover:text-cyan-400 transition-colors">
                   {personal.name}
                 </span>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted">

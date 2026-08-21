@@ -63,18 +63,18 @@ function DeveloperLabInspector() {
       {/* Main Studio Code Window (Solid dark card with micro-borders) */}
       <div className="relative overflow-hidden rounded-2xl border border-border-strong bg-studio-900 shadow-2xl">
         {/* Window Topbar */}
-        <div className="flex items-center justify-between border-b border-border/80 bg-studio-950 px-4 py-3">
-          <div className="flex items-center gap-2">
+        <div className="flex min-w-0 flex-col gap-2 border-b border-border/80 bg-studio-950 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-4">
+          <div className="flex min-w-0 items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-rose-500/80" />
             <span className="h-3 w-3 rounded-full bg-amber-500/80" />
             <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
-            <span className="ml-2 font-mono text-[11px] text-content-muted tracking-wider">
+            <span className="ml-1 truncate font-mono text-[11px] text-content-muted tracking-wider sm:ml-2">
               studio-lab // env:dev
             </span>
           </div>
 
           {/* Interactive File Tabs */}
-          <div className="flex items-center gap-1">
+          <div className="flex min-w-0 max-w-full flex-wrap items-center gap-1">
             {codeTabs.map((tab) => {
               const TabIcon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -83,14 +83,14 @@ function DeveloperLabInspector() {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 font-mono text-[11px] transition-all ${
+                    className={`flex min-w-0 max-w-full flex-1 items-center justify-center gap-1 rounded-lg px-2 py-1 font-mono text-[10px] transition-all sm:flex-none sm:gap-1.5 sm:px-2.5 sm:text-[11px] ${
                     isActive
                       ? 'bg-studio-850 text-cyan-300 border border-cyan-500/30'
                       : 'text-content-muted hover:text-content-secondary hover:bg-studio-850/50'
                   }`}
                 >
                   <TabIcon className="h-3 w-3" />
-                  <span>{tab.label}</span>
+                  <span className="min-w-0 break-words">{tab.label}</span>
                 </button>
               );
             })}
@@ -98,8 +98,8 @@ function DeveloperLabInspector() {
         </div>
 
         {/* Code Content Body */}
-        <div className="p-5 font-mono text-xs leading-relaxed text-slate-300 overflow-x-auto min-h-[220px]">
-          <pre className="text-slate-200 selection:bg-cyan-500/30">
+        <div className="min-w-0 overflow-x-auto p-4 font-mono text-xs leading-relaxed text-slate-300 sm:p-5 min-h-[220px]">
+          <pre className="w-max max-w-none text-slate-200 selection:bg-cyan-500/30">
             <code>{activeCode.code}</code>
           </pre>
           <div className="mt-3 flex items-center gap-1 text-cyan-400">
@@ -150,9 +150,9 @@ export default function Hero() {
       <div className="absolute bottom-1/4 left-1/4 h-80 w-80 rounded-full bg-indigo-500/5 blur-3xl pointer-events-none" />
 
       <div className="section-container relative z-10">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
+        <div className="grid min-w-0 items-center gap-12 lg:grid-cols-12 lg:gap-12">
           {/* Left Column: Hero Content */}
-          <div className="lg:col-span-7">
+          <div className="min-w-0 max-w-full lg:col-span-7">
             {/* Top Eyebrow Tag */}
             <FadeIn delay={0.05}>
               <div className="mb-4 inline-flex items-center gap-2">
@@ -165,9 +165,9 @@ export default function Hero() {
 
             {/* Main Headlines */}
             <FadeIn delay={0.1}>
-              <h1 className="font-display text-4xl font-extrabold tracking-tight text-content sm:text-5xl md:text-6xl lg:text-[3.5rem] leading-[1.1]">
+              <h1 className="max-w-full break-words font-display text-[clamp(2.1rem,9vw,3rem)] font-extrabold leading-[1.08] tracking-tight text-content sm:text-5xl md:text-6xl lg:text-[3.5rem]">
                 Full-Stack Developer
-                <span className="block mt-1 font-display text-3xl sm:text-4xl md:text-5xl gradient-text font-bold">
+                <span className="mt-1 block max-w-full break-words font-display text-[clamp(1.75rem,7.5vw,2.25rem)] font-bold leading-[1.12] gradient-text sm:text-4xl md:text-5xl">
                   &amp; Software Developer
                 </span>
               </h1>
@@ -175,13 +175,13 @@ export default function Hero() {
 
             {/* Short Bio Description */}
             <FadeIn delay={0.15}>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-content-secondary sm:text-lg">
+              <p className="mt-5 w-full max-w-xl break-words text-base leading-relaxed text-content-secondary sm:text-lg">
                 BTech Information Technology student building modern web applications and practical software solutions with clean code, data structures, and continuous learning.
               </p>
             </FadeIn>
 
             {/* CTAs */}
-            <FadeIn delay={0.2} className="mt-8 flex flex-wrap items-center gap-3">
+            <FadeIn delay={0.2} className="mt-8 flex w-full min-w-0 flex-wrap items-center gap-3">
               <button
                 type="button"
                 className="btn-primary"
@@ -252,7 +252,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Developer Lab Code Inspector */}
-          <div className="lg:col-span-5">
+          <div className="min-w-0 max-w-full lg:col-span-5">
             <FadeIn delay={0.2} direction="left">
               <DeveloperLabInspector />
             </FadeIn>

@@ -25,7 +25,7 @@ function TimetableVisualMockup() {
       </div>
 
       {/* Mockup Schedule Matrix Preview */}
-      <div className="relative z-10 my-4 grid grid-cols-4 gap-2 text-[10px] font-mono">
+      <div className="relative z-10 my-4 grid grid-cols-2 gap-2 text-[10px] font-mono sm:grid-cols-4">
         <div className="rounded-lg bg-surface-muted/60 border border-border p-2">
           <span className="text-content-muted block">09:00 - CS301</span>
           <span className="text-cyan-300 font-medium">Data Structures</span>
@@ -45,8 +45,8 @@ function TimetableVisualMockup() {
       </div>
 
       {/* Engine Status Indicators */}
-      <div className="relative z-10 flex items-center justify-between pt-3 border-t border-border/80 text-[11px] font-mono text-content-muted">
-        <div className="flex items-center gap-3">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-border/80 text-[11px] font-mono text-content-muted">
+        <div className="flex min-w-0 flex-wrap items-center gap-3">
           <span className="text-cyan-400">⚡ Constraint Solver</span>
           <span>• 3 Roles: Admin / Staff / Student</span>
         </div>
