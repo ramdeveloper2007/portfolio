@@ -63,7 +63,7 @@ function DeveloperLabInspector() {
       {/* Main Studio Code Window (Solid dark card with micro-borders) */}
       <div className="relative overflow-hidden rounded-2xl border border-border-strong bg-studio-900 shadow-2xl">
         {/* Window Topbar */}
-        <div className="flex min-w-0 flex-col gap-2 border-b border-border/80 bg-studio-950 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-4">
+        <div className="flex min-w-0 flex-col gap-2 border-b border-border/80 bg-studio-950 px-3 py-3 sm:items-stretch sm:px-4">
           <div className="flex min-w-0 items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-rose-500/80" />
             <span className="h-3 w-3 rounded-full bg-amber-500/80" />
@@ -83,9 +83,9 @@ function DeveloperLabInspector() {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                    className={`flex min-w-0 max-w-full flex-1 items-center justify-center gap-1 rounded-lg px-2 py-1 font-mono text-[10px] transition-all sm:flex-none sm:gap-1.5 sm:px-2.5 sm:text-[11px] ${
+                    className={`flex min-w-0 max-w-full flex-1 items-center justify-center gap-1 rounded-lg border border-transparent px-2 py-1 font-mono text-[10px] transition-all sm:flex-none sm:gap-1.5 sm:px-2.5 sm:text-[11px] ${
                     isActive
-                      ? 'bg-studio-850 text-cyan-300 border border-cyan-500/30'
+                      ? 'bg-studio-850 text-cyan-300 border-cyan-500/30'
                       : 'text-content-muted hover:text-content-secondary hover:bg-studio-850/50'
                   }`}
                 >
@@ -98,7 +98,7 @@ function DeveloperLabInspector() {
         </div>
 
         {/* Code Content Body */}
-        <div className="min-w-0 overflow-x-auto p-4 font-mono text-xs leading-relaxed text-slate-300 sm:p-5 min-h-[220px]">
+        <div className="h-[340px] min-w-0 overflow-x-auto p-4 font-mono text-xs leading-relaxed text-slate-300 sm:h-[360px] sm:p-5">
           <pre className="w-max max-w-none text-slate-200 selection:bg-cyan-500/30">
             <code>{activeCode.code}</code>
           </pre>
