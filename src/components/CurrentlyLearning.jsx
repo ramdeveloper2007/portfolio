@@ -5,7 +5,7 @@ import { Sparkles, Terminal } from 'lucide-react';
 
 export default function CurrentlyLearning() {
   return (
-    <section className="section-padding relative bg-studio-950/90" aria-labelledby="learning-heading">
+    <section className="section-padding relative bg-surface-muted" aria-labelledby="learning-heading">
       <div className="section-container">
         <SectionHeader
           label="Continuous Growth"

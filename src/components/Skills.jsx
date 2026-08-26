@@ -43,7 +43,7 @@ export default function Skills() {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <section id="skills" className="section-padding relative bg-studio-950" aria-labelledby="skills-heading">
+    <section id="skills" className="section-padding relative bg-surface" aria-labelledby="skills-heading">
       <div className="section-container">
         <SectionHeader
           label="Technical Arsenal"
@@ -130,7 +130,7 @@ export default function Skills() {
                           key={skill.name}
                           className="flex items-center justify-between rounded-xl border border-border/60 bg-surface-muted/40 px-3.5 py-2.5 transition-all hover:border-cyan-500/30 hover:bg-surface-muted"
                         >
-                          <span className="text-xs font-mono font-medium text-slate-200">
+                          <span className="text-xs font-mono font-medium text-content">
                             {skill.name}
                           </span>
                           <span
@@ -139,7 +139,7 @@ export default function Skills() {
                                 ? 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30'
                                 : skill.level === 'Learning'
                                 ? 'bg-indigo-500/10 text-indigo-300 border-indigo-500/30'
-                                : 'bg-slate-500/10 text-slate-300 border-slate-500/30'
+                                : 'bg-surface-muted text-content-secondary border-border'
                             }`}
                           >
                             {skill.level}

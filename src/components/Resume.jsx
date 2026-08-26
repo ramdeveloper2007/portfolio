@@ -4,7 +4,7 @@ import { FadeIn } from './ui/FadeIn';
 
 export default function Resume() {
   return (
-    <section id="resume" className="section-padding relative bg-studio-950" aria-labelledby="resume-heading">
+    <section id="resume" className="section-padding relative bg-surface" aria-labelledby="resume-heading">
       <div className="section-container">
         <FadeIn>
           <div className="solid-card rounded-3xl overflow-hidden p-8 md:p-12 relative border border-border">

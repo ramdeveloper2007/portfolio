@@ -11,7 +11,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-border bg-studio-950 text-content" aria-label="Site footer">
+    <footer className="border-t border-border bg-surface text-content" aria-label="Site footer">
       {/* Main Footer Content */}
       <div className="section-container py-14 md:py-16">
         <div className="grid gap-10 md:grid-cols-12">
@@ -103,7 +103,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Legal / Tech Bar */}
-      <div className="border-t border-border/60 bg-studio-950/90 py-5">
+      <div className="border-t border-border/60 bg-surface-muted py-5">
         <div className="section-container">
           <div className="flex flex-col items-center justify-between gap-3 sm:flex-row text-xs font-mono text-content-muted">
             <p>© {year} {personal.name}. All rights reserved.</p>

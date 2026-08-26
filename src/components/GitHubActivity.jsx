@@ -64,7 +64,7 @@ export default function GitHubActivity() {
     : staticGitHubInfo.stats;
 
   return (
-    <section className="section-padding relative bg-studio-950/80" aria-labelledby="github-heading">
+    <section className="section-padding relative bg-surface-muted" aria-labelledby="github-heading">
       <div className="section-container">
         <SectionHeader
           label="Open Source &amp; Code"
@@ -75,7 +75,7 @@ export default function GitHubActivity() {
         <FadeIn>
           <div className="solid-card rounded-2xl overflow-hidden border border-border">
             {/* Top Bar */}
-            <div className="flex flex-col gap-5 border-b border-border bg-studio-950/90 p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-5 border-b border-border bg-surface p-6 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
                   <Github className="h-6 w-6" />
@@ -125,7 +125,7 @@ export default function GitHubActivity() {
             </div>
 
             {/* Activity Stream Heatmap Preview */}
-            <div className="border-t border-border bg-studio-950/60 p-6">
+            <div className="border-t border-border bg-surface p-6">
               <div className="flex items-center justify-between mb-4">
                 <p className="font-mono text-xs uppercase tracking-wider text-content-secondary">
                   Continuous Commit Stream

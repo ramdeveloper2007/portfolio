@@ -42,7 +42,7 @@ export default function About() {
   const { paragraphs } = aboutContent;
 
   return (
-    <section id="about" className="section-padding relative bg-studio-950/60" aria-labelledby="about-heading">
+    <section id="about" className="section-padding relative bg-surface-muted" aria-labelledby="about-heading">
       <div className="section-container">
         <SectionHeader
           label="Profile & Philosophy"

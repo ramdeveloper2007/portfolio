@@ -14,7 +14,7 @@ const categoryIcons = {
 
 export default function Achievements() {
   return (
-    <section className="section-padding relative bg-studio-950/70 border-t border-border/60" aria-labelledby="achievements-heading">
+    <section className="section-padding relative bg-surface-muted border-t border-border/60" aria-labelledby="achievements-heading">
       <div className="section-container">
         <SectionHeader
           label="Milestones"

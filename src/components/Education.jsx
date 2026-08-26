@@ -16,7 +16,7 @@ const iconMap = {
 
 export function Education() {
   return (
-    <section id="education" className="section-padding relative bg-studio-950" aria-labelledby="education-heading">
+    <section id="education" className="section-padding relative bg-surface" aria-labelledby="education-heading">
       <div className="section-container">
         <SectionHeader
           label="Academic Foundation"
@@ -35,7 +35,7 @@ export function Education() {
                 <FadeIn key={item.id} delay={index * 0.15}>
                   <div className="relative pl-14 md:pl-0">
                     {/* Timeline Node Point */}
-                    <div className="absolute left-3.5 top-1 z-10 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border-2 border-cyan-400 bg-studio-950 shadow-md shadow-cyan-500/30 md:left-1/2">
+                    <div className="absolute left-3.5 top-1 z-10 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border-2 border-cyan-400 bg-surface shadow-md shadow-cyan-500/30 md:left-1/2">
                       <div className={`h-2.5 w-2.5 rounded-full ${isCurrent ? 'bg-cyan-400 animate-ping' : 'bg-cyan-400'}`} />
                     </div>
 
@@ -86,7 +86,7 @@ export function Education() {
 
 export function Journey() {
   return (
-    <section id="journey" className="section-padding relative bg-studio-950/70 border-t border-border/80" aria-labelledby="journey-heading">
+    <section id="journey" className="section-padding relative bg-surface-muted border-t border-border/80" aria-labelledby="journey-heading">
       <div className="section-container">
         <SectionHeader
           label="Progressive Roadmap"

@@ -121,7 +121,7 @@ function FeaturedProjectCard({ project, onOpen }) {
             </div>
 
             {/* Key Capabilities */}
-            <div className="space-y-2 pt-2 border-t border-white/10">
+            <div className="space-y-2 pt-2 border-t border-border">
               <p className="font-mono text-xs uppercase tracking-wider text-cyan-400 font-semibold">Key Capabilities</p>
               <div className="grid grid-cols-2 gap-2 text-xs text-content-secondary">
                 <div className="flex items-center gap-1.5">
@@ -277,7 +277,7 @@ export default function Projects() {
   }, [activeFilter]);
 
   return (
-    <section id="projects" className="section-padding relative bg-studio-950/80" aria-labelledby="projects-heading">
+    <section id="projects" className="section-padding relative bg-surface-muted" aria-labelledby="projects-heading">
       <div className="section-container">
         <SectionHeader
           label="Project Showcase"

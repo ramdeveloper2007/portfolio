@@ -6,7 +6,7 @@ const statIcons = [BookOpen, Sparkles, Terminal];
 
 export default function QuickStats() {
   return (
-    <section className="border-y border-border bg-studio-950/80 py-8 relative" aria-label="Quick statistics">
+    <section className="border-y border-border bg-surface-muted py-8 relative" aria-label="Quick statistics">
       <div className="section-container">
         <StaggerContainer className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {quickStats.map((stat, idx) => {

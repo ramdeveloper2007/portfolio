@@ -141,11 +141,11 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[92vh] items-center overflow-hidden pt-28 pb-16 md:pt-32 md:pb-24"
+      className="relative flex min-h-[92vh] items-center overflow-hidden bg-surface pt-28 pb-16 md:pt-32 md:pb-24"
       aria-label="Introduction"
     >
       {/* Studio Grid Background */}
-      <div className="absolute inset-0 studio-grid pointer-events-none opacity-80" />
+      <div className="absolute inset-0 studio-grid pointer-events-none opacity-50" />
       <div className="absolute top-1/4 right-1/4 h-80 w-80 rounded-full bg-cyan-500/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/4 h-80 w-80 rounded-full bg-indigo-500/5 blur-3xl pointer-events-none" />
 

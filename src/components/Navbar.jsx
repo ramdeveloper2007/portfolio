@@ -48,7 +48,7 @@ export default function Navbar() {
             className={`flex min-w-0 items-center justify-between gap-2 transition-all duration-300 ${
               isScrolled
                 ? 'liquid-glass rounded-2xl px-2.5 py-2.5 shadow-2xl shadow-black/40 sm:px-4'
-                : 'rounded-2xl border border-transparent bg-transparent px-1 py-1 sm:px-2'
+                : 'rounded-2xl border border-border bg-surface/80 px-1 py-1 shadow-lg shadow-black/5 backdrop-blur-xl sm:px-2'
             }`}
             aria-label="Main navigation"
           >
@@ -82,7 +82,7 @@ export default function Navbar() {
                       onClick={() => handleNavClick(link.id)}
                       className={`relative rounded-xl px-3.5 py-1.5 text-xs font-medium tracking-wide transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
                         isActive
-                          ? 'bg-cyan-500/10 text-cyan-300 shadow-[inset_0_1px_0_0_rgba(6,182,212,0.3)] border border-cyan-500/20'
+                          ? 'bg-cyan-500/10 text-accent-content shadow-[inset_0_1px_0_0_rgba(6,182,212,0.3)] border border-cyan-500/20'
                           : 'text-content-secondary hover:text-content hover:bg-surface-muted/60'
                       }`}
                       aria-current={isActive ? 'page' : undefined}
@@ -136,7 +136,7 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-40 bg-black/70 backdrop-blur-xl transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 z-40 bg-surface/95 backdrop-blur-xl transition-all duration-300 md:hidden ${
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
         aria-hidden={!isOpen}
@@ -153,7 +153,7 @@ export default function Navbar() {
                   onClick={() => handleNavClick(link.id)}
                   className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition-all ${
                     isActive
-                      ? 'border border-cyan-500/30 bg-cyan-500/10 text-cyan-300'
+                      ? 'border border-cyan-500/30 bg-cyan-500/10 text-accent-content'
                       : 'text-content-secondary hover:bg-surface-muted hover:text-content'
                   }`}
                 >

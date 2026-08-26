@@ -76,7 +76,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-padding relative bg-studio-950" aria-labelledby="contact-heading">
+    <section id="contact" className="section-padding relative bg-surface" aria-labelledby="contact-heading">
       <div className="section-container">
         <SectionHeader
           label="Direct Communication"
@@ -86,7 +86,7 @@ export default function Contact() {
 
         {/* Single Premium Selective Liquid Glass Contact Card */}
         <FadeIn>
-          <div className="liquid-glass rounded-3xl overflow-hidden p-6 md:p-10 lg:p-12 shadow-2xl border border-white/10">
+          <div className="liquid-glass rounded-3xl overflow-hidden p-6 md:p-10 lg:p-12 shadow-2xl border border-border">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
               {/* Left Column: Direct Info */}
               <div className="lg:col-span-5 space-y-6">
@@ -104,7 +104,7 @@ export default function Contact() {
 
                 <div className="space-y-4 pt-2">
                   {/* Email Box */}
-                  <div className="rounded-2xl border border-white/10 bg-studio-950/60 p-4 transition-all hover:border-cyan-500/30">
+                  <div className="rounded-2xl border border-border bg-surface-muted p-4 transition-all hover:border-cyan-500/30">
                     <div className="flex items-center gap-3 mb-2">
                       <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400">
                         <Mail className="h-4 w-4" />
@@ -131,7 +131,7 @@ export default function Contact() {
                   </div>
 
                   {/* Location Box */}
-                  <div className="rounded-2xl border border-white/10 bg-studio-950/60 p-4">
+                  <div className="rounded-2xl border border-border bg-surface-muted p-4">
                     <div className="flex items-center gap-3">
                       <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400">
                         <MapPin className="h-4 w-4" />
@@ -150,7 +150,7 @@ export default function Contact() {
                   <div className="flex gap-2.5">
                     <ExternalLink
                       href={personal.social.github}
-                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-studio-950/60 text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-105"
+                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-muted text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-105"
                       showIcon={false}
                     >
                       <Github className="h-4 w-4" />
@@ -158,7 +158,7 @@ export default function Contact() {
                     </ExternalLink>
                     <ExternalLink
                       href={personal.social.linkedin}
-                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-studio-950/60 text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-105"
+                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-muted text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-105"
                       showIcon={false}
                     >
                       <Linkedin className="h-4 w-4" />
@@ -166,7 +166,7 @@ export default function Contact() {
                     </ExternalLink>
                     <a
                       href={`mailto:${personal.email}`}
-                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-studio-950/60 text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-105"
+                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-muted text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-105"
                       aria-label="Send direct email"
                     >
                       <Mail className="h-4 w-4" />
@@ -190,7 +190,7 @@ export default function Contact() {
                         placeholder="John Doe"
                         value={form.name}
                         onChange={handleChange}
-                        className="w-full rounded-xl border border-white/10 bg-studio-950/70 px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                        className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
                         aria-invalid={!!errors.name}
                         aria-describedby={errors.name ? 'name-error' : undefined}
                       />
@@ -212,7 +212,7 @@ export default function Contact() {
                         placeholder="john@example.com"
                         value={form.email}
                         onChange={handleChange}
-                        className="w-full rounded-xl border border-white/10 bg-studio-950/70 px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                        className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
                         aria-invalid={!!errors.email}
                         aria-describedby={errors.email ? 'email-error' : undefined}
                       />
@@ -235,7 +235,7 @@ export default function Contact() {
                       placeholder="Project discussion / Opportunity"
                       value={form.subject}
                       onChange={handleChange}
-                      className="w-full rounded-xl border border-white/10 bg-studio-950/70 px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                      className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
                       aria-invalid={!!errors.subject}
                       aria-describedby={errors.subject ? 'subject-error' : undefined}
                     />
@@ -257,7 +257,7 @@ export default function Contact() {
                       placeholder="Describe your project, role, or proposal..."
                       value={form.message}
                       onChange={handleChange}
-                      className="w-full resize-y rounded-xl border border-white/10 bg-studio-950/70 px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                      className="w-full resize-y rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
                       aria-invalid={!!errors.message}
                       aria-describedby={errors.message ? 'message-error' : undefined}
                     />
