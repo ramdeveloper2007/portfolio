@@ -1,50 +1,65 @@
 export const skillCategories = [
   {
     title: 'Frontend Development',
+    category: 'frontend',
+    description: 'Crafting responsive, accessible, and dynamic user interfaces.',
     skills: [
-      { name: 'HTML', level: 'Intermediate' },
-      { name: 'CSS', level: 'Intermediate' },
-      { name: 'JavaScript', level: 'Intermediate' },
-      { name: 'Responsive Web Design', level: 'Intermediate' },
+      { name: 'HTML5', level: 'Intermediate', detail: 'Semantic structure, SEO, modern tags, and accessibility' },
+      { name: 'CSS3', level: 'Intermediate', detail: 'Modern layouts, Flexbox, Grid, animations, and responsive styles' },
+      { name: 'JavaScript', level: 'Intermediate', detail: 'ES6+, DOM manipulation, async operations, and APIs' },
+      { name: 'Responsive Design', level: 'Intermediate', detail: 'Mobile-first workflows, fluid typography, and multi-device support' },
     ],
   },
   {
     title: 'Backend Development',
+    category: 'backend',
+    description: 'Building server-side logic, routing, and robust RESTful APIs.',
     skills: [
-      { name: 'Python', level: 'Intermediate' },
-      { name: 'Flask', level: 'Intermediate' },
-      { name: 'REST APIs', level: 'Learning' },
+      { name: 'Python', level: 'Intermediate', detail: 'Application architecture, automation, scripting, and data processing' },
+      { name: 'Flask', level: 'Intermediate', detail: 'Microframework routing, Jinja templating, sessions, and request lifecycle' },
+      { name: 'REST APIs', level: 'Intermediate', detail: 'Endpoint design, JSON serialization, HTTP status handling, and CRUD' },
+    ],
+  },
+  {
+    title: 'Database Systems',
+    category: 'database',
+    description: 'Structuring relational schemas, queries, and persistent storage.',
+    skills: [
+      { name: 'SQL', level: 'Intermediate', detail: 'Relational queries, schema modeling, joins, and data integrity' },
+      { name: 'SQLite', level: 'Intermediate', detail: 'Embedded lightweight relational database for full-stack apps' },
     ],
   },
   {
     title: 'Programming Languages',
+    category: 'programming',
+    description: 'Foundational programming, algorithms, and computational problem solving.',
     skills: [
-      { name: 'C', level: 'Intermediate' },
-      { name: 'C++', level: 'Intermediate' },
-      { name: 'Python', level: 'Intermediate' },
-      { name: 'Java', level: 'Learning' },
+      { name: 'C', level: 'Intermediate', detail: 'Pointers, memory management, and structured procedural programming' },
+      { name: 'C++', level: 'Intermediate', detail: 'OOP, STL fundamentals, memory models, and algorithmic problem solving' },
+      { name: 'Python', level: 'Intermediate', detail: 'Core algorithms, modular patterns, and rapid backend prototyping' },
+      { name: 'Java', level: 'Learning', detail: 'Object-oriented programming, class design, and Java core fundamentals' },
     ],
   },
   {
-    title: 'Database',
+    title: 'Tools & Workflow',
+    category: 'tools',
+    description: 'Version control, developer toolchains, and collaborative workflows.',
     skills: [
-      { name: 'SQLite', level: 'Intermediate' },
-      { name: 'SQL', level: 'Intermediate' },
+      { name: 'Git', level: 'Intermediate', detail: 'Branching, merging, commit staging, and version management' },
+      { name: 'GitHub', level: 'Intermediate', detail: 'Repository management, pull requests, and project hosting' },
+      { name: 'VS Code', level: 'Intermediate', detail: 'Workspace configuration, extensions, linting, and debugging' },
     ],
   },
   {
-    title: 'Tools & Technologies',
+    title: 'Currently Exploring',
+    category: 'exploring',
+    description: 'Next-generation libraries, advanced paradigms, and CS fundamentals.',
     skills: [
-      { name: 'Git', level: 'Intermediate' },
-      { name: 'GitHub', level: 'Intermediate' },
-      { name: 'VS Code', level: 'Familiar' },
+      { name: 'React', level: 'Learning', detail: 'Component lifecycles, hooks, JSX, state management, and modern SPA' },
+      { name: 'Advanced JavaScript', level: 'Learning', detail: 'Closures, prototypes, Event Loop, Promises, and Web APIs' },
+      { name: 'Advanced Backend Development', level: 'Learning', detail: 'Authentication, middleware, scalability, and microservices' },
+      { name: 'Data Structures & Algorithms', level: 'Learning', detail: 'Arrays, linked lists, trees, graphs, sorting, and algorithmic complexity' },
+      { name: 'Software Engineering', level: 'Learning', detail: 'Design patterns, clean code principles, SDLC, and testing' },
     ],
   },
 ];
-
-export const levelStyles = {
-  Beginner: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
-  Intermediate: 'bg-accent/10 text-accent border-accent/20',
-  Learning: 'bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20',
-  Familiar: 'bg-content-muted/10 text-content-secondary border-border',
-};

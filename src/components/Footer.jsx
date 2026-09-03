@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowUp, Terminal, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 import { personal, footerLinks } from '../data/personal';
 import { scrollToSection } from '../hooks/useScrollSpy';
 import { ExternalLink } from '../utils/helpers';
@@ -28,12 +28,12 @@ export default function Footer() {
                 <p className="text-xs font-mono text-cyan-400">Full-Stack Developer | Aspiring Software Developer</p>
               </div>
             </div>
-            <p className="max-w-sm text-xs leading-relaxed text-content-secondary font-sans">
+            <p className="max-w-sm text-xs sm:text-sm leading-relaxed text-content-secondary font-sans">
               Building modern web experiences and continuously growing through technology.
             </p>
             <div className="flex items-center gap-2 font-mono text-[11px] text-content-muted">
-              <span className="h-2 w-2 rounded-full bg-emerald-400" />
-              <span>Available for Full-Stack Roles &amp; Internships</span>
+              <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]" />
+              <span>Available for Full-Stack Roles &amp; Opportunities</span>
             </div>
           </div>
 
@@ -96,19 +96,19 @@ export default function Footer() {
               className="mt-2 inline-flex items-center gap-1.5 font-mono text-xs text-content-muted hover:text-cyan-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <span>Back to Top of Portfolio</span>
-              <ArrowUp className="h-3.5 w-3.5" />
+              <ArrowUp className="h-3.5 w-3.5 text-cyan-400" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Bottom Legal / Tech Bar */}
+      {/* Bottom Tech Bar */}
       <div className="border-t border-border/60 bg-surface-muted py-5">
         <div className="section-container">
           <div className="flex flex-col items-center justify-between gap-3 sm:flex-row text-xs font-mono text-content-muted">
             <p>© {year} {personal.name}. All rights reserved.</p>
             <p className="flex items-center gap-1">
-              <span>Full-Stack Portfolio // Built with React &amp; Tailwind</span>
+              <span>Full-Stack Portfolio // Built with React, Tailwind &amp; Framer Motion</span>
             </p>
           </div>
         </div>
@@ -116,4 +116,3 @@ export default function Footer() {
     </footer>
   );
 }
-

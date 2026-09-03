@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Github, GitBranch, Star, Users, ExternalLink as ExtIcon, Terminal, Activity } from 'lucide-react';
+import { Github, GitBranch, Star, Users, ExternalLink as ExtIcon } from 'lucide-react';
 import { personal } from '../data/personal';
 import { ExternalLink, isPlaceholderLink } from '../utils/helpers';
 import { FadeIn } from './ui/FadeIn';
 import { SectionHeader } from './ui/SectionHeader';
 
 const staticGitHubInfo = {
-  note: 'Connecting directly to GitHub public repository index.',
   profileUrl: personal.social.github,
   stats: [
     { label: 'Public Repositories', value: '—', icon: GitBranch },
@@ -62,43 +61,43 @@ export default function GitHubActivity() {
     : staticGitHubInfo.stats;
 
   return (
-    <section id="github" className="section-padding relative bg-surface-muted" aria-labelledby="github-heading">
+    <section id="github" className="section-padding relative bg-surface-muted border-t border-border/80" aria-labelledby="github-heading">
       <div className="section-container">
         <SectionHeader
           label="Open Source &amp; Code"
-          title="GitHub Developer Activity"
+          title="Building in Public"
           headingId="github-heading"
-          description="A direct look into my open-source repositories, development velocity, and active codebase contributions."
+          description="Explore my repositories, experiments, and projects on GitHub."
         />
 
         <FadeIn>
-          <div className="solid-card rounded-2xl overflow-hidden border border-border">
+          <div className="solid-card rounded-3xl overflow-hidden border border-border shadow-2xl">
             {/* Top Bar */}
             <div className="flex flex-col gap-5 border-b border-border bg-surface p-6 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shadow-md shadow-cyan-500/10">
                   <Github className="h-6 w-6" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="font-display text-base font-bold text-content">
+                    <h3 className="font-display text-lg font-bold text-content">
                       @{personal.githubUsername}
                     </h3>
                     <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]" />
                   </div>
                   <p className="font-mono text-xs text-content-muted">
-                    Full-Stack Developer • Practical Software Systems
+                    Full-Stack Developer • Open Source &amp; Academic Repositories
                   </p>
                 </div>
               </div>
 
               <ExternalLink
                 href={staticGitHubInfo.profileUrl}
-                className="btn-secondary"
+                className="btn-primary"
                 showIcon={false}
               >
                 <Github className="h-4 w-4" />
-                <span>Visit GitHub Profile</span>
+                <span>Explore GitHub Profile</span>
                 <ExtIcon className="h-3.5 w-3.5 ml-1" />
               </ExternalLink>
             </div>
@@ -123,19 +122,16 @@ export default function GitHubActivity() {
               })}
             </div>
 
-            {/* Keep this section factual until a contribution API is connected. */}
-            <div className="border-t border-border bg-surface p-6">
-              <div className="flex items-center justify-between mb-4">
-                <p className="font-mono text-xs uppercase tracking-wider text-content-secondary">
-                  Repository activity
-                </p>
-                <span className="text-[11px] font-mono text-content-muted">Live profile metrics above</span>
-              </div>
-              <p className="max-w-2xl text-sm leading-relaxed text-content-secondary">
+            {/* Info Footer */}
+            <div className="border-t border-border bg-surface p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <p className="max-w-2xl text-xs sm:text-sm leading-relaxed text-content-secondary">
                 {error
-                  ? 'Live profile metrics are temporarily unavailable. Explore the public repositories directly on GitHub.'
-                  : 'Explore the public repositories and current code activity directly on GitHub. Contribution history is intentionally linked rather than simulated here.'}
+                  ? 'Live profile metrics are temporarily unavailable. Explore public repositories directly on GitHub.'
+                  : 'Explore my public repositories and code commits directly on GitHub.'}
               </p>
+              <span className="text-[11px] font-mono text-cyan-400 shrink-0">
+                Verified GitHub Profile ✓
+              </span>
             </div>
           </div>
         </FadeIn>
@@ -143,4 +139,3 @@ export default function GitHubActivity() {
     </section>
   );
 }
-

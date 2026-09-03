@@ -1,6 +1,6 @@
 import { Award, Trophy, Code, GraduationCap, Briefcase, Star } from 'lucide-react';
 import { achievements } from '../data/education';
-import { FadeIn, StaggerContainer, StaggerItem } from './ui/FadeIn';
+import { StaggerContainer, StaggerItem } from './ui/FadeIn';
 import { SectionHeader } from './ui/SectionHeader';
 
 const categoryIcons = {

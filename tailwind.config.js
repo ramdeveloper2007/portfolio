@@ -1,4 +1,4 @@
-﻿/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   darkMode: 'class',
@@ -15,11 +15,11 @@ export default {
       colors: {
         studio: {
           950: '#07080c',
-          900: '#0c0e17',
-          850: '#111420',
-          800: '#161b2b',
-          700: '#22293f',
-          600: '#323c5b',
+          900: '#0b0e17',
+          850: '#101420',
+          800: '#151a2b',
+          700: '#1e253c',
+          600: '#2c3654',
         },
         surface: {
           DEFAULT: 'var(--color-surface)',
@@ -52,7 +52,8 @@ export default {
         'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
         'float-slow': 'floatSlow 6s ease-in-out infinite',
-        'scanline': 'scanline 8s linear infinite',
+        'data-stream': 'dataStream 2s linear infinite',
+        'spin-slow': 'spin 12s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -64,16 +65,17 @@ export default {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         pulseGlow: {
-          '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
-          '50%': { opacity: '0.6', transform: 'scale(1.05)' },
+          '0%, 100%': { opacity: '0.35', transform: 'scale(1)' },
+          '50%': { opacity: '0.7', transform: 'scale(1.04)' },
         },
         floatSlow: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-8px)' },
+          '50%': { transform: 'translateY(-6px)' },
         },
-        scanline: {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(1000%)' },
+        dataStream: {
+          '0%': { transform: 'translateY(-100%)', opacity: '0' },
+          '50%': { opacity: '1' },
+          '100%': { transform: 'translateY(100%)', opacity: '0' },
         },
       },
     },

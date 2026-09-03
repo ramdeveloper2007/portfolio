@@ -1,6 +1,6 @@
 import { quickStats } from '../data/personal';
-import { FadeIn, StaggerContainer, StaggerItem } from './ui/FadeIn';
-import { Terminal, Award, Sparkles, BookOpen } from 'lucide-react';
+import { StaggerContainer, StaggerItem } from './ui/FadeIn';
+import { Terminal, Sparkles, BookOpen } from 'lucide-react';
 
 const statIcons = [BookOpen, Sparkles, Terminal];
 

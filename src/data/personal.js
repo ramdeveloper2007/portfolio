@@ -4,7 +4,7 @@ export const personal = {
   headline: 'BTech Information Technology Student',
   tagline: 'Building Modern Web Experiences & Turning Ideas Into Real Applications.',
   intro:
-    'Full-Stack Developer and aspiring Software Developer with a Computer Engineering background, building responsive web applications across the frontend, backend, and database layers.',
+    "I'm Ramprasad, a Full-Stack Developer and aspiring Software Developer with a background in Computer Engineering and Information Technology. I build responsive web applications across frontend, backend, and database technologies while continuously expanding my development skills.",
   location: 'Coimbatore, Tamil Nadu, India',
   email: 'ramgokul644@gmail.com',
   resumePath: '/resume/Ramprasad_Resume.pdf',
@@ -20,8 +20,8 @@ export const navLinks = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
-  { id: 'education', label: 'Education' },
   { id: 'journey', label: 'Journey' },
+  { id: 'education', label: 'Education' },
   { id: 'resume', label: 'Resume' },
   { id: 'contact', label: 'Contact' },
 ];
@@ -31,27 +31,29 @@ export const footerLinks = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
+  { id: 'journey', label: 'Journey' },
   { id: 'education', label: 'Education' },
   { id: 'resume', label: 'Resume' },
   { id: 'contact', label: 'Contact' },
 ];
 
 export const aboutContent = {
+  heading: 'About Me',
   paragraphs: [
-    'I\'m Ramprasad, a Full-Stack Developer and aspiring Software Developer with a Computer Engineering background, currently pursuing Information Technology.',
-    'I enjoy building complete web applications, from designing responsive interfaces and implementing frontend functionality to developing backend services and working with databases.',
-    'My development journey is focused on continuously improving my programming skills, learning modern technologies, and creating applications that are reliable, responsive, and easy to use.',
+    "I'm Ramprasad, a Full-Stack Developer and aspiring Software Developer with a Computer Engineering background, currently pursuing Information Technology.",
+    'I enjoy building complete web applications — from responsive interfaces and frontend functionality to backend services and database integration.',
+    'My development journey focuses on continuously improving my programming skills, learning modern technologies, and creating practical projects that allow me to apply what I learn.',
   ],
   developerCard: {
-    education: 'Diploma in Computer Engineering',
-    currentEducation: 'BTech Information Technology',
-    focus: 'Full-Stack Web Development and Software Development',
-    currentlyLearning: 'Programming, web development, DSA, and computer science fundamentals',
+    degree: 'BTech Information Technology (Current)',
+    diploma: 'Diploma in Computer Engineering (Completed)',
+    focus: 'Full-Stack Web Architecture & Software Engineering',
+    coreStack: 'Python, Flask, JavaScript, React, SQL, SQLite',
   },
 };
 
 export const quickStats = [
   { value: '3+', label: 'Years of BTech Journey' },
-  { value: '1+', label: 'Major Project' },
-  { value: 'Multiple', label: 'Technologies Learning' },
+  { value: '1+', label: 'Major Full-Stack Project' },
+  { value: '9+', label: 'Core Technologies Applied' },
 ];

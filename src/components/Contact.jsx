@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Github, Linkedin, Mail, MapPin, Copy, Check, Send, ArrowUpRight, MessageSquare, Terminal } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Copy, Check, Send } from 'lucide-react';
 import { personal } from '../data/personal';
-import { copyToClipboard, ExternalLink, maskEmail } from '../utils/helpers';
+import { copyToClipboard, ExternalLink } from '../utils/helpers';
 import { FadeIn } from './ui/FadeIn';
 import { SectionHeader } from './ui/SectionHeader';
 
@@ -76,19 +76,19 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-padding relative bg-surface" aria-labelledby="contact-heading">
+    <section id="contact" className="section-padding relative bg-surface border-t border-border/80" aria-labelledby="contact-heading">
       <div className="section-container">
         <SectionHeader
-          label="Direct Communication"
-          title="Let's Build Something Together."
+          label="Direct Inquiries"
+          title="Let's Connect"
           headingId="contact-heading"
-          description="Have an open internship, software project, or opportunity? Feel free to reach out directly."
+          description="I'm open to internships, collaborations, software development opportunities, and interesting projects."
         />
 
-        {/* Single Premium Selective Liquid Glass Contact Card */}
+        {/* Contact Card */}
         <FadeIn>
-          <div className="liquid-glass rounded-3xl overflow-hidden p-6 md:p-10 lg:p-12 shadow-2xl border border-border">
-            <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+          <div className="solid-card rounded-3xl overflow-hidden p-6 md:p-10 lg:p-12 shadow-2xl border border-cyan-500/20">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-14 items-start">
               {/* Left Column: Direct Info */}
               <div className="lg:col-span-5 space-y-6">
                 <div>
@@ -96,18 +96,18 @@ export default function Contact() {
                     GET IN TOUCH
                   </span>
                   <h3 className="font-display text-2xl font-bold text-content mt-1">
-                    Connect &amp; Collaborate
+                    Start a Conversation
                   </h3>
                   <p className="mt-3 text-xs sm:text-sm leading-relaxed text-content-secondary">
-                    Open for software development roles, full-stack internships, and technical collaborations. I typically respond within 24 hours.
+                    Feel free to reach out directly for internships, full-stack opportunities, or engineering collaborations.
                   </p>
                 </div>
 
-                <div className="space-y-4 pt-2">
+                <div className="space-y-3.5 pt-2">
                   {/* Email Box */}
-                  <div className="rounded-2xl border border-border bg-surface-muted p-4 transition-all hover:border-cyan-500/30">
+                  <div className="rounded-2xl border border-border bg-surface-muted/60 p-4 transition-all hover:border-cyan-500/30">
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
                         <Mail className="h-4 w-4" />
                       </div>
                       <div>
@@ -117,14 +117,14 @@ export default function Contact() {
                           className="text-xs sm:text-sm font-mono font-medium text-cyan-300 hover:underline"
                           title="Click to send email"
                         >
-                          {maskEmail(personal.email)}
+                          {personal.email}
                         </a>
                       </div>
                     </div>
                     <button
                       type="button"
                       onClick={handleCopyEmail}
-                      className="mt-2 inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-muted px-2.5 py-1 text-[11px] font-mono text-content-secondary hover:text-cyan-300 hover:border-cyan-500/30 transition-all"
+                      className="mt-2 inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-card px-2.5 py-1 text-[11px] font-mono text-content-secondary hover:text-cyan-300 hover:border-cyan-500/30 transition-all"
                     >
                       {copied ? <Check className="h-3 w-3 text-emerald-400" /> : <Copy className="h-3 w-3" />}
                       <span>{copied ? 'Copied to Clipboard!' : 'Copy Email Address'}</span>
@@ -132,9 +132,9 @@ export default function Contact() {
                   </div>
 
                   {/* Location Box */}
-                  <div className="rounded-2xl border border-border bg-surface-muted p-4">
+                  <div className="rounded-2xl border border-border bg-surface-muted/60 p-4">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
                         <MapPin className="h-4 w-4" />
                       </div>
                       <div>
@@ -147,7 +147,7 @@ export default function Contact() {
 
                 {/* Social Icons */}
                 <div className="pt-2">
-                  <p className="font-mono text-xs text-content-muted mb-3">SOCIAL PROFILES</p>
+                  <p className="font-mono text-xs text-content-muted mb-3">SOCIAL &amp; CODE PROFILES</p>
                   <div className="flex gap-2.5">
                     <ExternalLink
                       href={personal.social.github}
@@ -233,7 +233,7 @@ export default function Contact() {
                       id="subject"
                       name="subject"
                       type="text"
-                      placeholder="Project discussion / Opportunity"
+                      placeholder="Internship opportunity / Project collaboration"
                       value={form.subject}
                       onChange={handleChange}
                       className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
@@ -255,7 +255,7 @@ export default function Contact() {
                       id="message"
                       name="message"
                       rows={4}
-                      placeholder="Describe your project, role, or proposal..."
+                      placeholder="Describe your role, opportunity, or proposal..."
                       value={form.message}
                       onChange={handleChange}
                       className="w-full resize-y rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
@@ -285,7 +285,7 @@ export default function Contact() {
                   )}
                   {status === 'error' && (
                     <p className="text-xs font-mono text-rose-400" role="alert">
-                      ✕ Transmission failed. Please try emailing directly at {maskEmail(personal.email)}.
+                      ✕ Transmission failed. Please try emailing directly at {personal.email}.
                     </p>
                   )}
                   {status === 'mailto' && (
@@ -302,4 +302,3 @@ export default function Contact() {
     </section>
   );
 }
-

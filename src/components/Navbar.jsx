@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Monitor, Moon, Sun, Terminal, ArrowUpRight } from 'lucide-react';
+import { Menu, X, Monitor, Moon, Sun, ArrowUpRight } from 'lucide-react';
 import { navLinks, personal } from '../data/personal';
 import { useScrollSpy, scrollToSection } from '../hooks/useScrollSpy';
 import { useTheme } from '../hooks/useTheme';
@@ -18,7 +18,7 @@ export default function Navbar() {
   const ThemeIcon = themeIcons[theme] || Moon;
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 25);
+    const onScroll = () => setIsScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -40,15 +40,15 @@ export default function Navbar() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'py-3' : 'py-5'
+          isScrolled ? 'py-2.5 sm:py-3' : 'py-4 sm:py-5'
         }`}
       >
         <div className="section-container">
           <nav
             className={`flex min-w-0 items-center justify-between gap-2 transition-all duration-300 ${
               isScrolled
-                ? 'liquid-glass rounded-2xl px-2.5 py-2.5 shadow-2xl shadow-black/40 sm:px-4'
-                : 'rounded-2xl border border-border bg-surface/80 px-1 py-1 shadow-lg shadow-black/5 backdrop-blur-xl sm:px-2'
+                ? 'liquid-glass rounded-2xl px-3 py-2 shadow-2xl shadow-black/40 sm:px-4'
+                : 'rounded-2xl border border-border/80 bg-surface/85 px-3 py-2 shadow-lg backdrop-blur-md sm:px-4'
             }`}
             aria-label="Main navigation"
           >
@@ -56,7 +56,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => handleNavClick('home')}
-              className="group flex min-w-0 shrink items-center gap-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-xl sm:gap-2.5"
+              className="group flex min-w-0 shrink items-center gap-2.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-xl"
             >
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-600 font-display font-bold text-white shadow-md shadow-cyan-500/20 transition-transform duration-200 group-hover:scale-105">
                 R
@@ -66,13 +66,13 @@ export default function Navbar() {
                   {personal.name}
                 </span>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-content-muted">
-                  DEV LAB
+                  FULL-STACK DEV
                 </span>
               </div>
             </button>
 
             {/* Desktop Navigation Links */}
-            <ul className="hidden items-center gap-1 md:flex">
+            <ul className="hidden items-center gap-0.5 lg:flex">
               {navLinks.map((link) => {
                 const isActive = activeId === link.id;
                 return (
@@ -80,9 +80,9 @@ export default function Navbar() {
                     <button
                       type="button"
                       onClick={() => handleNavClick(link.id)}
-                      className={`relative rounded-xl px-3.5 py-1.5 text-xs font-medium tracking-wide transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
+                      className={`relative rounded-xl px-3 py-1.5 text-xs font-medium tracking-wide transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
                         isActive
-                          ? 'bg-cyan-500/10 text-accent-content shadow-[inset_0_1px_0_0_rgba(6,182,212,0.3)] border border-cyan-500/20'
+                          ? 'bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-semibold'
                           : 'text-content-secondary hover:text-content hover:bg-surface-muted/60'
                       }`}
                       aria-current={isActive ? 'page' : undefined}
@@ -97,12 +97,12 @@ export default function Navbar() {
               })}
             </ul>
 
-            {/* Actions: Resume CTA, Theme Toggle, Mobile Trigger */}
+            {/* Actions: Connect CTA, Theme Toggle, Mobile Trigger */}
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => handleNavClick('contact')}
-                className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-cyan-500/30 bg-cyan-500/10 px-3.5 py-1.5 text-xs font-medium text-cyan-300 transition-all hover:bg-cyan-500/20 hover:border-cyan-500/50 hover:shadow-md hover:shadow-cyan-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-cyan-500/30 bg-cyan-500/10 px-3.5 py-1.5 text-xs font-semibold text-cyan-300 transition-all hover:bg-cyan-500/20 hover:border-cyan-500/50 hover:shadow-md hover:shadow-cyan-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
               >
                 <span>Connect</span>
                 <ArrowUpRight className="h-3 w-3" />
@@ -111,7 +111,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={cycleTheme}
-                className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-surface-elevated/80 text-content-secondary transition-all hover:border-cyan-500/30 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary transition-all hover:border-cyan-500/30 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 aria-label={`Theme: ${theme}. Click to change.`}
                 title={`Theme: ${theme}`}
               >
@@ -121,7 +121,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 aria-expanded={isOpen}
                 aria-controls="mobile-menu"
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -133,17 +133,17 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Menu Drawer */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-40 bg-surface/95 backdrop-blur-xl transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 z-40 bg-surface/95 backdrop-blur-xl transition-all duration-300 lg:hidden ${
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
         aria-hidden={!isOpen}
       >
-        <div className="flex h-full flex-col justify-between px-6 pt-28 pb-10">
+        <div className="flex h-full flex-col justify-between px-6 pt-28 pb-10 overflow-y-auto">
           <div className="space-y-1">
-            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-cyan-400">Navigation Menu</p>
+            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-cyan-400">Navigation</p>
             {navLinks.map((link) => {
               const isActive = activeId === link.id;
               return (
@@ -153,7 +153,7 @@ export default function Navbar() {
                   onClick={() => handleNavClick(link.id)}
                   className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition-all ${
                     isActive
-                      ? 'border border-cyan-500/30 bg-cyan-500/10 text-accent-content'
+                      ? 'border border-cyan-500/30 bg-cyan-500/10 text-cyan-300'
                       : 'text-content-secondary hover:bg-surface-muted hover:text-content'
                   }`}
                 >
@@ -170,7 +170,7 @@ export default function Navbar() {
               onClick={() => handleNavClick('contact')}
               className="btn-primary w-full justify-center"
             >
-              Let's Build Together
+              Let's Connect
             </button>
             <p className="text-center text-xs text-content-muted">
               Ramprasad • Full-Stack Developer
@@ -181,4 +181,3 @@ export default function Navbar() {
     </>
   );
 }
-

@@ -1,18 +1,18 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --bg-primary: #090a0f;
-    --bg-secondary: #0f121a;
-    --bg-card: #141824;
-    --bg-card-hover: #191e2e;
-    --color-surface: #090a0f;
-    --color-surface-elevated: #111420;
-    --color-surface-muted: #161a29;
-    --color-surface-card: #131724;
-    --color-surface-card-hover: #181d2e;
+    --bg-primary: #07080c;
+    --bg-secondary: #0b0e17;
+    --bg-card: #111522;
+    --bg-card-hover: #161c2d;
+    --color-surface: #07080c;
+    --color-surface-elevated: #0e121d;
+    --color-surface-muted: #131826;
+    --color-surface-card: #101524;
+    --color-surface-card-hover: #161c30;
     --color-content: #f8fafc;
     --color-content-secondary: #94a3b8;
     --color-content-muted: #64748b;
@@ -24,41 +24,43 @@
     --color-accent-muted: rgba(6, 182, 212, 0.1);
     --color-border: rgba(255, 255, 255, 0.08);
     --color-border-subtle: rgba(255, 255, 255, 0.04);
-    --color-border-strong: rgba(255, 255, 255, 0.14);
-    --color-border-highlight: rgba(6, 182, 212, 0.35);
-    --glass-background: rgba(15, 18, 28, 0.75);
+    --color-border-strong: rgba(255, 255, 255, 0.15);
+    --color-border-highlight: rgba(6, 182, 212, 0.4);
+    --glass-background: rgba(11, 14, 23, 0.82);
     --glass-border: rgba(255, 255, 255, 0.12);
     --grid-color: rgba(255, 255, 255, 0.035);
     --dot-color: rgba(255, 255, 255, 0.07);
+    --spotlight-color: rgba(6, 182, 212, 0.08);
   }
 
   .light {
-    --bg-primary: #f8fafc;
-    --bg-secondary: #f1f5f9;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
     --bg-card: #ffffff;
-    --bg-card-hover: #f8fafc;
+    --bg-card-hover: #f1f5f9;
     --color-surface: #f8fafc;
     --color-surface-elevated: #ffffff;
-    --color-surface-muted: #f1f5f9;
+    --color-surface-muted: #e2e8f0;
     --color-surface-card: #ffffff;
     --color-surface-card-hover: #f8fafc;
-    --color-content: #0f172a;
-    --color-content-secondary: #475569;
-    --color-content-muted: #64748b;
-    --color-accent-content: #0369a1;
+    --color-content: #020617; /* Deepest black for razor-sharp text */
+    --color-content-secondary: #0f172a; /* Slate 900 - ultra clear, high contrast */
+    --color-content-muted: #334155; /* Slate 700 - prominent & punchy */
+    --color-accent-content: #0369a1; /* Sky 700 */
     --color-accent: #0284c7;
     --color-accent-rgb: 2 132 199;
     --color-accent-hover: #0369a1;
-    --color-accent-secondary: #4f46e5;
-    --color-accent-muted: rgba(2, 132, 199, 0.08);
-    --color-border: rgba(15, 23, 42, 0.08);
-    --color-border-subtle: rgba(15, 23, 42, 0.04);
-    --color-border-strong: rgba(15, 23, 42, 0.15);
-    --color-border-highlight: rgba(2, 132, 199, 0.35);
-    --glass-background: rgba(255, 255, 255, 0.85);
-    --glass-border: rgba(15, 23, 42, 0.1);
-    --grid-color: rgba(15, 23, 42, 0.03);
-    --dot-color: rgba(15, 23, 42, 0.06);
+    --color-accent-secondary: #4338ca;
+    --color-accent-muted: rgba(2, 132, 199, 0.14);
+    --color-border: rgba(15, 23, 42, 0.15);
+    --color-border-subtle: rgba(15, 23, 42, 0.08);
+    --color-border-strong: rgba(15, 23, 42, 0.28);
+    --color-border-highlight: rgba(2, 132, 199, 0.6);
+    --glass-background: rgba(255, 255, 255, 0.95);
+    --glass-border: rgba(15, 23, 42, 0.18);
+    --grid-color: rgba(15, 23, 42, 0.06);
+    --dot-color: rgba(15, 23, 42, 0.12);
+    --spotlight-color: rgba(2, 132, 199, 0.08);
   }
 
   *,
@@ -78,7 +80,7 @@
   }
 
   section[id] {
-    scroll-margin-top: 6rem;
+    scroll-margin-top: 5.5rem;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -96,8 +98,7 @@
   }
 
   body {
-    @apply bg-surface text-content font-sans antialiased selection:bg-accent/20 selection:text-white;
-    background-image: radial-gradient(circle at 15% 0%, rgb(var(--color-accent-rgb) / 0.06), transparent 28rem);
+    @apply bg-surface text-content font-sans antialiased selection:bg-cyan-500/25 selection:text-content;
     min-height: 100vh;
     width: 100%;
     max-width: 100%;
@@ -155,62 +156,149 @@
   }
 
   .section-padding {
-    @apply py-14 sm:py-20 md:py-28;
+    @apply py-16 sm:py-20 md:py-28;
   }
 
-  /* Selective Liquid Glass Accent - used ONLY where intended */
+  /* Selective Liquid Glass Accent */
   .liquid-glass {
     background: var(--glass-background);
-    backdrop-filter: blur(14px) saturate(160%);
-    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
     border: 1px solid var(--glass-border);
     box-shadow: 
-      0 12px 36px 0 rgba(0, 0, 0, 0.25),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.12),
-      inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
+      0 12px 36px 0 rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 0 rgba(0, 0, 0, 0.05);
   }
 
+  /* High-Contrast Light Theme Overrides */
+  .light .text-content {
+    color: #020617 !important;
+  }
+
+  .light .text-content-secondary {
+    color: #0f172a !important;
+  }
+
+  .light .text-content-muted {
+    color: #334155 !important;
+  }
+
+  .light .text-slate-400,
+  .light .text-slate-300,
+  .light .text-slate-500,
+  .light .text-slate-200 {
+    color: #0f172a !important;
+  }
+
+  .light .text-cyan-400,
   .light .text-cyan-300 {
-    color: var(--color-accent-content);
+    color: #0369a1 !important;
   }
 
+  .light .text-indigo-400,
   .light .text-indigo-300 {
-    color: #4338ca;
+    color: #3730a3 !important;
+  }
+
+  .light .text-emerald-400,
+  .light .text-emerald-300 {
+    color: #047857 !important;
+  }
+
+  .light .text-amber-400,
+  .light .text-amber-300 {
+    color: #b45309 !important;
+  }
+
+  .light .text-rose-400,
+  .light .text-rose-300 {
+    color: #be123c !important;
+  }
+
+  .light .bg-cyan-500\/10,
+  .light .bg-cyan-500\/15,
+  .light .bg-cyan-500\/20 {
+    background-color: rgba(2, 132, 199, 0.12) !important;
+  }
+
+  .light .border-cyan-500\/20,
+  .light .border-cyan-500\/30,
+  .light .border-cyan-500\/40,
+  .light .border-cyan-500\/50 {
+    border-color: rgba(2, 132, 199, 0.35) !important;
   }
 
   .light .gradient-text {
-    background-image: linear-gradient(to right, #0284c7, #0369a1, #4338ca);
+    background-image: linear-gradient(135deg, #0284c7 0%, #1d4ed8 50%, #4338ca 100%) !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    font-weight: 800 !important;
   }
 
-  /* Solid cards - primary theme standard (85% of cards) */
+  /* Solid cards - primary theme standard */
   .solid-card {
     background-color: var(--color-surface-card);
     border: 1px solid var(--color-border);
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.25);
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .light .solid-card {
+    background-color: #ffffff;
+    border-color: rgba(15, 23, 42, 0.14);
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
   }
 
   .solid-card:hover {
     border-color: var(--color-border-highlight);
     background-color: var(--color-surface-card-hover);
-    box-shadow: 0 8px 30px -4px rgba(6, 182, 212, 0.12);
+    box-shadow: 0 8px 30px -4px rgba(6, 182, 212, 0.14);
   }
 
-  /* Buttons */
+  .light .solid-card:hover {
+    border-color: rgba(2, 132, 199, 0.5);
+    background-color: #ffffff;
+    box-shadow: 0 8px 30px -4px rgba(2, 132, 199, 0.16);
+  }
+
+  /* Interactive Buttons */
   .btn-primary {
     @apply relative inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-500 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition-all duration-200 hover:bg-cyan-400 hover:shadow-cyan-500/30 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:scale-[0.98] max-w-full;
   }
 
+  .light .btn-primary {
+    background-color: #0284c7;
+    color: #ffffff;
+    box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.35);
+  }
+
+  .light .btn-primary:hover {
+    background-color: #0369a1;
+  }
+
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface-elevated px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-medium text-content transition-all duration-200 hover:border-accent/40 hover:bg-surface-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:scale-[0.98] max-w-full;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface-elevated px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-content transition-all duration-200 hover:border-accent/40 hover:bg-surface-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:scale-[0.98] max-w-full;
+  }
+
+  .light .btn-secondary {
+    background-color: #ffffff;
+    border-color: rgba(15, 23, 42, 0.18);
+    color: #020617;
+  }
+
+  .light .btn-secondary:hover {
+    border-color: rgba(2, 132, 199, 0.5);
+    background-color: #f1f5f9;
+    color: #0284c7;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-medium text-content-secondary transition-all duration-200 hover:bg-surface-muted hover:text-content focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent max-w-full;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-content-secondary transition-all duration-200 hover:bg-surface-muted hover:text-content focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent max-w-full;
   }
 
   .btn-glass {
-    @apply liquid-glass inline-flex items-center justify-center gap-2 rounded-xl px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-content transition-all duration-200 hover:border-cyan-400/40 hover:text-cyan-300 hover:shadow-lg hover:shadow-cyan-500/10 active:scale-[0.98] max-w-full;
+    @apply liquid-glass inline-flex items-center justify-center gap-2 rounded-xl px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-content transition-all duration-200 hover:border-cyan-400/40 hover:text-accent hover:shadow-lg hover:shadow-cyan-500/10 active:scale-[0.98] max-w-full;
   }
 
   pre,
@@ -225,9 +313,9 @@
     background-image:
       linear-gradient(var(--grid-color) 1px, transparent 1px),
       linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    background-size: 36px 36px;
+    mask-image: radial-gradient(ellipse at center, black 45%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 45%, transparent 85%);
   }
 
   .studio-dots {
@@ -246,11 +334,25 @@
 
   /* Tech Badges */
   .tech-badge {
-    @apply inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-muted px-2.5 py-1 text-xs font-mono font-medium text-content-secondary transition-colors hover:border-accent/30 hover:text-content;
+    @apply inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-muted px-2.5 py-1 text-xs font-mono font-medium text-content-secondary transition-all duration-200 hover:border-accent/40 hover:text-content;
+  }
+
+  .light .tech-badge {
+    background-color: #f1f5f9 !important;
+    border-color: rgba(15, 23, 42, 0.16) !important;
+    color: #0f172a !important;
+    font-weight: 600 !important;
   }
 
   .status-badge {
-    @apply inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-300 tracking-wide max-w-full;
+    @apply inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-mono font-medium text-accent tracking-wide max-w-full;
+  }
+
+  .light .status-badge {
+    background-color: rgba(2, 132, 199, 0.12) !important;
+    border-color: rgba(2, 132, 199, 0.4) !important;
+    color: #0369a1 !important;
+    font-weight: 700 !important;
   }
 
   /* Hide scrollbar utility */
