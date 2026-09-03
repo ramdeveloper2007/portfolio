@@ -152,7 +152,7 @@ export default function FullStackArchitecture() {
                   {/* Animated Connecting Data Connector Line */}
                   {index < layers.length - 1 && (
                     <div className="my-1.5 flex justify-center items-center h-6">
-                      <div className="relative h-full w-0.5 bg-border/80">
+                      <div data-architecture-line className="relative h-full w-0.5 bg-border/80">
                         {!shouldReduceMotion && (
                           <div className="absolute top-0 left-[-2px] h-2 w-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 shadow-[0_0_8px_#06b6d4] animate-data-stream" />
                         )}

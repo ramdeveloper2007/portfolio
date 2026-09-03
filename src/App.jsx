@@ -19,8 +19,11 @@ import BackToTop from './components/BackToTop';
 import LoadingScreen from './components/LoadingScreen';
 import InteractiveBackground from './components/ui/InteractiveBackground';
 import NotFound from './pages/NotFound';
+import { usePortfolioMotion } from './animations/usePortfolioMotion';
 
 function HomePage() {
+  usePortfolioMotion();
+
   return (
     <>
       <a

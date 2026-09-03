@@ -70,6 +70,7 @@ export default function WhatIDo() {
             return (
               <StaggerItem key={item.id}>
                 <div
+                  data-card-effect
                   className={`solid-card rounded-2xl p-6 sm:p-7 h-full flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1.5 ${item.borderColor}`}
                 >
                   <div>

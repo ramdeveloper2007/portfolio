@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
 
-export function FadeIn({ children, className = '', delay = 0, direction = 'up' }) {
+export function FadeIn({ children, className = '', delay = 0, direction = 'up', ...props }) {
   const shouldReduceMotion = useReducedMotion();
 
   const offsets = {
@@ -12,12 +12,13 @@ export function FadeIn({ children, className = '', delay = 0, direction = 'up' }
   };
 
   if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>;
+    return <div className={className} {...props}>{children}</div>;
   }
 
   return (
     <motion.div
       className={className}
+      {...props}
       initial={{ opacity: 0, ...offsets[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}

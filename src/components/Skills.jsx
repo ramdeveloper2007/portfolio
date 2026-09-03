@@ -113,7 +113,7 @@ export default function Skills() {
             const Icon = categoryIcons[category.category] || Layers;
             return (
               <StaggerItem key={category.title}>
-                <div className="solid-card rounded-2xl p-6 h-full flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
+                <div data-card-effect className="solid-card rounded-2xl p-6 h-full flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
                   <div>
                     {/* Header */}
                     <div className="flex items-center justify-between pb-4 mb-4 border-b border-border/80">

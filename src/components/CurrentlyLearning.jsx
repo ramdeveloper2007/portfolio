@@ -17,7 +17,7 @@ export default function CurrentlyLearning() {
         <StaggerContainer className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {currentlyLearning.map((item) => (
             <StaggerItem key={item.name}>
-              <div className="solid-card rounded-2xl p-5 h-full flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
+              <div data-card-effect className="solid-card rounded-2xl p-5 h-full flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
                     <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 group-hover:border-cyan-500/40 transition-all">

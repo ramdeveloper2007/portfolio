@@ -13,7 +13,7 @@ export default function QuickStats() {
             const Icon = statIcons[idx % statIcons.length];
             return (
               <StaggerItem key={stat.label}>
-                <div className="solid-card rounded-2xl p-5 flex items-center gap-4 group">
+                <div data-card-effect className="solid-card rounded-2xl p-5 flex items-center gap-4 group">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 group-hover:scale-105 group-hover:border-cyan-500/40 transition-all">
                     <Icon className="h-6 w-6" />
                   </div>

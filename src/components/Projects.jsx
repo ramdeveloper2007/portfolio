@@ -88,7 +88,7 @@ function ProjectCodePlaceholder({ title }) {
 
 function FeaturedProjectCard({ project, onOpen }) {
   return (
-    <div className="solid-card rounded-3xl overflow-hidden p-6 md:p-8 mb-10 border border-cyan-500/25 shadow-2xl relative bg-surface-card">
+    <div data-motion-item data-project-card data-card-effect className="solid-card rounded-3xl overflow-hidden p-6 md:p-8 mb-10 border border-cyan-500/25 shadow-2xl relative bg-surface-card">
       {/* Featured Header Pill */}
       <div className="flex items-center justify-between mb-6">
         <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/40 bg-cyan-500/10 px-3.5 py-1 text-xs font-mono font-semibold text-accent-content">
@@ -186,6 +186,9 @@ const RegularProjectCard = forwardRef(function RegularProjectCard({ project, onO
   return (
     <motion.article
       ref={ref}
+      data-motion-item
+      data-project-card
+      data-card-effect
       layout
       initial={{ opacity: 0, scale: 0.97 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -279,7 +282,7 @@ export default function Projects() {
   }, [activeFilter]);
 
   return (
-    <section id="projects" className="section-padding relative bg-surface border-t border-border/80" aria-labelledby="projects-heading">
+    <section id="projects" data-motion-section className="section-padding relative bg-surface border-t border-border/80" aria-labelledby="projects-heading">
       <div className="section-container">
         <SectionHeader
           label="Software Showcase"

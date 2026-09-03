@@ -108,7 +108,7 @@ export default function Footer() {
           <div className="flex flex-col items-center justify-between gap-3 sm:flex-row text-xs font-mono text-content-muted">
             <p>© {year} {personal.name}. All rights reserved.</p>
             <p className="flex items-center gap-1">
-              <span>Full-Stack Portfolio // Built with React, Tailwind &amp; Framer Motion</span>
+              <span>Full-Stack Portfolio // Built with React, Tailwind &amp; GSAP</span>
             </p>
           </div>
         </div>

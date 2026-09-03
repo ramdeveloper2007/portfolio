@@ -32,6 +32,7 @@ export default function Hero({ photoUrl = null }) {
   return (
     <section
       id="home"
+      data-hero
       className="relative flex min-h-[92vh] items-center overflow-hidden bg-surface pt-28 pb-16 md:pt-36 md:pb-24"
       aria-label="Introduction"
     >
@@ -44,7 +45,7 @@ export default function Hero({ photoUrl = null }) {
           <div className="min-w-0 max-w-full lg:col-span-7">
             {/* Top Eyebrow Tag */}
             <FadeIn delay={0.05}>
-              <div className="mb-4 inline-flex items-center gap-2">
+              <div data-hero-eyebrow className="mb-4 inline-flex items-center gap-2">
                 <span className="status-badge font-mono">
                   <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_6px_#06b6d4] animate-ping" />
                   HELLO, I'M RAMPRASAD
@@ -54,7 +55,7 @@ export default function Hero({ photoUrl = null }) {
 
             {/* Main Heading */}
             <FadeIn delay={0.12}>
-              <h1 className="max-w-full break-words font-display text-[clamp(2.2rem,8.5vw,3.4rem)] font-extrabold leading-[1.08] tracking-tight text-content sm:text-5xl md:text-6xl lg:text-[3.6rem]">
+              <h1 data-hero-title className="max-w-full break-words font-display text-[clamp(2.2rem,8.5vw,3.4rem)] font-extrabold leading-[1.08] tracking-tight text-content sm:text-5xl md:text-6xl lg:text-[3.6rem]">
                 Ramprasad
                 <span className="mt-1 block max-w-full break-words font-display text-[clamp(1.6rem,6.5vw,2.4rem)] font-bold leading-[1.12] gradient-text sm:text-4xl md:text-5xl">
                   Full-Stack Developer &amp; Aspiring Software Developer
@@ -64,23 +65,24 @@ export default function Hero({ photoUrl = null }) {
 
             {/* Tagline */}
             <FadeIn delay={0.18}>
-              <p className="mt-4 max-w-xl text-sm font-semibold leading-relaxed text-cyan-600 dark:text-cyan-300 sm:text-base font-sans">
+              <p data-hero-copy className="mt-4 max-w-xl text-sm font-semibold leading-relaxed text-cyan-600 dark:text-cyan-300 sm:text-base font-sans">
                 {personal.tagline}
               </p>
             </FadeIn>
 
             {/* Bio Description */}
             <FadeIn delay={0.22}>
-              <p className="mt-3.5 w-full max-w-xl break-words text-sm leading-relaxed text-content-secondary sm:text-base">
+              <p data-hero-copy className="mt-3.5 w-full max-w-xl break-words text-sm leading-relaxed text-content-secondary sm:text-base">
                 {personal.intro}
               </p>
             </FadeIn>
 
             {/* Action CTAs */}
-            <FadeIn delay={0.28} className="mt-8 flex w-full min-w-0 flex-wrap items-center gap-3">
+            <FadeIn delay={0.28} className="mt-8 flex w-full min-w-0 flex-wrap items-center gap-3" data-hero-actions>
               <button
                 type="button"
                 className="btn-primary"
+                data-magnetic
                 onClick={() => scrollToSection('projects')}
               >
                 <span>View My Work</span>
@@ -91,6 +93,7 @@ export default function Hero({ photoUrl = null }) {
                 href={personal.resumePath}
                 download
                 className="btn-secondary"
+                data-magnetic
               >
                 <Download className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
                 <span>Download Resume</span>
@@ -99,6 +102,7 @@ export default function Hero({ photoUrl = null }) {
               <button
                 type="button"
                 className="btn-glass"
+                data-magnetic
                 onClick={() => scrollToSection('contact')}
               >
                 <Mail className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
@@ -107,7 +111,7 @@ export default function Hero({ photoUrl = null }) {
             </FadeIn>
 
             {/* Social Links & Quick Facts */}
-            <FadeIn delay={0.34} className="mt-9 pt-6 border-t border-border/60 flex flex-wrap items-center gap-6">
+            <FadeIn delay={0.34} className="mt-9 pt-6 border-t border-border/60 flex flex-wrap items-center gap-6" data-hero-social>
               <div className="flex items-center gap-2.5">
                 <ExternalLink
                   href={personal.social.github}
@@ -150,7 +154,7 @@ export default function Hero({ photoUrl = null }) {
           {/* Right Column: Locked Constant-Sized Visual Container */}
           <div className="min-w-0 max-w-full lg:col-span-5">
             <FadeIn delay={0.25} direction="left">
-              <div className="space-y-3">
+              <div className="space-y-3" data-hero-parallax>
                 {/* Visual View Mode Toggle */}
                 <div className="flex justify-center lg:justify-end">
                   <div className="inline-flex rounded-xl border border-border bg-surface-card p-1 shadow-md">
@@ -187,7 +191,7 @@ export default function Hero({ photoUrl = null }) {
                   <div className="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-cyan-500/20 via-indigo-500/15 to-transparent blur-2xl pointer-events-none" />
 
                   {/* Main Constant-Sized Frame */}
-                  <div className="solid-card relative h-[480px] sm:h-[510px] w-full flex flex-col justify-between overflow-hidden rounded-3xl border border-border-strong bg-surface-card shadow-2xl">
+                  <div data-hero-photo className="solid-card relative h-[480px] sm:h-[510px] w-full flex flex-col justify-between overflow-hidden rounded-3xl border border-border-strong bg-surface-card shadow-2xl">
                     {/* Locked Top Header Bar */}
                     <div className="h-11 shrink-0 flex items-center justify-between border-b border-border bg-surface-elevated px-4 py-2.5">
                       <div className="flex items-center gap-1.5">

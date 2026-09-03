@@ -121,6 +121,36 @@
     overflow-x: hidden;
   }
 
+  .gsap-cursor {
+    position: fixed;
+    z-index: 120;
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--color-accent-content);
+    border-radius: 999px;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    display: grid;
+    place-items: center;
+  }
+
+  .gsap-cursor-label {
+    color: white;
+    font: 700 7px/1 monospace;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .motion-reduced .gsap-cursor {
+    display: none;
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .gsap-cursor {
+      display: none;
+    }
+  }
+
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
@@ -238,10 +268,37 @@
 
   /* Solid cards - primary theme standard */
   .solid-card {
+    --card-x: 50%;
+    --card-y: 50%;
+    position: relative;
+    isolation: isolate;
     background-color: var(--color-surface-card);
     border: 1px solid var(--color-border);
     box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.25);
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+    will-change: transform;
+    overflow: hidden;
+  }
+
+  .solid-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(circle 180px at var(--card-x) var(--card-y), rgb(var(--color-accent-rgb) / 0.18), transparent 72%);
+    transition: opacity 0.35s ease;
+  }
+
+  .solid-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .solid-card:hover::after {
+    opacity: 1;
   }
 
   .light .solid-card {
@@ -254,6 +311,24 @@
     border-color: var(--color-border-highlight);
     background-color: var(--color-surface-card-hover);
     box-shadow: 0 8px 30px -4px rgba(6, 182, 212, 0.14);
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .solid-card {
+      transform: none !important;
+      will-change: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .solid-card {
+      transform: none !important;
+      transition: none;
+    }
+
+    .solid-card::after {
+      display: none;
+    }
   }
 
   .light .solid-card:hover {

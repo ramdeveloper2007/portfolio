@@ -39,6 +39,7 @@ export default function Navbar() {
   return (
     <>
       <header
+        data-hero-nav
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
           isScrolled ? 'py-2.5 sm:py-3' : 'py-4 sm:py-5'
         }`}
@@ -169,6 +170,7 @@ export default function Navbar() {
               type="button"
               onClick={() => handleNavClick('contact')}
               className="btn-primary w-full justify-center"
+              data-magnetic
             >
               Let's Connect
             </button>
