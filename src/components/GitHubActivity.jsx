@@ -9,9 +9,9 @@ const staticGitHubInfo = {
   note: 'Connecting directly to GitHub public repository index.',
   profileUrl: personal.social.github,
   stats: [
-    { label: 'Public Repositories', value: '4+', icon: GitBranch },
-    { label: 'Primary Language', value: 'Python / JS', icon: Terminal },
-    { label: 'GitHub Ecosystem', value: 'Active', icon: Activity },
+    { label: 'Public Repositories', value: '—', icon: GitBranch },
+    { label: 'Followers', value: '—', icon: Users },
+    { label: 'Total Stars', value: '—', icon: Star },
   ],
 };
 
@@ -19,40 +19,38 @@ export default function GitHubActivity() {
   const isConnected = !isPlaceholderLink(personal.githubUsername) && !personal.githubUsername.startsWith('[');
   const [githubData, setGithubData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!isConnected) return;
 
+    const controller = new AbortController();
     const fetchGitHubData = async () => {
       setLoading(true);
+      setError(false);
       try {
-        const userResponse = await fetch(`https://api.github.com/users/${personal.githubUsername}`);
-        if (userResponse.ok) {
-          const userData = await userResponse.json();
-          setGithubData({
-            publicRepos: userData.public_repos,
-            followers: userData.followers,
-            avatar: userData.avatar_url,
-            name: userData.name || personal.githubUsername,
-          });
-        }
-
-        const reposResponse = await fetch(
-          `https://api.github.com/users/${personal.githubUsername}/repos?per_page=100`
-        );
-        if (reposResponse.ok) {
-          const repos = await reposResponse.json();
-          const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
-          setGithubData((prev) => ({ ...prev, stars: totalStars }));
-        }
-      } catch (error) {
-        console.error('Failed to fetch GitHub data:', error);
+        const [userResponse, reposResponse] = await Promise.all([
+          fetch(`https://api.github.com/users/${personal.githubUsername}`, { signal: controller.signal }),
+          fetch(`https://api.github.com/users/${personal.githubUsername}/repos?per_page=100`, { signal: controller.signal }),
+        ]);
+        if (!userResponse.ok || !reposResponse.ok) throw new Error('GitHub request failed');
+        const [userData, repos] = await Promise.all([userResponse.json(), reposResponse.json()]);
+        setGithubData({
+          publicRepos: userData.public_repos,
+          followers: userData.followers,
+          avatar: userData.avatar_url,
+          name: userData.name || personal.githubUsername,
+          stars: repos.reduce((sum, repo) => sum + repo.stargazers_count, 0),
+        });
+      } catch (fetchError) {
+        if (fetchError.name !== 'AbortError') setError(true);
       } finally {
-        setLoading(false);
+        if (!controller.signal.aborted) setLoading(false);
       }
     };
 
     fetchGitHubData();
+    return () => controller.abort();
   }, [isConnected]);
 
   const displayStats = githubData
@@ -64,11 +62,12 @@ export default function GitHubActivity() {
     : staticGitHubInfo.stats;
 
   return (
-    <section className="section-padding relative bg-surface-muted" aria-labelledby="github-heading">
+    <section id="github" className="section-padding relative bg-surface-muted" aria-labelledby="github-heading">
       <div className="section-container">
         <SectionHeader
           label="Open Source &amp; Code"
           title="GitHub Developer Activity"
+          headingId="github-heading"
           description="A direct look into my open-source repositories, development velocity, and active codebase contributions."
         />
 
@@ -117,42 +116,26 @@ export default function GitHubActivity() {
                       </span>
                     </div>
                     <p className="font-display text-2xl font-extrabold text-content">
-                      {stat.value}
+                      {loading ? '...' : stat.value}
                     </p>
                   </div>
                 );
               })}
             </div>
 
-            {/* Activity Stream Heatmap Preview */}
+            {/* Keep this section factual until a contribution API is connected. */}
             <div className="border-t border-border bg-surface p-6">
               <div className="flex items-center justify-between mb-4">
                 <p className="font-mono text-xs uppercase tracking-wider text-content-secondary">
-                  Continuous Commit Stream
+                  Repository activity
                 </p>
-                <span className="text-[11px] font-mono text-cyan-400">Regular Coding Cadence</span>
+                <span className="text-[11px] font-mono text-content-muted">Live profile metrics above</span>
               </div>
-
-              <div className="flex flex-wrap gap-1.5 overflow-hidden py-1" aria-label="Contribution activity preview">
-                {Array.from({ length: 42 }).map((_, weekIndex) => (
-                  <div key={weekIndex} className="flex flex-col gap-1.5">
-                    {Array.from({ length: 7 }).map((_, dayIndex) => {
-                      const isLit = (weekIndex * 7 + dayIndex) % 3 === 0 || (weekIndex * 7 + dayIndex) % 5 === 0;
-                      return (
-                        <div
-                          key={`${weekIndex}-${dayIndex}`}
-                          className={`h-2.5 w-2.5 rounded-sm transition-colors ${
-                            isLit
-                              ? 'bg-cyan-500/40 hover:bg-cyan-400'
-                              : 'bg-surface-muted/80 hover:bg-surface-muted'
-                          }`}
-                          title={`Active coding commit day`}
-                        />
-                      );
-                    })}
-                  </div>
-                ))}
-              </div>
+              <p className="max-w-2xl text-sm leading-relaxed text-content-secondary">
+                {error
+                  ? 'Live profile metrics are temporarily unavailable. Explore the public repositories directly on GitHub.'
+                  : 'Explore the public repositories and current code activity directly on GitHub. Contribution history is intentionally linked rather than simulated here.'}
+              </p>
             </div>
           </div>
         </FadeIn>

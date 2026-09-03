@@ -1,4 +1,4 @@
-import { Code2, GraduationCap, Target, Cpu, Sparkles, Terminal, BookOpen, CheckCircle2 } from 'lucide-react';
+import { Code2, GraduationCap, Cpu, Terminal, CheckCircle2 } from 'lucide-react';
 import { aboutContent, personal } from '../data/personal';
 import { FadeIn, StaggerContainer, StaggerItem } from './ui/FadeIn';
 import { SectionHeader } from './ui/SectionHeader';
@@ -29,12 +29,12 @@ const infoCards = [
     tag: 'Core Focus',
   },
   {
-    id: 'problem-solver',
-    title: 'Problem Solver',
-    subtitle: 'Practical Real-World Systems',
-    detail: 'Passionate about engineering automated tools like the Academic Timetable Generator.',
-    icon: Target,
-    tag: 'Mindset',
+    id: 'software-focus',
+    title: 'Software Development',
+    subtitle: 'Fundamentals & Practical Systems',
+    detail: 'Growing through programming fundamentals, data structures, and hands-on application development.',
+    icon: Cpu,
+    tag: 'Growth Focus',
   },
 ];
 
@@ -47,6 +47,7 @@ export default function About() {
         <SectionHeader
           label="Profile & Philosophy"
           title="Engineering Mindset & Background"
+          headingId="about-heading"
           description="A dedicated Full-Stack & Software Developer with a strong technical foundation from diploma through BTech degree."
         />
 

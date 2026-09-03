@@ -5,11 +5,16 @@ export const skillCategories = [
       { name: 'HTML', level: 'Intermediate' },
       { name: 'CSS', level: 'Intermediate' },
       { name: 'JavaScript', level: 'Intermediate' },
+      { name: 'Responsive Web Design', level: 'Intermediate' },
     ],
   },
   {
     title: 'Backend Development',
-    skills: [{ name: 'Python Flask', level: 'Intermediate' }],
+    skills: [
+      { name: 'Python', level: 'Intermediate' },
+      { name: 'Flask', level: 'Intermediate' },
+      { name: 'REST APIs', level: 'Learning' },
+    ],
   },
   {
     title: 'Programming Languages',

@@ -1,6 +1,6 @@
 import { FadeIn } from './FadeIn';
 
-export function SectionHeader({ label, title, description, align = 'center' }) {
+export function SectionHeader({ label, title, description, align = 'center', headingId }) {
   const alignment =
     align === 'left'
       ? 'text-left items-start'
@@ -14,7 +14,7 @@ export function SectionHeader({ label, title, description, align = 'center' }) {
           {label}
         </span>
       )}
-      <h2 className="max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-tight text-content sm:text-4xl md:text-5xl">
+      <h2 id={headingId} className="max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-tight text-content sm:text-4xl md:text-5xl">
         {title}
       </h2>
       {description && (

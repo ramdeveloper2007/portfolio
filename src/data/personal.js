@@ -1,16 +1,16 @@
 export const personal = {
   name: 'Ramprasad',
-  role: 'Full-Stack Developer & Software Developer',
+  role: 'Full-Stack Developer | Aspiring Software Developer',
   headline: 'BTech Information Technology Student',
-  tagline: 'Building practical software solutions with code, problem solving, and continuous learning.',
+  tagline: 'Building Modern Web Experiences & Turning Ideas Into Real Applications.',
   intro:
-    'BTech Information Technology student passionate about building modern web applications, practical software solutions, and user-focused digital experiences.',
+    'Full-Stack Developer and aspiring Software Developer with a Computer Engineering background, building responsive web applications across the frontend, backend, and database layers.',
   location: 'Coimbatore, Tamil Nadu, India',
   email: 'ramgokul644@gmail.com',
   resumePath: '/resume/Ramprasad_Resume.pdf',
   social: {
     github: 'https://github.com/ramdeveloper2007',
-    linkedin: 'https://www.linkedin.com/in/ram-prasad-2230b3314?utm_source=share_via&utm_content=profile&utm_medium=member_android',
+    linkedin: 'https://www.linkedin.com/in/ram-prasad-2230b3314',
   },
   githubUsername: 'ramdeveloper2007',
 };
@@ -38,15 +38,15 @@ export const footerLinks = [
 
 export const aboutContent = {
   paragraphs: [
-    'I am Ramprasad, a BTech Information Technology student developing my career as a Full-Stack Developer and Software Developer. My diploma in Computer Engineering gave me a foundation in programming and practical computing, and my degree is helping me build on it.',
-    'I am interested in full-stack web development, software development, programming, and problem solving. I enjoy turning ideas into real-world applications that are useful, understandable, and focused on the people who use them.',
-    'I approach each project as a chance to learn, improve, and apply what I study. Continuous learning in programming, web development, and computer science fundamentals is an important part of my growth as a developer.',
+    'I\'m Ramprasad, a Full-Stack Developer and aspiring Software Developer with a Computer Engineering background, currently pursuing Information Technology.',
+    'I enjoy building complete web applications, from designing responsive interfaces and implementing frontend functionality to developing backend services and working with databases.',
+    'My development journey is focused on continuously improving my programming skills, learning modern technologies, and creating applications that are reliable, responsive, and easy to use.',
   ],
   developerCard: {
     education: 'Diploma in Computer Engineering',
     currentEducation: 'BTech Information Technology',
     focus: 'Full-Stack Web Development and Software Development',
-    currentlyLearning: 'Programming, problem solving, web development, DSA, and computer science fundamentals',
+    currentlyLearning: 'Programming, web development, DSA, and computer science fundamentals',
   },
 };
 

@@ -5,11 +5,12 @@ import { Sparkles, Terminal } from 'lucide-react';
 
 export default function CurrentlyLearning() {
   return (
-    <section className="section-padding relative bg-surface-muted" aria-labelledby="learning-heading">
+    <section id="learning" className="section-padding relative bg-surface-muted" aria-labelledby="learning-heading">
       <div className="section-container">
         <SectionHeader
           label="Continuous Growth"
           title="Active Technical Studies"
+          headingId="learning-heading"
           description="Specific technologies, computer science topics, and engineering paradigms I am currently deepening my knowledge in."
         />
 

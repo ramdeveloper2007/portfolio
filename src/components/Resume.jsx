@@ -17,10 +17,10 @@ export default function Resume() {
                 Curriculum Vitae
               </span>
               <h2 id="resume-heading" className="mt-2 font-display text-3xl font-extrabold text-content md:text-4xl">
-                Ready for Technical Review
+                My Resume
               </h2>
               <p className="mt-4 text-sm sm:text-base leading-relaxed text-content-secondary">
-                Detailed breakdown of my education (Diploma &amp; BTech IT), full-stack project implementations, programming skillsets, and academic coursework.
+                Explore my education, technical skills, projects and development journey.
               </p>
 
               <div className="mt-8 flex flex-wrap justify-center gap-3">

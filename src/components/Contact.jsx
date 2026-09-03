@@ -81,6 +81,7 @@ export default function Contact() {
         <SectionHeader
           label="Direct Communication"
           title="Let's Build Something Together."
+          headingId="contact-heading"
           description="Have an open internship, software project, or opportunity? Feel free to reach out directly."
         />
 

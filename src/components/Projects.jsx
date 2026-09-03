@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { forwardRef, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Layers, Sparkles, ArrowUpRight, Calendar, Users, ShieldCheck, CheckCircle2, Terminal } from 'lucide-react';
 import { projects, projectFilters } from '../data/projects';
@@ -177,9 +177,10 @@ function FeaturedProjectCard({ project, onOpen }) {
   );
 }
 
-function RegularProjectCard({ project, onOpen }) {
+const RegularProjectCard = forwardRef(function RegularProjectCard({ project, onOpen }, ref) {
   return (
     <motion.article
+      ref={ref}
       layout
       initial={{ opacity: 0, scale: 0.97 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -258,7 +259,7 @@ function RegularProjectCard({ project, onOpen }) {
       </div>
     </motion.article>
   );
-}
+});
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -271,7 +272,7 @@ export default function Projects() {
   const otherProjects = useMemo(() => {
     let list = projects.filter((p) => !p.featured);
     if (activeFilter !== 'all') {
-      list = projects.filter((p) => p.categories.includes(activeFilter));
+      list = list.filter((p) => p.categories.includes(activeFilter));
     }
     return list;
   }, [activeFilter]);
@@ -282,6 +283,7 @@ export default function Projects() {
         <SectionHeader
           label="Project Showcase"
           title="Featured Software & Web Applications"
+          headingId="projects-heading"
           description="A curated catalog of real software applications, focusing on scalable backends, user-focused workflows, and clean code."
         />
 

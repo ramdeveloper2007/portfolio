@@ -19,7 +19,7 @@ const codeTabs = [
   primaryFocus: [
     "Modern Web Applications",
     "Scalable Backend Systems",
-    "Problem Solving & DSA"
+    "Continuous Technical Growth"
   ],
   status: "Available for Opportunities",
   buildPhilosophy: "Clean architecture, user-first design."
@@ -130,7 +130,7 @@ function DeveloperLabInspector() {
         </div>
         <div>
           <p className="text-xs font-semibold text-content">Full-Stack &amp; Software Dev</p>
-          <p className="text-[11px] text-cyan-300/80 font-mono">Clean Code • Real Solutions</p>
+          <p className="text-[11px] text-cyan-300/80 font-mono">Frontend • Backend • Database</p>
         </div>
       </motion.div>
     </div>
@@ -176,7 +176,13 @@ export default function Hero() {
             {/* Short Bio Description */}
             <FadeIn delay={0.15}>
               <p className="mt-5 w-full max-w-xl break-words text-base leading-relaxed text-content-secondary sm:text-lg">
-                BTech Information Technology student building modern web applications and practical software solutions with clean code, data structures, and continuous learning.
+                I'm Ramprasad, a Full-Stack Developer and aspiring Software Developer with a background in Computer Engineering and Information Technology. I build responsive web applications across the frontend, backend, and database layers.
+              </p>
+            </FadeIn>
+
+            <FadeIn delay={0.17}>
+              <p className="max-w-xl text-sm font-medium leading-relaxed text-cyan-300 sm:text-base">
+                Building Modern Web Experiences &amp; Turning Ideas Into Real Applications.
               </p>
             </FadeIn>
 
@@ -187,7 +193,7 @@ export default function Hero() {
                 className="btn-primary"
                 onClick={() => scrollToSection('projects')}
               >
-                <span>View Projects</span>
+                <span>View My Work</span>
                 <ExtIcon className="h-4 w-4" />
               </button>
 
@@ -197,7 +203,7 @@ export default function Hero() {
                 onClick={() => scrollToSection('contact')}
               >
                 <Mail className="h-4 w-4 text-cyan-400" />
-                <span>Contact Me</span>
+                <span>Let's Connect</span>
               </button>
 
               <a

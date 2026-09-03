@@ -19,6 +19,7 @@ export default function Achievements() {
         <SectionHeader
           label="Milestones"
           title="Key Accomplishments &amp; Benchmarks"
+          headingId="achievements-heading"
           description="A curated catalog of verified achievements, academic milestones, and engineering project highlights."
         />
 

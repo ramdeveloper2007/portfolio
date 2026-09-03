@@ -21,10 +21,26 @@ function DetailBlock({ title, content, icon: Icon = Terminal }) {
 export default function ProjectModal({ project, onClose }) {
   const shouldReduceMotion = useReducedMotion();
   const closeRef = useRef(null);
+  const dialogRef = useRef(null);
 
   useEffect(() => {
+    const previouslyFocused = document.activeElement;
     const handleKey = (e) => {
       if (e.key === 'Escape') onClose();
+      if (e.key !== 'Tab' || !dialogRef.current) return;
+      const focusable = dialogRef.current.querySelectorAll(
+        'button:not([disabled]), a[href], input:not([disabled]), textarea:not([disabled]), select:not([disabled])'
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     document.addEventListener('keydown', handleKey);
     document.body.style.overflow = 'hidden';
@@ -33,6 +49,7 @@ export default function ProjectModal({ project, onClose }) {
     return () => {
       document.removeEventListener('keydown', handleKey);
       document.body.style.overflow = '';
+      previouslyFocused?.focus?.();
     };
   }, [onClose]);
 
@@ -56,6 +73,7 @@ export default function ProjectModal({ project, onClose }) {
           exit={{ opacity: 0, y: 30, scale: 0.98 }}
           transition={{ type: 'spring', damping: 25, stiffness: 280 }}
           className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-2xl border border-border-strong bg-studio-900 shadow-2xl sm:rounded-2xl"
+          ref={dialogRef}
           onClick={(e) => e.stopPropagation()}
           role="dialog"
           aria-modal="true"

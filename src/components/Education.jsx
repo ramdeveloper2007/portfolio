@@ -21,6 +21,7 @@ export function Education() {
         <SectionHeader
           label="Academic Foundation"
           title="Education &amp; Credentials"
+          headingId="education-heading"
           description="My educational path from diploma in computer engineering to BTech IT degree, mastering computer science fundamentals and software architecture."
         />
 
@@ -91,6 +92,7 @@ export function Journey() {
         <SectionHeader
           label="Progressive Roadmap"
           title="Developer Evolution Journey"
+          headingId="journey-heading"
           description="The progression path from engineering fundamentals to full-stack application development and professional software creation."
         />
 
@@ -119,7 +121,7 @@ export function Journey() {
                       {step.title}
                     </h3>
                     <p className="mt-1 text-[11px] font-mono text-content-muted">
-                      {step.placeholder ? 'Upcoming Target' : 'Achieved & Applied'}
+                      {step.status === 'goal' ? 'Future Direction' : step.status === 'learning' ? 'Currently Learning' : step.status === 'current' ? 'Current Focus' : 'Built Through Study & Projects'}
                     </p>
                   </div>
                 </div>

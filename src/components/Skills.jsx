@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { skillCategories, levelStyles } from '../data/skills';
+import { skillCategories } from '../data/skills';
 import { FadeIn, StaggerContainer, StaggerItem } from './ui/FadeIn';
 import { SectionHeader } from './ui/SectionHeader';
 import { Search, Code2, Server, Terminal, Database, Wrench, Layers, Sparkles } from 'lucide-react';
@@ -48,6 +48,7 @@ export default function Skills() {
         <SectionHeader
           label="Technical Arsenal"
           title="Developer Skill Dashboard"
+          headingId="skills-heading"
           description="A structured overview of the programming languages, full-stack frameworks, databases, and developer tools in my workflow."
         />
 
