@@ -261,6 +261,7 @@
 
   .light .gradient-text {
     background-image: linear-gradient(135deg, #0284c7 0%, #1d4ed8 50%, #4338ca 100%) !important;
+    background-clip: text !important;
     -webkit-background-clip: text !important;
     color: transparent !important;
     font-weight: 800 !important;
@@ -401,10 +402,14 @@
   /* Subtle Gradient Text */
   .gradient-text {
     @apply bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
   }
 
   .gradient-text-alt {
     @apply bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
   }
 
   /* Tech Badges */
