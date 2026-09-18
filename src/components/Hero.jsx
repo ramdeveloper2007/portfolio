@@ -57,27 +57,27 @@ export default function Hero({ photoUrl = null }) {
             <FadeIn delay={0.12}>
               <h1 data-hero-title className="max-w-full break-words font-display text-[clamp(2.2rem,8.5vw,3.4rem)] font-extrabold leading-[1.08] tracking-tight text-content sm:text-5xl md:text-6xl lg:text-[3.6rem]">
                 Ramprasad
-                <span className="mt-1 block max-w-full break-words font-display text-[clamp(1.6rem,6.5vw,2.4rem)] font-bold leading-[1.12] gradient-text sm:text-4xl md:text-5xl">
-                  Full-Stack Developer &amp; Aspiring Software Developer
+                <span className="mt-1 block max-w-full break-words font-display text-[clamp(1.4rem,5.2vw,2.2rem)] font-bold leading-[1.12] gradient-text sm:text-4xl md:text-5xl">
+                  Full-Stack Developer
+                </span>
+                <span className="mt-1 block max-w-full break-words text-sm font-medium uppercase tracking-[0.2em] text-content-muted sm:text-base">
+                  B.Tech IT Student · Aspiring Software Developer
                 </span>
               </h1>
             </FadeIn>
 
-            {/* Tagline */}
             <FadeIn delay={0.18}>
               <p data-hero-copy className="mt-4 max-w-xl text-sm font-semibold leading-relaxed text-cyan-600 dark:text-cyan-300 sm:text-base font-sans">
                 {personal.tagline}
               </p>
             </FadeIn>
 
-            {/* Bio Description */}
             <FadeIn delay={0.22}>
               <p data-hero-copy className="mt-3.5 w-full max-w-xl break-words text-sm leading-relaxed text-content-secondary sm:text-base">
                 {personal.intro}
               </p>
             </FadeIn>
 
-            {/* Action CTAs */}
             <FadeIn delay={0.28} className="mt-8 flex w-full min-w-0 flex-wrap items-center gap-3" data-hero-actions>
               <button
                 type="button"
@@ -85,7 +85,7 @@ export default function Hero({ photoUrl = null }) {
                 data-magnetic
                 onClick={() => scrollToSection('projects')}
               >
-                <span>View My Work</span>
+                <span>View Projects</span>
                 <ExtIcon className="h-4 w-4" />
               </button>
 
@@ -99,15 +99,38 @@ export default function Hero({ photoUrl = null }) {
                 <span>Download Resume</span>
               </a>
 
-              <button
-                type="button"
+              <ExternalLink
+                href={personal.social.github}
                 className="btn-glass"
-                data-magnetic
-                onClick={() => scrollToSection('contact')}
+                showIcon={false}
               >
-                <Mail className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
-                <span>Let's Connect</span>
-              </button>
+                <Github className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
+                <span>GitHub ↗</span>
+              </ExternalLink>
+
+              <ExternalLink
+                href={personal.social.linkedin}
+                className="btn-glass"
+                showIcon={false}
+              >
+                <Linkedin className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
+                <span>LinkedIn ↗</span>
+              </ExternalLink>
+            </FadeIn>
+
+            <FadeIn delay={0.32} className="mt-7 flex flex-col gap-3 border-t border-border/80 pt-5 sm:flex-row sm:flex-wrap sm:items-center" data-hero-status>
+              <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-emerald-400">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                OPEN TO OPPORTUNITIES
+              </div>
+              <div className="text-sm text-content-secondary">
+                <span className="font-semibold text-content">B.Tech IT</span>
+                <span className="mx-2 text-content-muted">•</span>
+                <span>KPR College</span>
+              </div>
+              <div className="text-sm text-content-secondary">
+                Currently building → <span className="font-semibold text-cyan-300">Full-Stack Applications</span>
+              </div>
             </FadeIn>
 
             {/* Social Links & Quick Facts */}

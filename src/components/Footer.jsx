@@ -25,11 +25,11 @@ export default function Footer() {
                 <p className="font-display text-lg font-bold tracking-tight text-content">
                   {personal.name}
                 </p>
-                <p className="text-xs font-mono text-cyan-400">Full-Stack Developer | Aspiring Software Developer</p>
+                <p className="text-xs font-mono text-cyan-400">Full-Stack Developer</p>
               </div>
             </div>
             <p className="max-w-sm text-xs sm:text-sm leading-relaxed text-content-secondary font-sans">
-              Building modern web experiences and continuously growing through technology.
+              Full-Stack Developer • Aspiring Software Developer
             </p>
             <div className="flex items-center gap-2 font-mono text-[11px] text-content-muted">
               <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]" />

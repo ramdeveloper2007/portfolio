@@ -1,10 +1,10 @@
 export const personal = {
   name: 'Ramprasad',
-  role: 'Full-Stack Developer | Aspiring Software Developer',
-  headline: 'BTech Information Technology Student',
-  tagline: 'Building Modern Web Experiences & Turning Ideas Into Real Applications.',
+  role: 'Full-Stack Developer',
+  headline: 'B.Tech Information Technology Student',
+  tagline: 'Full-Stack Developer • B.Tech IT Student • Aspiring Software Developer',
   intro:
-    "I'm Ramprasad, a Full-Stack Developer and aspiring Software Developer with a background in Computer Engineering and Information Technology. I build responsive web applications across frontend, backend, and database technologies while continuously expanding my development skills.",
+    'I build modern web applications across frontend, backend, and database technologies, turning ideas into functional digital products.',
   location: 'Coimbatore, Tamil Nadu, India',
   email: 'ramgokul644@gmail.com',
   resumePath: '/resume/Ramprasad_Resume.pdf',
@@ -16,44 +16,40 @@ export const personal = {
 };
 
 export const navLinks = [
-  { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'journey', label: 'Journey' },
-  { id: 'education', label: 'Education' },
-  { id: 'resume', label: 'Resume' },
   { id: 'contact', label: 'Contact' },
+  { id: 'resume', label: 'Resume ↗' },
 ];
 
 export const footerLinks = [
-  { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'journey', label: 'Journey' },
-  { id: 'education', label: 'Education' },
-  { id: 'resume', label: 'Resume' },
   { id: 'contact', label: 'Contact' },
+  { id: 'resume', label: 'Resume' },
 ];
 
 export const aboutContent = {
   heading: 'About Me',
   paragraphs: [
-    "I'm Ramprasad, a Full-Stack Developer and aspiring Software Developer with a Computer Engineering background, currently pursuing Information Technology.",
-    'I enjoy building complete web applications — from responsive interfaces and frontend functionality to backend services and database integration.',
-    'My development journey focuses on continuously improving my programming skills, learning modern technologies, and creating practical projects that allow me to apply what I learn.',
+    'I am Ramprasad, a Full-Stack Developer and aspiring Software Developer currently pursuing B.Tech in Information Technology.',
+    'I focus on building practical web applications that connect clean frontend UX to backend logic and database systems, with an emphasis on solving real problems through software.',
+    'My learning path includes modern frontend development, backend architecture, databases, data structures, and system fundamentals as I work toward software engineering opportunities.',
   ],
   developerCard: {
-    degree: 'BTech Information Technology (Current)',
-    diploma: 'Diploma in Computer Engineering (Completed)',
-    focus: 'Full-Stack Web Architecture & Software Engineering',
-    coreStack: 'Python, Flask, JavaScript, React, SQL, SQLite',
+    degree: 'B.Tech — Information Technology',
+    diploma: 'Diploma — Computer Engineering',
+    focus: 'Full-Stack Development',
+    coreStack: 'Python, Java, JavaScript, React, SQL, Git',
   },
 };
 
 export const quickStats = [
-  { value: '3+', label: 'Years of BTech Journey' },
-  { value: '1+', label: 'Major Full-Stack Project' },
-  { value: '9+', label: 'Core Technologies Applied' },
+  { value: 'B.Tech', label: 'Information Technology' },
+  { value: '4+', label: 'Core Development Areas' },
+  { value: '5+', label: 'Project Builds' },
 ];

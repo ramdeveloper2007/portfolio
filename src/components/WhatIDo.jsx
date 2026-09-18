@@ -59,61 +59,45 @@ export default function WhatIDo() {
       <div className="section-container">
         <SectionHeader
           label="Core Specializations"
-          title="What I Do"
+          title="What I Build"
           headingId="what-i-do-heading"
-          description="Delivering complete, scalable software solutions across every tier of modern web engineering."
+          description="Focused on practical software engineering, responsive product experiences, and full-stack problem solving."
         />
 
         <StaggerContainer className="grid gap-6 md:grid-cols-2">
-          {capabilities.map((item) => {
-            const Icon = item.icon;
-            return (
-              <StaggerItem key={item.id}>
-                <div
-                  data-card-effect
-                  className={`solid-card rounded-2xl p-6 sm:p-7 h-full flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1.5 ${item.borderColor}`}
-                >
-                  <div>
-                    {/* Card Top Row: Icon & Tag */}
-                    <div className="flex items-center justify-between mb-5">
-                      <div
-                        className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${item.accent} ${item.iconColor} border border-border shadow-md transition-transform duration-300 group-hover:scale-110`}
-                      >
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-content-muted rounded-full border border-border bg-surface-muted px-2.5 py-1">
-                        TIER // {item.id.toUpperCase()}
-                      </span>
-                    </div>
-
-                    {/* Titles */}
-                    <h3 className="font-display text-xl font-bold text-content group-hover:text-cyan-300 transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="mt-1 text-xs font-mono font-medium text-cyan-400/90">
-                      {item.subtitle}
-                    </p>
-
-                    {/* Detailed Description */}
-                    <p className="mt-3.5 text-xs sm:text-sm leading-relaxed text-content-secondary">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Technologies Badges */}
-                  <div className="mt-6 pt-4 border-t border-border/70">
-                    <div className="flex flex-wrap gap-1.5">
-                      {item.tech.map((t) => (
-                        <span key={t} className="tech-badge text-[11px] py-0.5">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+          {[
+            {
+              id: '01',
+              title: 'Full-Stack Applications',
+              description: 'Building complete products that connect user-facing interfaces to business logic and database-backed features.',
+            },
+            {
+              id: '02',
+              title: 'Modern Web Experiences',
+              description: 'Creating responsive, clean, and intuitive interfaces with strong frontend structure and user flow design.',
+            },
+            {
+              id: '03',
+              title: 'Real-World Software Projects',
+              description: 'Developing practical systems that solve concrete problems with maintainable architecture and clear functionality.',
+            },
+            {
+              id: '04',
+              title: 'Continuous Learning',
+              description: 'Expanding my technical depth through new frameworks, system fundamentals, and software engineering concepts.',
+            },
+          ].map((item) => (
+            <StaggerItem key={item.id}>
+              <div className="solid-card h-full rounded-2xl p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5">
+                <div className="mb-5 flex items-center justify-between">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-content-muted">{item.id}</span>
+                  <span className="h-2.5 w-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
                 </div>
-              </StaggerItem>
-            );
-          })}
+                <h3 className="font-display text-xl font-bold text-content">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-content-secondary">{item.description}</p>
+              </div>
+            </StaggerItem>
+          ))}
         </StaggerContainer>
       </div>
     </section>

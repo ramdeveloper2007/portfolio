@@ -80,9 +80,9 @@ export default function Contact() {
       <div className="section-container">
         <SectionHeader
           label="Direct Inquiries"
-          title="Let's Connect"
+          title="Let's Build Something"
           headingId="contact-heading"
-          description="I'm open to internships, collaborations, software development opportunities, and interesting projects."
+          description="Have an opportunity, project, or idea? Let's talk."
         />
 
         {/* Contact Card */}
