@@ -19,21 +19,34 @@ export function usePortfolioMotion() {
       const isTouch = isTouchDevice();
       const isMobile = window.matchMedia('(max-width: 767px)').matches;
       const hero = document.querySelector('[data-hero]');
+      const revealTargets = gsap.utils.toArray('[data-reveal]');
+      const heroNavTargets = gsap.utils.toArray('[data-hero-nav]');
+      const heroEyebrowTargets = gsap.utils.toArray('[data-hero-eyebrow]');
+      const heroTitleTargets = gsap.utils.toArray('[data-hero-title]');
+      const heroTitleTextTargets = gsap.utils.toArray('[data-hero-title] span');
+      const heroCopyTargets = gsap.utils.toArray('[data-hero-copy]');
+      const heroActionTargets = gsap.utils.toArray('[data-hero-actions]');
+      const heroSocialTargets = gsap.utils.toArray('[data-hero-social]');
+      const heroPhotoTargets = gsap.utils.toArray('[data-hero-photo]');
 
-      gsap.set('[data-reveal]', { y: 32, opacity: 0 });
-      gsap.set('[data-hero-photo]', { clipPath: 'inset(0 0 100% 0)', scale: 0.96, opacity: 0 });
+      if (revealTargets.length) {
+        gsap.set(revealTargets, { y: 32, opacity: 0 });
+      }
+      if (heroPhotoTargets.length) {
+        gsap.set(heroPhotoTargets, { clipPath: 'inset(0 0 100% 0)', scale: 0.96, opacity: 0 });
+      }
 
       if (hero) {
         const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
         intro
-          .to('[data-hero-nav]', { y: 0, opacity: 1, duration: 0.65 }, 0)
-          .to('[data-hero-eyebrow]', { y: 0, opacity: 1, duration: 0.55 }, 0.15)
-          .to('[data-hero-title]', { y: 0, opacity: 1, duration: 0.85, ease: 'power4.out' }, 0.28)
-          .fromTo('[data-hero-title] span', { yPercent: 110, opacity: 0, clipPath: 'inset(0 0 100% 0)' }, { yPercent: 0, opacity: 1, clipPath: 'inset(0 0 0% 0)', duration: 0.8, ease: 'power4.out' }, 0.42)
-          .to('[data-hero-copy]', { y: 0, opacity: 1, duration: 0.6 }, 0.5)
-          .to('[data-hero-actions]', { y: 0, opacity: 1, duration: 0.6 }, 0.64)
-          .to('[data-hero-social]', { y: 0, opacity: 1, duration: 0.55 }, 0.76)
-          .to('[data-hero-photo]', { clipPath: 'inset(0 0 0% 0)', scale: 1, opacity: 1, duration: 1.1, ease: 'power4.inOut' }, 0.3);
+          .to(heroNavTargets, { y: 0, opacity: 1, duration: 0.65 }, 0)
+          .to(heroEyebrowTargets, { y: 0, opacity: 1, duration: 0.55 }, 0.15)
+          .to(heroTitleTargets, { y: 0, opacity: 1, duration: 0.85, ease: 'power4.out' }, 0.28)
+          .fromTo(heroTitleTextTargets, { yPercent: 110, opacity: 0, clipPath: 'inset(0 0 100% 0)' }, { yPercent: 0, opacity: 1, clipPath: 'inset(0 0 0% 0)', duration: 0.8, ease: 'power4.out' }, 0.42)
+          .to(heroCopyTargets, { y: 0, opacity: 1, duration: 0.6 }, 0.5)
+          .to(heroActionTargets, { y: 0, opacity: 1, duration: 0.6 }, 0.64)
+          .to(heroSocialTargets, { y: 0, opacity: 1, duration: 0.55 }, 0.76)
+          .to(heroPhotoTargets, { clipPath: 'inset(0 0 0% 0)', scale: 1, opacity: 1, duration: 1.1, ease: 'power4.inOut' }, 0.3);
       }
 
       gsap.utils.toArray('[data-motion-section], section[id]:not(#home)').forEach((section) => {
