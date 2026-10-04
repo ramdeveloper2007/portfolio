@@ -1,4 +1,4 @@
-import { Download, FileText, ArrowUpRight } from 'lucide-react';
+import { Download, FileText, ArrowUpRight, Sparkles } from 'lucide-react';
 import { personal } from '../data/personal';
 import { FadeIn } from './ui/FadeIn';
 
@@ -7,13 +7,17 @@ export default function Resume() {
     <section id="resume" className="section-padding relative bg-surface border-t border-border/80" aria-labelledby="resume-heading">
       <div className="section-container">
         <FadeIn>
-          <div className="solid-card rounded-3xl overflow-hidden p-8 md:p-12 relative border border-cyan-500/20 shadow-2xl">
+          <div className="solid-card rounded-3xl overflow-hidden p-8 md:p-12 relative border border-cyan-500/30 shadow-2xl shadow-cyan-950/20">
+            {/* Ambient background glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
+
             <div className="relative z-10 mx-auto max-w-2xl text-center">
-              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shadow-lg shadow-cyan-500/10">
+              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 shadow-lg shadow-cyan-500/15">
                 <FileText className="h-7 w-7" />
               </div>
 
-              <span className="font-mono text-xs uppercase tracking-widest text-cyan-400 font-semibold">
+              <span className="font-mono text-xs uppercase tracking-widest text-cyan-400 font-semibold flex items-center justify-center gap-1.5">
+                <Sparkles className="h-3.5 w-3.5" />
                 CURRICULUM VITAE
               </span>
               <h2 id="resume-heading" className="mt-2 font-display text-3xl font-extrabold text-content md:text-4xl">
@@ -28,13 +32,21 @@ export default function Resume() {
                   href={personal.resumePath}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-magnetic
+                  data-cursor-label="VIEW"
                   className="btn-primary"
                 >
                   <FileText className="h-4 w-4" />
                   <span>View Resume</span>
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </a>
-                <a href={personal.resumePath} download className="btn-secondary">
+                <a
+                  href={personal.resumePath}
+                  download
+                  data-magnetic
+                  data-cursor-label="DOWNLOAD"
+                  className="btn-secondary"
+                >
                   <Download className="h-4 w-4 text-cyan-400" />
                   <span>Download Resume</span>
                 </a>

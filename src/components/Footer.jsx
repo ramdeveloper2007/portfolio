@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUp, Sparkles, Activity } from 'lucide-react';
 import { personal, footerLinks } from '../data/personal';
 import { scrollToSection } from '../hooks/useScrollSpy';
 import { ExternalLink } from '../utils/helpers';
@@ -11,9 +11,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-border bg-surface text-content" aria-label="Site footer">
+    <footer className="border-t border-border bg-surface text-content relative overflow-hidden" aria-label="Site footer">
+      {/* Subtle bottom cyber glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-40 w-[40rem] rounded-full bg-cyan-500/5 blur-3xl pointer-events-none" />
+
       {/* Main Footer Content */}
-      <div className="section-container py-14 md:py-16">
+      <div className="section-container py-14 md:py-16 relative z-10">
         <div className="grid gap-10 md:grid-cols-12">
           {/* Branding */}
           <div className="md:col-span-5 space-y-4">
@@ -32,14 +35,15 @@ export default function Footer() {
               Full-Stack Developer • Aspiring Software Developer
             </p>
             <div className="flex items-center gap-2 font-mono text-[11px] text-content-muted">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]" />
+              <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
               <span>Available for Full-Stack Roles &amp; Opportunities</span>
             </div>
           </div>
 
           {/* Quick Navigation Links */}
           <div className="md:col-span-3">
-            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-cyan-400 font-semibold">
+            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-cyan-400 font-semibold flex items-center gap-1.5">
+              <Sparkles className="h-3.5 w-3.5" />
               Navigation
             </p>
             <ul className="space-y-2 text-xs">
@@ -48,7 +52,7 @@ export default function Footer() {
                   <button
                     type="button"
                     onClick={() => scrollToSection(link.id)}
-                    className="text-content-secondary transition-colors duration-200 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                    className="text-content-secondary transition-colors duration-200 hover:text-cyan-300 hover:translate-x-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 font-medium"
                   >
                     {link.label}
                   </button>
@@ -65,7 +69,7 @@ export default function Footer() {
             <div className="flex gap-2.5">
               <ExternalLink
                 href={personal.social.github}
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary transition-all duration-200 hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary transition-all duration-200 hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-110 shadow-sm"
                 showIcon={false}
                 aria-label="GitHub profile"
               >
@@ -74,7 +78,7 @@ export default function Footer() {
               </ExternalLink>
               <ExternalLink
                 href={personal.social.linkedin}
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary transition-all duration-200 hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary transition-all duration-200 hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-110 shadow-sm"
                 showIcon={false}
                 aria-label="LinkedIn profile"
               >
@@ -83,7 +87,7 @@ export default function Footer() {
               </ExternalLink>
               <a
                 href={`mailto:${personal.email}`}
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary transition-all duration-200 hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-105"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary transition-all duration-200 hover:border-cyan-500/40 hover:text-cyan-300 hover:scale-110 shadow-sm"
                 aria-label="Send direct email"
               >
                 <Mail className="h-4 w-4" />
@@ -92,11 +96,12 @@ export default function Footer() {
 
             <button
               type="button"
+              data-magnetic
               onClick={handleScrollToTop}
               className="mt-2 inline-flex items-center gap-1.5 font-mono text-xs text-content-muted hover:text-cyan-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <span>Back to Top of Portfolio</span>
-              <ArrowUp className="h-3.5 w-3.5 text-cyan-400" />
+              <ArrowUp className="h-3.5 w-3.5 text-cyan-400 animate-bounce" />
             </button>
           </div>
         </div>
@@ -107,8 +112,9 @@ export default function Footer() {
         <div className="section-container">
           <div className="flex flex-col items-center justify-between gap-3 sm:flex-row text-xs font-mono text-content-muted">
             <p>© {year} {personal.name}. All rights reserved.</p>
-            <p className="flex items-center gap-1">
-              <span>Full-Stack Portfolio // Built with React, Tailwind &amp; GSAP</span>
+            <p className="flex items-center gap-1.5 text-cyan-400/90">
+              <Activity className="h-3 w-3" />
+              <span>Full-Stack Portfolio // Built with React, Tailwind, GSAP &amp; Canvas</span>
             </p>
           </div>
         </div>

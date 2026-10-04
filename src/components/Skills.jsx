@@ -57,9 +57,9 @@ export default function Skills() {
           description="A structured overview of the programming languages, full-stack frameworks, database management systems, and developer tools in my active stack."
         />
 
-        {/* Dashboard Control Bar (Category Filter Tabs + Search Input) */}
+        {/* Dashboard Control Bar */}
         <FadeIn className="mb-10">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between rounded-2xl border border-border bg-surface-card p-3 md:p-4 shadow-lg">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between rounded-2xl border border-cyan-500/20 bg-surface-card p-3 md:p-4 shadow-xl shadow-cyan-950/10 backdrop-blur-md">
             {/* Category Tabs */}
             <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="Skill category filter">
               {filterTabs.map((cat) => {
@@ -69,11 +69,12 @@ export default function Skills() {
                     key={cat.id}
                     type="button"
                     role="tab"
+                    data-magnetic
                     aria-selected={isActive}
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`rounded-xl px-3.5 py-1.5 text-xs font-mono font-medium transition-all ${
                       isActive
-                        ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 shadow-sm'
+                        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 shadow-[0_0_12px_rgba(6,182,212,0.2)] font-semibold'
                         : 'text-content-secondary hover:text-content hover:bg-surface-muted border border-transparent'
                     }`}
                   >
@@ -91,7 +92,7 @@ export default function Skills() {
                 placeholder="Search tech, concepts..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-xl border border-border bg-surface-muted pl-9 pr-3 py-1.5 text-xs text-content placeholder:text-content-muted font-mono focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                className="w-full rounded-xl border border-border bg-surface-muted pl-9 pr-3 py-1.5 text-xs text-content placeholder:text-content-muted font-mono focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/30 transition-all"
               />
               {searchQuery && (
                 <button
@@ -113,21 +114,25 @@ export default function Skills() {
             const Icon = categoryIcons[category.category] || Layers;
             return (
               <StaggerItem key={category.title}>
-                <div data-card-effect className="solid-card rounded-2xl p-6 h-full flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1">
+                <div
+                  data-card-effect
+                  data-cursor-label="STACK"
+                  className="solid-card rounded-2xl p-6 h-full flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1 border border-border hover:border-cyan-500/40 shadow-lg hover:shadow-cyan-950/20"
+                >
                   <div>
                     {/* Header */}
                     <div className="flex items-center justify-between pb-4 mb-4 border-b border-border/80">
                       <div className="flex items-center gap-3">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 group-hover:border-cyan-500/40 group-hover:scale-105 transition-all">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/25 group-hover:border-cyan-500/50 group-hover:scale-110 group-hover:shadow-[0_0_12px_rgba(6,182,212,0.3)] transition-all">
                           <Icon className="h-4 w-4" />
                         </div>
                         <div>
-                          <h3 className="font-display text-base font-bold text-content">
+                          <h3 className="font-display text-base font-bold text-content group-hover:text-cyan-300 transition-colors">
                             {category.title}
                           </h3>
                         </div>
                       </div>
-                      <span className="text-[11px] font-mono text-content-muted">
+                      <span className="text-[11px] font-mono text-cyan-400 font-medium">
                         {category.skills.length} {category.skills.length === 1 ? 'skill' : 'skills'}
                       </span>
                     </div>
@@ -136,15 +141,16 @@ export default function Skills() {
                       {category.description}
                     </p>
 
-                    {/* Skill Items with Interactive Detail */}
+                    {/* Skill Items with Level Progress Indicators */}
                     <div className="space-y-2.5">
                       {category.skills.map((skill) => (
                         <div
                           key={skill.name}
-                          className="rounded-xl border border-border/60 bg-surface-muted/40 p-3 transition-all duration-200 hover:border-cyan-500/30 hover:bg-surface-muted"
+                          className="rounded-xl border border-border/60 bg-surface-muted/40 p-3 transition-all duration-200 hover:border-cyan-500/40 hover:bg-surface-muted hover:shadow-sm"
                         >
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-mono font-semibold text-content">
+                            <span className="text-xs font-mono font-semibold text-content flex items-center gap-1.5">
+                              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_6px_#06b6d4]" />
                               {skill.name}
                             </span>
                             <span

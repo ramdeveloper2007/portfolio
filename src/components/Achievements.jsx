@@ -31,13 +31,14 @@ export default function Achievements() {
             return (
               <StaggerItem key={item.id}>
                 <article
-                  className={`solid-card rounded-2xl h-full p-6 flex flex-col justify-between group ${
+                  data-cursor-label="BADGE"
+                  className={`solid-card rounded-2xl h-full p-6 flex flex-col justify-between group border border-border hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1.5 shadow-md hover:shadow-cyan-950/20 ${
                     isPlaceholder ? 'border-dashed opacity-65' : ''
                   }`}
                 >
                   <div>
                     <div className="mb-4 flex items-center justify-between">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 group-hover:border-cyan-500/40 group-hover:scale-105 transition-all">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 group-hover:border-cyan-500/50 group-hover:scale-110 group-hover:shadow-[0_0_12px_rgba(6,182,212,0.3)] transition-all">
                         <Icon className="h-5 w-5" />
                       </div>
                       <span className="rounded-full border border-border bg-surface-muted px-2.5 py-0.5 font-mono text-[10px] text-content-muted">
@@ -68,4 +69,3 @@ export default function Achievements() {
     </section>
   );
 }
-

@@ -43,10 +43,10 @@
     --color-surface-muted: #e2e8f0;
     --color-surface-card: #ffffff;
     --color-surface-card-hover: #f8fafc;
-    --color-content: #020617; /* Deepest black for razor-sharp text */
-    --color-content-secondary: #0f172a; /* Slate 900 - ultra clear, high contrast */
-    --color-content-muted: #334155; /* Slate 700 - prominent & punchy */
-    --color-accent-content: #0369a1; /* Sky 700 */
+    --color-content: #020617;
+    --color-content-secondary: #0f172a;
+    --color-content-muted: #334155;
+    --color-accent-content: #0369a1;
     --color-accent: #0284c7;
     --color-accent-rgb: 2 132 199;
     --color-accent-hover: #0369a1;
@@ -121,33 +121,60 @@
     overflow-x: hidden;
   }
 
-  .gsap-cursor {
+  /* Futuristic Cyber Cursor (Emotion Agency Reference) */
+  .cyber-cursor {
     position: fixed;
-    z-index: 120;
-    width: 12px;
-    height: 12px;
-    border: 1px solid var(--color-accent-content);
+    z-index: 999;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(6, 182, 212, 0.6);
     border-radius: 999px;
     pointer-events: none;
-    mix-blend-mode: difference;
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center center;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    backdrop-filter: blur(1px);
   }
 
-  .gsap-cursor-label {
-    color: white;
-    font: 700 7px/1 monospace;
-    letter-spacing: 0.08em;
+  .cyber-cursor.has-label {
+    width: 54px;
+    height: 54px;
+    background: rgba(6, 182, 212, 0.12);
+    border-color: rgba(6, 182, 212, 0.9);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+  }
+
+  .cyber-cursor-dot {
+    position: fixed;
+    z-index: 1000;
+    width: 5px;
+    height: 5px;
+    background: #06b6d4;
+    border-radius: 999px;
+    pointer-events: none;
+    box-shadow: 0 0 8px #06b6d4;
+  }
+
+  .cyber-cursor-label {
+    color: #ffffff;
+    font: 700 7px/1 'JetBrains Mono', monospace;
+    letter-spacing: 0.1em;
     white-space: nowrap;
+    text-transform: uppercase;
+    text-shadow: 0 0 4px rgba(6, 182, 212, 0.8);
   }
 
-  .motion-reduced .gsap-cursor {
-    display: none;
+  .motion-reduced .cyber-cursor,
+  .motion-reduced .cyber-cursor-dot {
+    display: none !important;
   }
 
   @media (hover: none), (pointer: coarse) {
-    .gsap-cursor {
-      display: none;
+    .cyber-cursor,
+    .cyber-cursor-dot {
+      display: none !important;
     }
   }
 
@@ -165,7 +192,7 @@
     border: 1px solid var(--color-surface);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-content-muted);
+    background: var(--color-accent);
   }
 }
 
@@ -267,7 +294,7 @@
     font-weight: 800 !important;
   }
 
-  /* Solid cards - primary theme standard */
+  /* Futuristic Holographic 3D Cards */
   .solid-card {
     --card-x: 50%;
     --card-y: 50%;
@@ -276,12 +303,13 @@
     background-color: var(--color-surface-card);
     border: 1px solid var(--color-border);
     box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.25);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
     transform-style: preserve-3d;
     will-change: transform;
     overflow: hidden;
   }
 
+  /* Radial cursor spotlight */
   .solid-card::after {
     content: '';
     position: absolute;
@@ -289,7 +317,7 @@
     z-index: 0;
     pointer-events: none;
     opacity: 0;
-    background: radial-gradient(circle 180px at var(--card-x) var(--card-y), rgb(var(--color-accent-rgb) / 0.18), transparent 72%);
+    background: radial-gradient(circle 220px at var(--card-x) var(--card-y), rgb(var(--color-accent-rgb) / 0.18), transparent 75%);
     transition: opacity 0.35s ease;
   }
 
@@ -311,7 +339,7 @@
   .solid-card:hover {
     border-color: var(--color-border-highlight);
     background-color: var(--color-surface-card-hover);
-    box-shadow: 0 8px 30px -4px rgba(6, 182, 212, 0.14);
+    box-shadow: 0 12px 36px -4px rgba(6, 182, 212, 0.18), 0 0 1px 1px rgba(6, 182, 212, 0.3);
   }
 
   @media (hover: none), (pointer: coarse) {
@@ -335,12 +363,25 @@
   .light .solid-card:hover {
     border-color: rgba(2, 132, 199, 0.5);
     background-color: #ffffff;
-    box-shadow: 0 8px 30px -4px rgba(2, 132, 199, 0.16);
+    box-shadow: 0 12px 36px -4px rgba(2, 132, 199, 0.18);
   }
 
   /* Interactive Buttons */
   .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-500 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition-all duration-200 hover:bg-cyan-400 hover:shadow-cyan-500/30 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:scale-[0.98] max-w-full;
+    @apply relative inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-500 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition-all duration-200 hover:bg-cyan-400 hover:shadow-cyan-500/35 hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:scale-[0.98] max-w-full overflow-hidden;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+
+  .btn-primary:hover::after {
+    transform: translateX(100%);
   }
 
   .light .btn-primary {
@@ -354,7 +395,7 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface-elevated px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-content transition-all duration-200 hover:border-accent/40 hover:bg-surface-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:scale-[0.98] max-w-full;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface-elevated px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-content transition-all duration-200 hover:border-accent/50 hover:bg-surface-muted hover:text-accent hover:shadow-md hover:shadow-cyan-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface active:scale-[0.98] max-w-full;
   }
 
   .light .btn-secondary {
@@ -374,7 +415,51 @@
   }
 
   .btn-glass {
-    @apply liquid-glass inline-flex items-center justify-center gap-2 rounded-xl px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-content transition-all duration-200 hover:border-cyan-400/40 hover:text-accent hover:shadow-lg hover:shadow-cyan-500/10 active:scale-[0.98] max-w-full;
+    @apply liquid-glass inline-flex items-center justify-center gap-2 rounded-xl px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-content transition-all duration-200 hover:border-cyan-400/50 hover:text-accent hover:shadow-lg hover:shadow-cyan-500/15 active:scale-[0.98] max-w-full;
+  }
+
+  /* Equalizer HUD Bars */
+  .hud-waveform-bar {
+    width: 2px;
+    border-radius: 1px;
+    background-color: #06b6d4;
+    animation: equalizer 1.4s ease-in-out infinite alternate;
+  }
+  .hud-waveform-bar:nth-child(1) { height: 8px; animation-delay: 0.1s; }
+  .hud-waveform-bar:nth-child(2) { height: 14px; animation-delay: 0.3s; }
+  .hud-waveform-bar:nth-child(3) { height: 18px; animation-delay: 0.15s; }
+  .hud-waveform-bar:nth-child(4) { height: 10px; animation-delay: 0.45s; }
+  .hud-waveform-bar:nth-child(5) { height: 6px; animation-delay: 0.25s; }
+
+  @keyframes equalizer {
+    0% { transform: scaleY(0.4); opacity: 0.6; }
+    50% { transform: scaleY(1.2); opacity: 1; }
+    100% { transform: scaleY(0.3); opacity: 0.5; }
+  }
+
+  /* Cyber corner brackets */
+  .cyber-brackets {
+    position: relative;
+  }
+  .cyber-brackets::before {
+    content: '[';
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #06b6d4;
+    font-family: monospace;
+    opacity: 0.6;
+  }
+  .cyber-brackets::after {
+    content: ']';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #06b6d4;
+    font-family: monospace;
+    opacity: 0.6;
   }
 
   pre,
@@ -399,7 +484,7 @@
     background-size: 24px 24px;
   }
 
-  /* Subtle Gradient Text */
+  /* Futuristic Gradient Text */
   .gradient-text {
     @apply bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent;
     background-clip: text;
@@ -414,7 +499,7 @@
 
   /* Tech Badges */
   .tech-badge {
-    @apply inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-muted px-2.5 py-1 text-xs font-mono font-medium text-content-secondary transition-all duration-200 hover:border-accent/40 hover:text-content;
+    @apply inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-muted px-2.5 py-1 text-xs font-mono font-medium text-content-secondary transition-all duration-200 hover:border-accent/50 hover:text-content hover:shadow-[0_0_10px_rgba(6,182,212,0.15)];
   }
 
   .light .tech-badge {
@@ -425,7 +510,7 @@
   }
 
   .status-badge {
-    @apply inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-mono font-medium text-accent tracking-wide max-w-full;
+    @apply inline-flex items-center gap-2 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-3 py-1 text-xs font-mono font-medium text-accent tracking-wide max-w-full shadow-[0_0_12px_rgba(6,182,212,0.12)];
   }
 
   .light .status-badge {

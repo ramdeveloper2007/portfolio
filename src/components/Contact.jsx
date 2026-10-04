@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Github, Linkedin, Mail, MapPin, Copy, Check, Send } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Copy, Check, Send, Sparkles } from 'lucide-react';
 import { personal } from '../data/personal';
 import { copyToClipboard, ExternalLink } from '../utils/helpers';
 import { FadeIn } from './ui/FadeIn';
@@ -87,12 +87,13 @@ export default function Contact() {
 
         {/* Contact Card */}
         <FadeIn>
-          <div className="solid-card rounded-3xl overflow-hidden p-6 md:p-10 lg:p-12 shadow-2xl border border-cyan-500/20">
+          <div className="solid-card rounded-3xl overflow-hidden p-6 md:p-10 lg:p-12 shadow-2xl border border-cyan-500/25 shadow-cyan-950/20">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-14 items-start">
               {/* Left Column: Direct Info */}
               <div className="lg:col-span-5 space-y-6">
                 <div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-cyan-400 font-semibold">
+                  <span className="font-mono text-xs uppercase tracking-widest text-cyan-400 font-semibold flex items-center gap-1.5">
+                    <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
                     GET IN TOUCH
                   </span>
                   <h3 className="font-display text-2xl font-bold text-content mt-1">
@@ -105,7 +106,7 @@ export default function Contact() {
 
                 <div className="space-y-3.5 pt-2">
                   {/* Email Box */}
-                  <div className="rounded-2xl border border-border bg-surface-muted/60 p-4 transition-all hover:border-cyan-500/30">
+                  <div className="rounded-2xl border border-border bg-surface-muted/60 p-4 transition-all hover:border-cyan-500/40 hover:shadow-md hover:shadow-cyan-950/10">
                     <div className="flex items-center gap-3 mb-2">
                       <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
                         <Mail className="h-4 w-4" />
@@ -123,10 +124,11 @@ export default function Contact() {
                     </div>
                     <button
                       type="button"
+                      data-magnetic
                       onClick={handleCopyEmail}
-                      className="mt-2 inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-card px-2.5 py-1 text-[11px] font-mono text-content-secondary hover:text-cyan-300 hover:border-cyan-500/30 transition-all"
+                      className="mt-2 inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-card px-2.5 py-1 text-[11px] font-mono text-content-secondary hover:text-cyan-300 hover:border-cyan-500/30 transition-all shadow-sm"
                     >
-                      {copied ? <Check className="h-3 w-3 text-emerald-400" /> : <Copy className="h-3 w-3" />}
+                      {copied ? <Check className="h-3 w-3 text-emerald-400 animate-bounce" /> : <Copy className="h-3 w-3" />}
                       <span>{copied ? 'Copied to Clipboard!' : 'Copy Email Address'}</span>
                     </button>
                   </div>
@@ -151,7 +153,7 @@ export default function Contact() {
                   <div className="flex gap-2.5">
                     <ExternalLink
                       href={personal.social.github}
-                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-muted text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-105"
+                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-muted text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-110 shadow-sm"
                       showIcon={false}
                     >
                       <Github className="h-4 w-4" />
@@ -159,7 +161,7 @@ export default function Contact() {
                     </ExternalLink>
                     <ExternalLink
                       href={personal.social.linkedin}
-                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-muted text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-105"
+                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-muted text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-110 shadow-sm"
                       showIcon={false}
                     >
                       <Linkedin className="h-4 w-4" />
@@ -167,7 +169,7 @@ export default function Contact() {
                     </ExternalLink>
                     <a
                       href={`mailto:${personal.email}`}
-                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-muted text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-105"
+                      className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-muted text-content-secondary hover:text-cyan-300 hover:border-cyan-500/40 transition-all hover:scale-110 shadow-sm"
                       aria-label="Send direct email"
                     >
                       <Mail className="h-4 w-4" />
@@ -191,7 +193,7 @@ export default function Contact() {
                         placeholder="John Doe"
                         value={form.name}
                         onChange={handleChange}
-                        className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                        className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/30 transition-all shadow-inner"
                         aria-invalid={!!errors.name}
                         aria-describedby={errors.name ? 'name-error' : undefined}
                       />
@@ -213,7 +215,7 @@ export default function Contact() {
                         placeholder="john@example.com"
                         value={form.email}
                         onChange={handleChange}
-                        className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                        className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/30 transition-all shadow-inner"
                         aria-invalid={!!errors.email}
                         aria-describedby={errors.email ? 'email-error' : undefined}
                       />
@@ -236,7 +238,7 @@ export default function Contact() {
                       placeholder="Internship opportunity / Project collaboration"
                       value={form.subject}
                       onChange={handleChange}
-                      className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                      className="w-full rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/30 transition-all shadow-inner"
                       aria-invalid={!!errors.subject}
                       aria-describedby={errors.subject ? 'subject-error' : undefined}
                     />
@@ -258,7 +260,7 @@ export default function Contact() {
                       placeholder="Describe your role, opportunity, or proposal..."
                       value={form.message}
                       onChange={handleChange}
-                      className="w-full resize-y rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/20 transition-all"
+                      className="w-full resize-y rounded-xl border border-border bg-surface-muted px-3.5 py-2.5 text-xs sm:text-sm text-content placeholder:text-content-muted/60 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400/30 transition-all shadow-inner"
                       aria-invalid={!!errors.message}
                       aria-describedby={errors.message ? 'message-error' : undefined}
                     />
@@ -271,6 +273,8 @@ export default function Contact() {
 
                   <button
                     type="submit"
+                    data-magnetic
+                    data-cursor-label="SEND"
                     className="btn-primary w-full sm:w-auto"
                     disabled={status === 'sending'}
                   >

@@ -18,6 +18,7 @@ import ScrollProgress from './components/ScrollProgress';
 import BackToTop from './components/BackToTop';
 import LoadingScreen from './components/LoadingScreen';
 import InteractiveBackground from './components/ui/InteractiveBackground';
+import CyberTicker from './components/ui/CyberTicker';
 import NotFound from './pages/NotFound';
 import { usePortfolioMotion } from './animations/usePortfolioMotion';
 
@@ -36,6 +37,7 @@ function HomePage() {
       <Navbar />
       <main id="main-content" className="relative z-10">
         <Hero />
+        <CyberTicker />
         <QuickStats />
         <About />
         <WhatIDo />

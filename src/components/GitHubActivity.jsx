@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Github, GitBranch, Star, Users, ExternalLink as ExtIcon } from 'lucide-react';
+import { Github, GitBranch, Star, Users, ExternalLink as ExtIcon, Activity, GitCommit } from 'lucide-react';
 import { personal } from '../data/personal';
 import { ExternalLink, isPlaceholderLink } from '../utils/helpers';
 import { FadeIn } from './ui/FadeIn';
@@ -13,6 +13,12 @@ const staticGitHubInfo = {
     { label: 'Total Stars', value: '—', icon: Star },
   ],
 };
+
+// Simulated 28-day cyber activity matrix cells
+const activityMatrix = [
+  3, 1, 0, 4, 2, 5, 1, 2, 4, 3, 5, 2, 0, 1,
+  4, 2, 3, 5, 1, 4, 2, 3, 5, 4, 2, 1, 3, 5
+];
 
 export default function GitHubActivity() {
   const isConnected = !isPlaceholderLink(personal.githubUsername) && !personal.githubUsername.startsWith('[');
@@ -71,11 +77,11 @@ export default function GitHubActivity() {
         />
 
         <FadeIn>
-          <div className="solid-card rounded-3xl overflow-hidden border border-border shadow-2xl">
+          <div className="solid-card rounded-3xl overflow-hidden border border-cyan-500/25 shadow-2xl shadow-cyan-950/20">
             {/* Top Bar */}
             <div className="flex flex-col gap-5 border-b border-border bg-surface p-6 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shadow-md shadow-cyan-500/10">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 shadow-lg shadow-cyan-500/15">
                   <Github className="h-6 w-6" />
                 </div>
                 <div>
@@ -83,7 +89,7 @@ export default function GitHubActivity() {
                     <h3 className="font-display text-lg font-bold text-content">
                       @{personal.githubUsername}
                     </h3>
-                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
                   </div>
                   <p className="font-mono text-xs text-content-muted">
                     Full-Stack Developer • Open Source &amp; Academic Repositories
@@ -94,6 +100,8 @@ export default function GitHubActivity() {
               <ExternalLink
                 href={staticGitHubInfo.profileUrl}
                 className="btn-primary"
+                data-magnetic
+                data-cursor-label="EXPLORE"
                 showIcon={false}
               >
                 <Github className="h-4 w-4" />
@@ -107,19 +115,50 @@ export default function GitHubActivity() {
               {displayStats.map((stat) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={stat.label} className="p-6">
+                  <div key={stat.label} data-cursor-label="METRIC" className="p-6 transition-colors hover:bg-surface-muted/40">
                     <div className="mb-2 flex items-center gap-2 text-content-muted">
                       <Icon className="h-4 w-4 text-cyan-400" />
                       <span className="font-mono text-xs uppercase tracking-wider text-content-muted">
                         {stat.label}
                       </span>
                     </div>
-                    <p className="font-display text-2xl font-extrabold text-content">
+                    <p className="font-display text-2xl font-extrabold text-content gradient-text">
                       {loading ? '...' : stat.value}
                     </p>
                   </div>
                 );
               })}
+            </div>
+
+            {/* Simulated Cyber Heatmap Stream */}
+            <div className="bg-surface-card/60 px-6 py-4 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2 font-mono text-xs text-content-secondary">
+                <GitCommit className="h-3.5 w-3.5 text-cyan-400" />
+                <span>Recent Commit Stream:</span>
+              </div>
+              <div className="flex items-center gap-1.5 overflow-x-auto py-1 max-w-full">
+                {activityMatrix.map((lvl, i) => {
+                  const bg =
+                    lvl === 5
+                      ? 'bg-cyan-400 shadow-[0_0_6px_#06b6d4]'
+                      : lvl === 4
+                      ? 'bg-cyan-500/80'
+                      : lvl === 3
+                      ? 'bg-cyan-500/50'
+                      : lvl === 2
+                      ? 'bg-cyan-500/30'
+                      : lvl === 1
+                      ? 'bg-cyan-500/15'
+                      : 'bg-surface-muted border border-border/60';
+                  return (
+                    <span
+                      key={i}
+                      className={`h-3 w-3 rounded-sm ${bg} transition-transform hover:scale-125`}
+                      title={`Activity Density Lvl ${lvl}`}
+                    />
+                  );
+                })}
+              </div>
             </div>
 
             {/* Info Footer */}
@@ -129,7 +168,8 @@ export default function GitHubActivity() {
                   ? 'Live profile metrics are temporarily unavailable. Explore public repositories directly on GitHub.'
                   : 'Explore my public repositories and code commits directly on GitHub.'}
               </p>
-              <span className="text-[11px] font-mono text-cyan-400 shrink-0">
+              <span className="text-[11px] font-mono text-cyan-400 shrink-0 flex items-center gap-1.5">
+                <Activity className="h-3.5 w-3.5" />
                 Verified GitHub Profile ✓
               </span>
             </div>

@@ -34,8 +34,9 @@ export function Journey() {
             return (
               <StaggerItem key={step.id}>
                 <div
-                  className={`solid-card rounded-2xl p-5 h-full flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1 ${
-                    isCurrent ? 'border-cyan-500/40 shadow-lg shadow-cyan-500/10' : ''
+                  data-cursor-label="MILESTONE"
+                  className={`solid-card rounded-2xl p-5 h-full flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1.5 border border-border hover:border-cyan-500/40 shadow-md hover:shadow-cyan-950/20 ${
+                    isCurrent ? 'border-cyan-500/50 shadow-lg shadow-cyan-500/15' : ''
                   }`}
                 >
                   <div>
@@ -43,8 +44,8 @@ export function Journey() {
                       <div
                         className={`flex h-10 w-10 items-center justify-center rounded-xl border transition-all duration-300 ${
                           isCurrent
-                            ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-md shadow-cyan-500/20'
-                            : 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20 group-hover:border-cyan-500/40 group-hover:scale-105'
+                            ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-[0_0_12px_rgba(6,182,212,0.3)]'
+                            : 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20 group-hover:border-cyan-500/40 group-hover:scale-110'
                         }`}
                       >
                         <Icon className="h-5 w-5" />
@@ -69,7 +70,7 @@ export function Journey() {
                     <span
                       className={`px-2 py-0.5 rounded-full border ${
                         isCurrent
-                          ? 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30 font-semibold'
+                          ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40 font-semibold shadow-[0_0_8px_rgba(6,182,212,0.2)]'
                           : isOngoing
                           ? 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30'
                           : 'bg-surface-muted text-content-muted border-border'
@@ -100,8 +101,8 @@ export function Education() {
         />
 
         <div className="relative mx-auto max-w-3xl">
-          {/* Vertical Timeline Track Line */}
-          <div className="absolute left-6 top-4 bottom-4 w-px bg-gradient-to-b from-cyan-500 via-indigo-500/50 to-transparent md:left-1/2 md:-translate-x-px" />
+          {/* Vertical Timeline Track Line with Glowing Gradient */}
+          <div className="absolute left-6 top-4 bottom-4 w-0.5 bg-gradient-to-b from-cyan-500 via-indigo-500/60 to-transparent md:left-1/2 md:-translate-x-px shadow-[0_0_8px_rgba(6,182,212,0.4)]" />
 
           <div className="space-y-10">
             {educationTimeline.map((item, index) => {
@@ -109,14 +110,15 @@ export function Education() {
               return (
                 <FadeIn key={item.id} delay={index * 0.15}>
                   <div className="relative pl-14 md:pl-0">
-                    {/* Timeline Node Point */}
-                    <div className="absolute left-3.5 top-2 z-10 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border-2 border-cyan-400 bg-surface shadow-md shadow-cyan-500/30 md:left-1/2">
-                      <div className={`h-2.5 w-2.5 rounded-full ${isCurrent ? 'bg-cyan-400 animate-ping' : 'bg-cyan-400'}`} />
+                    {/* Timeline Node Point with Laser Halo */}
+                    <div className="absolute left-3.5 top-2 z-10 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full border-2 border-cyan-400 bg-surface shadow-lg shadow-cyan-500/40 md:left-1/2">
+                      <div className={`h-2.5 w-2.5 rounded-full ${isCurrent ? 'bg-cyan-400 animate-ping' : 'bg-cyan-400 shadow-[0_0_6px_#06b6d4]'}`} />
                     </div>
 
                     {/* Timeline Content Card */}
                     <div
-                      className={`solid-card rounded-2xl p-6 sm:p-7 md:w-[calc(50%-2rem)] ${
+                      data-cursor-label="ACADEMIC"
+                      className={`solid-card rounded-2xl p-6 sm:p-7 md:w-[calc(50%-2rem)] border border-border hover:border-cyan-500/40 transition-all duration-300 shadow-lg hover:shadow-cyan-950/20 ${
                         index % 2 === 0
                           ? 'md:mr-auto md:text-left'
                           : 'md:ml-auto md:text-left'
@@ -126,7 +128,7 @@ export function Education() {
                         <span
                           className={`rounded-full px-3 py-0.5 text-[10px] font-mono font-semibold uppercase tracking-wider ${
                             isCurrent
-                              ? 'border border-cyan-500/40 bg-cyan-500/15 text-cyan-300'
+                              ? 'border border-cyan-500/50 bg-cyan-500/20 text-cyan-300 shadow-[0_0_8px_rgba(6,182,212,0.2)]'
                               : 'border border-border bg-surface-muted text-content-muted'
                           }`}
                         >

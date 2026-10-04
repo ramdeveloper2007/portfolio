@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
-import { Code2, ArrowDown, Server, Database, Network, Sparkles, Terminal } from 'lucide-react';
+import { Code2, ArrowDown, Server, Database, Network, Sparkles, Terminal, Activity } from 'lucide-react';
 import { FadeIn } from './ui/FadeIn';
 import { SectionHeader } from './ui/SectionHeader';
 
@@ -18,7 +18,7 @@ const layers = [
     colorDark: 'from-cyan-500/15 to-sky-500/10',
     colorLight: 'from-cyan-500/10 to-sky-500/5',
     accentColor: 'text-cyan-600 dark:text-cyan-400',
-    borderColor: 'border-cyan-500/40',
+    borderColor: 'border-cyan-500/50',
   },
   {
     id: 'api',
@@ -33,7 +33,7 @@ const layers = [
     colorDark: 'from-indigo-500/15 to-purple-500/10',
     colorLight: 'from-indigo-500/10 to-purple-500/5',
     accentColor: 'text-indigo-600 dark:text-indigo-400',
-    borderColor: 'border-indigo-500/40',
+    borderColor: 'border-indigo-500/50',
   },
   {
     id: 'backend',
@@ -48,7 +48,7 @@ const layers = [
     colorDark: 'from-sky-500/15 to-blue-500/10',
     colorLight: 'from-sky-500/10 to-blue-500/5',
     accentColor: 'text-sky-600 dark:text-sky-400',
-    borderColor: 'border-sky-500/40',
+    borderColor: 'border-sky-500/50',
   },
   {
     id: 'database',
@@ -63,7 +63,7 @@ const layers = [
     colorDark: 'from-emerald-500/15 to-teal-500/10',
     colorLight: 'from-emerald-500/10 to-teal-500/5',
     accentColor: 'text-emerald-600 dark:text-emerald-400',
-    borderColor: 'border-emerald-500/40',
+    borderColor: 'border-emerald-500/50',
   },
 ];
 
@@ -94,18 +94,19 @@ export default function FullStackArchitecture() {
                   {/* Layer Card */}
                   <button
                     type="button"
+                    data-cursor-label="INSPECT"
                     onClick={() => setActiveLayer(layer.id)}
                     onMouseEnter={() => setActiveLayer(layer.id)}
                     className={`w-full text-left rounded-2xl border p-4 sm:p-5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
                       isActive
-                        ? `bg-gradient-to-r ${layer.colorLight} dark:${layer.colorDark} ${layer.borderColor} shadow-xl shadow-cyan-500/10 scale-[1.02]`
+                        ? `bg-gradient-to-r ${layer.colorLight} dark:${layer.colorDark} ${layer.borderColor} shadow-xl shadow-cyan-500/15 scale-[1.02]`
                         : 'bg-surface-card border-border hover:border-border-strong hover:bg-surface-card-hover'
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3.5">
                         <div
-                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface-muted border border-border ${layer.accentColor}`}
+                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface-muted border border-border ${layer.accentColor} transition-transform duration-200 ${isActive ? 'scale-110 shadow-[0_0_10px_rgba(6,182,212,0.3)]' : ''}`}
                         >
                           <Icon className="h-5 w-5" />
                         </div>
@@ -124,7 +125,7 @@ export default function FullStackArchitecture() {
                       <span
                         className={`font-mono text-[10px] font-semibold px-2 py-0.5 rounded-full border ${
                           isActive
-                            ? 'border-cyan-500/40 bg-cyan-500/15 text-accent-content'
+                            ? 'border-cyan-500/50 bg-cyan-500/20 text-accent-content shadow-[0_0_8px_rgba(6,182,212,0.2)]'
                             : 'border-border bg-surface-muted text-content-muted'
                         }`}
                       >
@@ -139,7 +140,7 @@ export default function FullStackArchitecture() {
                           key={tech}
                           className={`text-[10px] font-mono px-2 py-0.5 rounded-md border ${
                             isActive
-                              ? 'bg-surface-elevated text-accent-content border-cyan-500/30'
+                              ? 'bg-surface-elevated text-accent-content border-cyan-500/40'
                               : 'bg-surface-muted text-content-secondary border-border/70'
                           }`}
                         >
@@ -152,12 +153,12 @@ export default function FullStackArchitecture() {
                   {/* Animated Connecting Data Connector Line */}
                   {index < layers.length - 1 && (
                     <div className="my-1.5 flex justify-center items-center h-6">
-                      <div data-architecture-line className="relative h-full w-0.5 bg-border/80">
+                      <div data-architecture-line className="relative h-full w-0.5 bg-cyan-500/30">
                         {!shouldReduceMotion && (
-                          <div className="absolute top-0 left-[-2px] h-2 w-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 shadow-[0_0_8px_#06b6d4] animate-data-stream" />
+                          <div className="absolute top-0 left-[-2px] h-2.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#06b6d4] animate-data-stream" />
                         )}
                       </div>
-                      <ArrowDown className="h-3 w-3 text-cyan-500 dark:text-cyan-400/70 -ml-1.5 mt-2" />
+                      <ArrowDown className="h-3.5 w-3.5 text-cyan-400 -ml-1.5 mt-2 animate-pulse" />
                     </div>
                   )}
                 </div>
@@ -168,9 +169,9 @@ export default function FullStackArchitecture() {
           {/* Right Column: Live Tier Inspector Detail Card */}
           <div className="lg:col-span-6">
             <FadeIn>
-              <div className="solid-card rounded-3xl p-6 sm:p-8 border border-cyan-500/25 shadow-2xl relative overflow-hidden bg-surface-card">
+              <div className="solid-card rounded-3xl p-6 sm:p-8 border border-cyan-500/30 shadow-2xl relative overflow-hidden bg-surface-card shadow-cyan-950/20">
                 {/* Ambient glow */}
-                <div className="absolute -top-12 -right-12 h-44 w-44 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
+                <div className="absolute -top-12 -right-12 h-48 w-48 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none" />
 
                 {/* Header */}
                 <div className="flex items-center justify-between pb-4 mb-5 border-b border-border/80">
@@ -180,8 +181,8 @@ export default function FullStackArchitecture() {
                       Tier Inspector // {currentLayer.id}.spec
                     </span>
                   </div>
-                  <span className="flex items-center gap-1.5 font-mono text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping" />
+                  <span className="flex items-center gap-1.5 font-mono text-[11px] text-emerald-400 font-medium">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
                     Active Pipeline
                   </span>
                 </div>
@@ -200,9 +201,9 @@ export default function FullStackArchitecture() {
                 </div>
 
                 {/* Data Flow Specification Box */}
-                <div className="mt-6 rounded-2xl border border-border bg-surface-muted p-4 space-y-2">
+                <div className="mt-6 rounded-2xl border border-cyan-500/20 bg-surface-muted/70 p-4 space-y-2">
                   <div className="flex items-center gap-2 font-mono text-xs text-accent-content font-semibold">
-                    <Sparkles className="h-3.5 w-3.5 text-accent" />
+                    <Sparkles className="h-3.5 w-3.5 text-accent animate-pulse" />
                     <span>Data Flow &amp; Protocol Execution:</span>
                   </div>
                   <p className="font-mono text-xs text-content leading-relaxed pl-5">
@@ -227,7 +228,10 @@ export default function FullStackArchitecture() {
                 {/* Micro Footer Spec */}
                 <div className="mt-7 pt-4 border-t border-border/80 flex items-center justify-between text-[11px] font-mono text-content-muted">
                   <span>Architecture: Full-Stack MVC</span>
-                  <span className="text-accent font-semibold">Deterministic Flow ✓</span>
+                  <span className="text-accent font-semibold flex items-center gap-1">
+                    <Activity className="h-3 w-3 text-cyan-400" />
+                    Deterministic Flow ✓
+                  </span>
                 </div>
               </div>
             </FadeIn>

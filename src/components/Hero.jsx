@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { ArrowDown, Download, Github, Linkedin, Mail, Sparkles, ExternalLink as ExtIcon, Terminal, User } from 'lucide-react';
+import { ArrowDown, Download, Github, Linkedin, Mail, Sparkles, ExternalLink as ExtIcon, Terminal, User, Cpu } from 'lucide-react';
 import { personal } from '../data/personal';
 import { scrollToSection } from '../hooks/useScrollSpy';
 import { ExternalLink } from '../utils/helpers';
 import { FadeIn } from './ui/FadeIn';
 import { ProfilePhotoContent } from './ProfilePhoto';
+import TextScramble from './ui/TextScramble';
 
 const codeSnippet = `const developer: DeveloperProfile = {
   name: "Ramprasad",
@@ -36,27 +37,36 @@ export default function Hero({ photoUrl = null }) {
       className="relative flex min-h-[92vh] items-center overflow-hidden bg-surface pt-28 pb-16 md:pt-36 md:pb-24"
       aria-label="Introduction"
     >
-      {/* Subtle Studio Grid Overlay */}
+      {/* Studio Grid Overlay */}
       <div className="absolute inset-0 studio-grid pointer-events-none opacity-40" />
 
       <div className="section-container relative z-10">
         <div className="grid min-w-0 items-center gap-12 lg:grid-cols-12 lg:gap-12">
           {/* Left Column: Hero Content */}
           <div className="min-w-0 max-w-full lg:col-span-7">
-            {/* Top Eyebrow Tag */}
+            {/* Top Eyebrow Tag with Cyber Matrix Signal */}
             <FadeIn delay={0.05}>
               <div data-hero-eyebrow className="mb-4 inline-flex items-center gap-2">
                 <span className="status-badge font-mono">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_6px_#06b6d4] animate-ping" />
-                  HELLO, I'M RAMPRASAD
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#06b6d4]" />
+                  </span>
+                  <TextScramble text="HELLO, I'M RAMPRASAD" speed={35} scrambleCount={2} />
+                </span>
+                <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-border bg-surface-muted/60 px-2.5 py-0.5 font-mono text-[10px] text-content-muted">
+                  <Cpu className="h-3 w-3 text-accent" />
+                  <span>v2.6 ACTIVE</span>
                 </span>
               </div>
             </FadeIn>
 
-            {/* Main Heading */}
+            {/* Main Heading with Crisp Kinetic Typography */}
             <FadeIn delay={0.12}>
               <h1 data-hero-title className="max-w-full break-words font-display text-[clamp(2.2rem,8.5vw,3.4rem)] font-extrabold leading-[1.08] tracking-tight text-content sm:text-5xl md:text-6xl lg:text-[3.6rem]">
-                Ramprasad
+                <span className="relative inline-block hover:text-cyan-300 transition-colors">
+                  Ramprasad
+                </span>
                 <span className="mt-1 block max-w-full break-words font-display text-[clamp(1.4rem,5.2vw,2.2rem)] font-bold leading-[1.12] gradient-text sm:text-4xl md:text-5xl">
                   Full-Stack Developer
                 </span>
@@ -83,6 +93,7 @@ export default function Hero({ photoUrl = null }) {
                 type="button"
                 className="btn-primary"
                 data-magnetic
+                data-cursor-label="EXPLORE"
                 onClick={() => scrollToSection('projects')}
               >
                 <span>View Projects</span>
@@ -94,6 +105,7 @@ export default function Hero({ photoUrl = null }) {
                 download
                 className="btn-secondary"
                 data-magnetic
+                data-cursor-label="RESUME"
               >
                 <Download className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
                 <span>Download Resume</span>
@@ -103,6 +115,7 @@ export default function Hero({ photoUrl = null }) {
                 href={personal.social.github}
                 className="btn-glass"
                 showIcon={false}
+                data-cursor-label="GITHUB"
               >
                 <Github className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
                 <span>GitHub ↗</span>
@@ -112,6 +125,7 @@ export default function Hero({ photoUrl = null }) {
                 href={personal.social.linkedin}
                 className="btn-glass"
                 showIcon={false}
+                data-cursor-label="LINKEDIN"
               >
                 <Linkedin className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
                 <span>LinkedIn ↗</span>
@@ -120,7 +134,10 @@ export default function Hero({ photoUrl = null }) {
 
             <FadeIn delay={0.32} className="mt-7 flex flex-col gap-3 border-t border-border/80 pt-5 sm:flex-row sm:flex-wrap sm:items-center" data-hero-status>
               <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-emerald-400">
-                <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                </span>
                 OPEN TO OPPORTUNITIES
               </div>
               <div className="text-sm text-content-secondary">
@@ -138,7 +155,7 @@ export default function Hero({ photoUrl = null }) {
               <div className="flex items-center gap-2.5">
                 <ExternalLink
                   href={personal.social.github}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary hover:border-cyan-500/40 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:scale-105"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary hover:border-cyan-500/40 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:scale-110 shadow-sm"
                   showIcon={false}
                 >
                   <Github className="h-4 w-4" />
@@ -146,7 +163,7 @@ export default function Hero({ photoUrl = null }) {
                 </ExternalLink>
                 <ExternalLink
                   href={personal.social.linkedin}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary hover:border-cyan-500/40 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:scale-105"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary hover:border-cyan-500/40 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:scale-110 shadow-sm"
                   showIcon={false}
                 >
                   <Linkedin className="h-4 w-4" />
@@ -154,7 +171,7 @@ export default function Hero({ photoUrl = null }) {
                 </ExternalLink>
                 <a
                   href={`mailto:${personal.email}`}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary hover:border-cyan-500/40 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:scale-105"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-elevated text-content-secondary hover:border-cyan-500/40 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all hover:scale-110 shadow-sm"
                   aria-label="Send email"
                 >
                   <Mail className="h-4 w-4" />
@@ -180,13 +197,14 @@ export default function Hero({ photoUrl = null }) {
               <div className="space-y-3" data-hero-parallax>
                 {/* Visual View Mode Toggle */}
                 <div className="flex justify-center lg:justify-end">
-                  <div className="inline-flex rounded-xl border border-border bg-surface-card p-1 shadow-md">
+                  <div className="inline-flex rounded-xl border border-cyan-500/30 bg-surface-card p-1 shadow-lg shadow-cyan-950/20 backdrop-blur-md">
                     <button
                       type="button"
+                      data-magnetic
                       onClick={() => setViewMode('portrait')}
                       className={`flex items-center gap-1.5 rounded-lg px-3 py-1 font-mono text-xs transition-all ${
                         viewMode === 'portrait'
-                          ? 'bg-cyan-500/15 text-accent-content border border-cyan-500/30 font-semibold'
+                          ? 'bg-cyan-500/20 text-accent-content border border-cyan-500/40 font-semibold shadow-[0_0_10px_rgba(6,182,212,0.2)]'
                           : 'text-content-muted hover:text-content'
                       }`}
                     >
@@ -195,10 +213,11 @@ export default function Hero({ photoUrl = null }) {
                     </button>
                     <button
                       type="button"
+                      data-magnetic
                       onClick={() => setViewMode('terminal')}
                       className={`flex items-center gap-1.5 rounded-lg px-3 py-1 font-mono text-xs transition-all ${
                         viewMode === 'terminal'
-                          ? 'bg-cyan-500/15 text-accent-content border border-cyan-500/30 font-semibold'
+                          ? 'bg-cyan-500/20 text-accent-content border border-cyan-500/40 font-semibold shadow-[0_0_10px_rgba(6,182,212,0.2)]'
                           : 'text-content-muted hover:text-content'
                       }`}
                     >
@@ -208,30 +227,30 @@ export default function Hero({ photoUrl = null }) {
                   </div>
                 </div>
 
-                {/* Constant-Sized Card Container (Strictly locked dimensions in both modes) */}
+                {/* Constant-Sized Card Container */}
                 <div className="relative mx-auto w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[440px]">
                   {/* Outer Ambient Multi-Layer Radial Glow */}
-                  <div className="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-cyan-500/20 via-indigo-500/15 to-transparent blur-2xl pointer-events-none" />
+                  <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-cyan-500/25 via-indigo-500/20 to-sky-500/10 blur-3xl pointer-events-none" />
 
                   {/* Main Constant-Sized Frame */}
-                  <div data-hero-photo className="solid-card relative h-[480px] sm:h-[510px] w-full flex flex-col justify-between overflow-hidden rounded-3xl border border-border-strong bg-surface-card shadow-2xl">
+                  <div data-hero-photo className="solid-card relative h-[480px] sm:h-[510px] w-full flex flex-col justify-between overflow-hidden rounded-3xl border border-cyan-500/30 bg-surface-card shadow-2xl">
                     {/* Locked Top Header Bar */}
                     <div className="h-11 shrink-0 flex items-center justify-between border-b border-border bg-surface-elevated px-4 py-2.5">
                       <div className="flex items-center gap-1.5">
-                        <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80 shadow-[0_0_6px_rgba(244,63,94,0.6)]" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80 shadow-[0_0_6px_rgba(245,158,11,0.6)]" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80 shadow-[0_0_6px_rgba(16,185,129,0.6)]" />
                         <span className="ml-2 font-mono text-[10px] tracking-wider text-content-muted">
                           {viewMode === 'portrait' ? 'portrait // developer_id' : 'developer.ts // spec'}
                         </span>
                       </div>
                       <span className="flex items-center gap-1.5 font-mono text-[10px] text-accent font-medium">
                         <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_6px_#06b6d4] animate-pulse" />
-                        {viewMode === 'portrait' ? 'ONLINE' : 'TypeScript'}
+                        {viewMode === 'portrait' ? 'SYS.READY' : 'TypeScript'}
                       </span>
                     </div>
 
-                    {/* Locked Middle Body Canvas (Transitions smoothly with zero container jump) */}
+                    {/* Locked Middle Body Canvas */}
                     <div className="flex-1 min-h-0 w-full relative overflow-hidden bg-surface">
                       <AnimatePresence mode="wait">
                         {viewMode === 'portrait' ? (
@@ -280,15 +299,15 @@ export default function Hero({ photoUrl = null }) {
                     </div>
                   </div>
 
-                  {/* Floating Selective Liquid Glass Badge (Persistent across both views) */}
+                  {/* Floating Selective Liquid Glass Badge */}
                   <motion.div
                     initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.5 }}
-                    className="liquid-glass absolute -bottom-4 -left-3 sm:-left-5 hidden xs:flex items-center gap-3 rounded-2xl p-3 shadow-xl pointer-events-none"
+                    className="liquid-glass absolute -bottom-4 -left-3 sm:-left-5 hidden xs:flex items-center gap-3 rounded-2xl p-3 shadow-xl pointer-events-none border-cyan-500/30 shadow-cyan-950/30"
                   >
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 text-accent border border-cyan-500/30">
-                      <Sparkles className="h-4 w-4" />
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 text-accent border border-cyan-500/40">
+                      <Sparkles className="h-4 w-4 text-cyan-400 animate-pulse" />
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-content">Full-Stack Architecture</p>
@@ -305,6 +324,8 @@ export default function Hero({ photoUrl = null }) {
         <FadeIn delay={0.45} className="mt-14 flex justify-center">
           <button
             type="button"
+            data-magnetic
+            data-cursor-label="SCROLL"
             onClick={() => scrollToSection('about')}
             className="group flex flex-col items-center gap-1.5 text-content-muted transition-colors hover:text-cyan-500 dark:hover:text-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             aria-label="Scroll to about section"
@@ -312,7 +333,7 @@ export default function Hero({ photoUrl = null }) {
             <span className="font-mono text-[10px] uppercase tracking-widest text-content-muted group-hover:text-accent">
               Explore Portfolio
             </span>
-            <ArrowDown className="h-3.5 w-3.5 animate-bounce text-cyan-500 dark:text-cyan-400" />
+            <ArrowDown className="h-3.5 w-3.5 animate-bounce text-cyan-500 dark:text-cyan-400 shadow-sm" />
           </button>
         </FadeIn>
       </div>

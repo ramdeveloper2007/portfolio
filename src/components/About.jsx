@@ -54,13 +54,17 @@ export default function About() {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start">
           {/* Left Column: Editorial Narrative in Solid Card */}
           <FadeIn className="lg:col-span-6 space-y-6">
-            <div className="solid-card rounded-3xl p-6 sm:p-8 space-y-5 border border-border">
+            <div className="solid-card rounded-3xl p-6 sm:p-8 space-y-5 border border-cyan-500/25 shadow-xl shadow-cyan-950/10 relative overflow-hidden group">
+              {/* Animated Top Laser Scanner Line */}
+              <div className="absolute -top-1 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
               <div className="flex items-center justify-between pb-3 border-b border-border/80">
                 <div className="flex items-center gap-2 font-mono text-xs text-cyan-400">
                   <Terminal className="h-4 w-4" />
                   <span>ABOUT_RAMPRASAD.md</span>
                 </div>
-                <span className="text-[10px] font-mono text-content-muted uppercase tracking-wider">
+                <span className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 uppercase tracking-wider">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
                   Full-Stack Profile
                 </span>
               </div>
@@ -98,10 +102,17 @@ export default function About() {
                 const Icon = card.icon;
                 return (
                   <StaggerItem key={card.id}>
-                    <div className="solid-card rounded-2xl p-5 h-full flex flex-col justify-between group transition-all duration-200 hover:-translate-y-1">
+                    <div
+                      data-cursor-label="INFO"
+                      className="solid-card rounded-2xl p-5 h-full flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1.5 border border-border hover:border-cyan-500/40 relative overflow-hidden"
+                    >
+                      {/* Corner Tech Reticles on Hover */}
+                      <div className="absolute top-2 right-2 h-2 w-2 border-t border-r border-cyan-400/0 group-hover:border-cyan-400/80 transition-all duration-300" />
+                      <div className="absolute bottom-2 left-2 h-2 w-2 border-b border-l border-cyan-400/0 group-hover:border-cyan-400/80 transition-all duration-300" />
+
                       <div>
                         <div className="flex items-center justify-between mb-3.5">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 group-hover:border-cyan-500/40 group-hover:scale-105 transition-all">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300 border border-cyan-500/25 group-hover:border-cyan-500/50 group-hover:scale-110 group-hover:shadow-[0_0_12px_rgba(6,182,212,0.25)] transition-all">
                             <Icon className="h-5 w-5" />
                           </div>
                           <span className="text-[10px] font-mono font-medium uppercase tracking-wider text-content-muted px-2 py-0.5 rounded-full border border-border bg-surface-muted">
