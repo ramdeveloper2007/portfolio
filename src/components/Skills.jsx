@@ -178,7 +178,7 @@ export default function Skills() {
 
         {filteredCategories.length === 0 && (
           <div className="text-center py-12 text-content-muted font-mono text-xs">
-            No matching technologies found for "{searchQuery}".
+            No matching technologies found for &quot;{searchQuery}&quot;.
           </div>
         )}
       </div>

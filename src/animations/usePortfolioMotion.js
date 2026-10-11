@@ -75,9 +75,10 @@ export function usePortfolioMotion() {
       });
 
       // 3D Card Interactive Tilt with Holographic Coordinates
-      gsap.utils.toArray('.solid-card').forEach((card) => {
+      gsap.utils.toArray('.solid-card:not([data-no-tilt]):not([role="dialog"])').forEach((card) => {
         const tilt = isMobile ? 0 : 5;
         const move = (event) => {
+          if (card.getAttribute('data-flip-active') === 'true') return;
           const bounds = card.getBoundingClientRect();
           const x = event.clientX - bounds.left;
           const y = event.clientY - bounds.top;
@@ -96,6 +97,7 @@ export function usePortfolioMotion() {
           });
         };
         const leave = () => {
+          if (card.getAttribute('data-flip-active') === 'true') return;
           gsap.to(card, {
             rotateX: 0,
             rotateY: 0,

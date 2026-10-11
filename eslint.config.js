@@ -1,6 +1,7 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import reactPlugin from 'eslint-plugin-react';
 
 export default [
   // Ignore generated/vendor dirs
@@ -16,6 +17,12 @@ export default [
     files: ['**/*.{js,jsx}'],
     plugins: {
       'react-hooks': reactHooksPlugin,
+      react: reactPlugin,
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
     languageOptions: {
       ecmaVersion: 2022,
@@ -32,6 +39,10 @@ export default [
       },
     },
     rules: {
+      ...reactPlugin.configs.flat.recommended.rules,
+      ...reactPlugin.configs.flat['jsx-runtime'].rules,
+      'react/prop-types': 'off',
+
       // React Hooks rules
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',

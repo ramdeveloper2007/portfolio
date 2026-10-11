@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Monitor, Moon, Sun, ArrowUpRight, Activity } from 'lucide-react';
+import { Menu, X, Monitor, Moon, Sun, ArrowUpRight } from 'lucide-react';
 import { navLinks, personal } from '../data/personal';
 import { useScrollSpy, scrollToSection } from '../hooks/useScrollSpy';
 import { useTheme } from '../hooks/useTheme';
@@ -193,7 +193,7 @@ export default function Navbar() {
               className="btn-primary w-full justify-center"
               data-magnetic
             >
-              Let's Connect
+              Let&apos;s Connect
             </button>
             <p className="text-center text-xs text-content-muted font-mono">
               Ramprasad • Full-Stack Developer
